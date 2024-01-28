@@ -8,4 +8,5 @@ Odilon was designed for enterprise software that needs to store terabytes of med
 It has a simple single-level folder structure similar to the Bucket / Object model of Amazon S3. It is small and easy to integrate, offers encryption, data protection and fault tolerance (software RAID and Erasure Codes) and detection of silent data degradation. Odilon also supports version control and master - standby replication over the Internet for disaster recovery and anti ransomware.
 
 **ODILON-MODEL**
+
 JSON Model used by Odilon Server and Client

@@ -1,4 +1,4 @@
-<h1>ODILON-MODEL</h1>
+<h1>Odilon Model</h1>
 <p>Odilon is a scalable and lightweight Open Source Object Storage that runs on standard hardware.</p>
 
 <p>It is an infrastructure software to be used by applications that need to store large amounts of unstructured digital objects such as pdf, MS Word, XLSX files, backups, videos, photos or audio.</p>

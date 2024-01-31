@@ -8,7 +8,7 @@
 <p>It has a simple single-level folder structure similar to the Bucket / Object model of Amazon S3. It is small and easy to integrate, offers encryption, data protection and fault tolerance (software RAID and Erasure Codes) and detection of silent data degradation. Odilon also supports version control and master - standby replication over the Internet for disaster recovery and anti ransomware.</p>
 
 <h2>Model</h2>
-odilon-model contains the JSON Model used by <a href="https://github.com/atolomei/odilon-client" target="_blank">odilon-server</a> and  <a href="https://github.com/atolomei/odilon-client" target="_blank">odilon-client</a>
+odilon-model contains classess (in particular the JSON Model) used both by <a href="https://github.com/atolomei/odilon-client" target="_blank">odilon-server</a> and  <a href="https://github.com/atolomei/odilon-client" target="_blank">odilon-client</a>
 
 <h2>Download</h2>
 <p>

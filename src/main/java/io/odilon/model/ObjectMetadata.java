@@ -19,6 +19,7 @@ package io.odilon.model;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -81,6 +82,9 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("sha256")
 	public String sha256;
 
+	@JsonProperty("sha256Blocks")
+	public List<String> sha256Blocks;
+	
 	@JsonProperty("appVersion")
 	public String appVersion;
 	
@@ -97,6 +101,10 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	public String systemTags;
 
 
+	//@JsonProperty("blocks")
+	//public int blocks;
+
+	
 	
 	public ObjectMetadata() {
 	}
@@ -112,6 +120,14 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 		this.contentType = "";
 	  }
 
+	public void setSha256Blocks(List<String> list) {
+		sha256Blocks = list;
+	}
+	
+	public List<String> getSha256Blocks() {
+		return sha256Blocks;
+	}
+	
 	
 	public boolean isAccesible() {
 		if (status==null)

@@ -155,9 +155,7 @@ public class SystemInfo extends ODModelObject {
 		
 		//map.put("redundancyLevel", serverDataStorage );
 		map.put("redundancyLevel", 	Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
-		
 		map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "" );
-	
 		
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "" );
 		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "" );

@@ -99,7 +99,7 @@ public class SystemInfo extends ODModelObject {
 	public Map<String, Long> serverStorage;
 	
 	public RedundancyLevel  redundancyLevel;
-	
+	public String 			redundancyLevelDetail;
 	
 	
 	
@@ -154,7 +154,13 @@ public class SystemInfo extends ODModelObject {
 		
 		
 		//map.put("redundancyLevel", serverDataStorage );
-		map.put("redundancyLevel", 	Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
+		map.put("redundancyLevel", 			Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
+		
+		if (redundancyLevelDetail!=null)
+			map.put("redundancyLevel.detail", 	redundancyLevelDetail);
+		
+		
+		
 		map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "" );
 		
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "" );

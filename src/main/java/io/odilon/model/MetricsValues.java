@@ -54,6 +54,15 @@ public class MetricsValues extends ODModelObject implements Serializable {
     	nf_int.setRoundingMode(RoundingMode.HALF_UP);
     }
     
+    								
+    static	NumberFormat nf_rat = NumberFormat.getInstance(Locale.ENGLISH);
+    static  
+    {
+    	nf_rat.setMinimumFractionDigits(2);
+    	nf_rat.setMaximumFractionDigits(2);
+    	nf_rat.setRoundingMode(RoundingMode.HALF_UP);
+    }
+    
     
 	public MetricsValues() {}
 
@@ -171,17 +180,6 @@ public class MetricsValues extends ODModelObject implements Serializable {
 
 		Map<String, String> map = new TreeMap<String, String>();
 
-		// ----------------------------
-		// 
-		// API CALLS
-		//		
-		// map.put("getAPIMeter", str(getAPIMeter));
-		// map.put("putAPIMeter", str(putAPIMeter));
-		//
-
-		// ----------------------------
-		// PUT/GET OBJECT
-		//
 		
 
 		// ----------------------------
@@ -212,7 +210,7 @@ public class MetricsValues extends ODModelObject implements Serializable {
 		map.put("cacheFileHitCounter", nf_int.format(cacheFileHitCounter));
 		map.put("cacheFileMissCounter", nf_int.format(cacheFileMissCounter));
 		map.put("cacheFileSize", nf_int.format(cacheFileSize));
-		map.put("cacheFileHardDiskUsage", nf_int.format(cacheFileHardDiskUsage));
+		map.put("cacheFileHardDiskUsage", nf_rat.format(Double.valueOf(cacheFileHardDiskUsage).doubleValue() / SharedConstant.d_gigabyte)+" GB");
 		
 		
 		// ----------------------------

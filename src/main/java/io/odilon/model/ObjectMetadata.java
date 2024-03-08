@@ -85,6 +85,9 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("sha256Blocks")
 	public List<String> sha256Blocks;
 	
+	@JsonProperty("totalBlocks")
+	public int totalBlocks;
+	
 	@JsonProperty("appVersion")
 	public String appVersion;
 	
@@ -127,7 +130,6 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	public List<String> getSha256Blocks() {
 		return sha256Blocks;
 	}
-	
 	
 	public boolean isAccesible() {
 		if (status==null)

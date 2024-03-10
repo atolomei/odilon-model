@@ -16,6 +16,8 @@
  */
 package io.odilon.log;
 
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 
 /**
@@ -139,5 +141,15 @@ public class Logger {
 	public void trace(Object message) {
 		logger.trace(message);
 	}
+	
+	
+	private Optional<String> getMethodFromStack() { 
+		Optional<String> methodName =StackWalker.getInstance().walk(frames -> frames
+			      .findFirst()
+			      .map(StackWalker.StackFrame::getMethodName));
+				return methodName;
+	}
+	
+	
 }
 

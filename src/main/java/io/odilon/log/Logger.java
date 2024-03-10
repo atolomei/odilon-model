@@ -19,8 +19,8 @@ package io.odilon.log;
 import org.apache.logging.log4j.LogManager;
 
 /**
- * <p>Simple Wrapper for Log4J2 loggers.
- * Main addition is  that it formats output</p>
+ * <p>Simple Wrapper for {@linkplain org.apache.logging.log4j.Logger} loggers.<br/>
+ * The addition is that it formats output.</p>
  */
 public class Logger {
 

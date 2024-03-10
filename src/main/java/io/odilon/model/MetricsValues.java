@@ -33,6 +33,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
  * </p>
  *@see Metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
  *
+ *@author atolomei@novamens.com (Alejandro Tolomei)
+ *
  */
 public class MetricsValues extends ODModelObject implements Serializable {
 

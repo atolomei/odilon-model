@@ -29,6 +29,7 @@ import io.odilon.log.Logger;
  * <p>Object's metadata (not the binary file)
  * It is returned by some of the API calls</p> 
  * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class ObjectMetadata extends ODModelObject implements Serializable {
 			

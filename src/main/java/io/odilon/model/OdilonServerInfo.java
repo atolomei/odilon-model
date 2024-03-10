@@ -22,6 +22,12 @@ import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * 
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class OdilonServerInfo extends ODModelObject implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -91,14 +97,6 @@ public class OdilonServerInfo extends ODModelObject implements Serializable {
 	 */
 	public OdilonServerInfo() {
 	}
-
-	//public List<String> getEncryptorKeys() {
-	//	return encryptorKeys;
-	//}
-					
-	//public void setEncryptorKeys(List<String> list) {
-	//	this.encryptorKeys = list;
-	//}
 
 	public String getId() {
 		return id;

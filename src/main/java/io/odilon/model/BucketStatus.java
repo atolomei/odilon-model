@@ -23,6 +23,11 @@ import java.util.ResourceBundle;
 
 import io.odilon.util.Check;
 
+
+
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public enum BucketStatus {
 	
 	ENABLED 	("enabled", 1),

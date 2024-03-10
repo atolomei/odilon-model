@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  *  
  * 
- *
+ * @author atolomei@novamens.com (Alejandro Tolomei) 
  */
 public class BucketMetadata extends ODModelObject implements Serializable {
 			

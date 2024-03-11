@@ -95,6 +95,7 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("lastModified")
 	public OffsetDateTime lastModified;
 	
+	/** Date it was synced to the standby server */
 	@JsonProperty("dateSynced")
 	public OffsetDateTime dateSynced;
 	

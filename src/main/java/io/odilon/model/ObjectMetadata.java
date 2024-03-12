@@ -105,11 +105,6 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("systemTags")
 	public String systemTags;
 
-
-	//@JsonProperty("blocks")
-	//public int blocks;
-
-	
 	
 	public ObjectMetadata() {
 	}

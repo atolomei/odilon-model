@@ -20,6 +20,7 @@ package io.odilon.errors;
 /**
  * <p>Main Odilon Exception when there is a critical error</p>
  * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class InternalCriticalException extends RuntimeException {
 

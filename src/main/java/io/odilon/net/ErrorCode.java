@@ -18,6 +18,9 @@ package io.odilon.net;
 
 import java.util.Optional;
 
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public enum ErrorCode {
 			
 	NOT_MODIFIED (1000, "Not modified"), 

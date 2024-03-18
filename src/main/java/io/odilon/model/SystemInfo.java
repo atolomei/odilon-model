@@ -29,7 +29,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.odilon.log.Logger;
 
-
+/**
+ * 
+ * <p>Odilon configuration info and some fixed server values</p>
+ * <p>For dynamic info on the status of the system we use {@link MetricsValues}</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class SystemInfo extends ODModelObject {
 	
 	@SuppressWarnings("unused")

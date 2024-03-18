@@ -18,6 +18,10 @@ package io.odilon.net;
 
 import java.util.Optional;
 
+/**
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public enum ODHttpStatus {
 
 	

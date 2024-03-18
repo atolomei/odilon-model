@@ -22,6 +22,12 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * 
+ * @param <T>
+ */
 public class DataList<T extends Serializable> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

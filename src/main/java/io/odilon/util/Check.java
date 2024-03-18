@@ -16,6 +16,10 @@
  */
 package io.odilon.util;
 
+
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class Check {
 
 	public static <T> T requireNonNullArgument(T obj, String message) {

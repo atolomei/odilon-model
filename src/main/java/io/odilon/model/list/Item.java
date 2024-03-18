@@ -26,6 +26,8 @@ import io.odilon.model.ODModelObject;
  * 
  * <p>Wrapper for Lists and other Iterable structures where some elements may not be a T but an error</p>
  *
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  * @param <T>
  */
 public class Item<T extends Serializable> extends ODModelObject implements Serializable {

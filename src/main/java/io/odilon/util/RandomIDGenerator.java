@@ -18,6 +18,9 @@ package io.odilon.util;
 
 import java.util.Random;
 
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class RandomIDGenerator {
 
 	private static Random random = new Random();

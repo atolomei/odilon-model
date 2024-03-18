@@ -29,6 +29,9 @@ import org.apache.commons.io.FileUtils;
 
 import io.odilon.log.Logger;
 
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class ODFileUtils  {
 																						
 	private static Logger logger = Logger.getLogger(ODFileUtils.class.getName());

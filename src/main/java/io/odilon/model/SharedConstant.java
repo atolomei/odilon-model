@@ -19,6 +19,8 @@ package io.odilon.model;
 /**
  * <p>Constants used by Odilon Client and Server</p>
  * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * 
 */
 public class SharedConstant {
 

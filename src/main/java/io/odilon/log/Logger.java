@@ -23,6 +23,9 @@ import org.apache.logging.log4j.LogManager;
 /**
  * <p>Simple Wrapper for {@linkplain org.apache.logging.log4j.Logger} loggers.<br/>
  * The addition is that it formats output.</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * 
  */
 public class Logger {
 

@@ -25,10 +25,12 @@ import io.odilon.errors.InternalCriticalException;
 import io.odilon.log.Logger;
 
 /**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  * @param <T>
  */
 public class ResultSet<T extends Serializable> implements Iterator<T> {
 			
+	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(ResultSet.class.getName());
 
 	private int relativeIndex 		= 0; // next item to return -> 0 to (list.size() - 1) 
@@ -51,11 +53,11 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 		if (dataList==null) 
 				return fetch();
 		
-		// if the buffer still has items
+		/** if the buffer still has items */
 		if (relativeIndex < relativeSize)
 			return true;
 		
-		// buffer has no items
+	    /** buffer has no items */
 		return fetch();
 		
 	}
@@ -66,7 +68,7 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 	@Override
 	public synchronized T next() {
 
-		// if the buffer still has items to return
+		/** if the buffer still has items to return */
 		if (this.relativeIndex < this.relativeSize) {
 			T object = this.dataList.get(relativeIndex);
 			this.relativeIndex++; 
@@ -125,7 +127,6 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 		try {
 			this.dataList = this.dataProvider.fetch(cumulativeIndex);
 		} catch (IOException e) {
-			logger.error(e);
 			throw new InternalCriticalException(e, "error fechting data from dataProvider -> " + 
 			(Optional.ofNullable(this.dataProvider).isPresent()?this.dataProvider.toString():"null"));
 		}

@@ -28,10 +28,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
+ * <p>Odilon monitoring</p>
  * 
- * <p>Dropwizard metrics
- * </p>
- *@see Metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
+ *@see Dropwizard metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
  *
  *@author atolomei@novamens.com (Alejandro Tolomei)
  *
@@ -213,7 +212,7 @@ public class MetricsValues extends ODModelObject implements Serializable {
 		map.put("cacheFileMissCounter", nf_int.format(cacheFileMissCounter));
 		map.put("cacheFileSize", nf_int.format(cacheFileSize));
 		map.put("cacheFileHardDiskUsage", nf_rat.format(Double.valueOf(cacheFileHardDiskUsage).doubleValue() / SharedConstant.d_gigabyte)+" GB");
-		
+	
 		
 		// ----------------------------
 		// REPLICATION

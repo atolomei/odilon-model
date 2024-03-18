@@ -19,7 +19,10 @@ package io.odilon.model.list;
 import java.io.IOException;
 import java.io.Serializable;
  
-
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * @param <T>
+ */
 public interface DataProvider<T extends Serializable> extends Serializable {
 	
 	public DataList<T> fetch() throws IOException;

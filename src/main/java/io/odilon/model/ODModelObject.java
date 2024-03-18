@@ -17,6 +17,7 @@
 package io.odilon.model;
 
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -28,11 +29,13 @@ import io.odilon.log.Logger;
 import io.odilon.util.RandomIDGenerator;
 
 /**
- * <p>Abstract class for Odilon Information Model</p> 
+ * <p>Abstract class for Odilon Information Model</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei) 
  */
 public abstract class ODModelObject {
-
-	static private Logger logger =	Logger.getLogger(BucketMetadata.class.getName());
+										
+	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
 	@JsonIgnore 
 	static final private ObjectMapper mapper = new ObjectMapper();

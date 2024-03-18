@@ -16,11 +16,16 @@
  */
 package io.odilon.log;
 
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 
 /**
- * <p>Simple Wrapper for Log4J2 loggers.
- * Main addition is  that it formats output</p>
+ * <p>Simple Wrapper for {@linkplain org.apache.logging.log4j.Logger} loggers.<br/>
+ * The addition is that it formats output.</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * 
  */
 public class Logger {
 
@@ -139,5 +144,15 @@ public class Logger {
 	public void trace(Object message) {
 		logger.trace(message);
 	}
+	
+	
+	private Optional<String> getMethodFromStack() { 
+		Optional<String> methodName =StackWalker.getInstance().walk(frames -> frames
+			      .findFirst()
+			      .map(StackWalker.StackFrame::getMethodName));
+				return methodName;
+	}
+	
+	
 }
 

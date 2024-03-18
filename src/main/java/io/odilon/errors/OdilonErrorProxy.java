@@ -25,6 +25,8 @@ import io.odilon.model.ODModelObject;
 
 /**
  * <p>JSON version of Odilon errors</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class OdilonErrorProxy extends ODModelObject {
 

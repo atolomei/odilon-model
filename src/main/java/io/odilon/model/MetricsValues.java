@@ -28,10 +28,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
+ * <p>Odilon monitoring</p>
  * 
- * <p>Dropwizard metrics
- * </p>
- *@see Metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
+ *@see Dropwizard metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
+ *
+ *@author atolomei@novamens.com (Alejandro Tolomei)
  *
  */
 public class MetricsValues extends ODModelObject implements Serializable {
@@ -54,6 +55,15 @@ public class MetricsValues extends ODModelObject implements Serializable {
     	nf_int.setRoundingMode(RoundingMode.HALF_UP);
     }
     
+    								
+    static	NumberFormat nf_rat = NumberFormat.getInstance(Locale.ENGLISH);
+    static  
+    {
+    	nf_rat.setMinimumFractionDigits(2);
+    	nf_rat.setMaximumFractionDigits(2);
+    	nf_rat.setRoundingMode(RoundingMode.HALF_UP);
+    }
+    
     
 	public MetricsValues() {}
 
@@ -67,7 +77,7 @@ public class MetricsValues extends ODModelObject implements Serializable {
 	public double putObjectMeter[]  = new double[3];
 
 	
-	public int cacheSize = 0;
+	//public long cacheSize = 0;
 	
 	
 	// ----------------------------
@@ -87,7 +97,7 @@ public class MetricsValues extends ODModelObject implements Serializable {
 
 
 	// ----------------------------
-	// CACHE
+	// OBJECTMETADATA CACHE
 	
 	@JsonProperty("cacheObjectHitCounter")
 	public long cacheObjectHitCounter = 0;
@@ -95,7 +105,26 @@ public class MetricsValues extends ODModelObject implements Serializable {
 	@JsonProperty("cacheObjectMissCounter")
 	public long cacheObjectMissCounter = 0;
 	
+	@JsonProperty("cacheObjectSize")
+	public long cacheObjectSize = 0;
 
+	
+
+	// ----------------------------
+	// FILE CACHE
+
+	@JsonProperty("cacheFileHitCounter")
+	public long cacheFileHitCounter = 0;
+
+	@JsonProperty("cacheFileMissCounter")
+	public long cacheFileMissCounter = 0;
+	
+	@JsonProperty("cacheFileSize")
+	public long cacheFileSize = 0;
+
+	@JsonProperty("cacheFileHardDiskUsage")
+	public long cacheFileHardDiskUsage = 0;
+	
 	// ----------------------------
 	// REPLICATION
 
@@ -152,17 +181,6 @@ public class MetricsValues extends ODModelObject implements Serializable {
 
 		Map<String, String> map = new TreeMap<String, String>();
 
-		// ----------------------------
-		// 
-		// API CALLS
-		//		
-		// map.put("getAPIMeter", str(getAPIMeter));
-		// map.put("putAPIMeter", str(putAPIMeter));
-		//
-
-		// ----------------------------
-		// PUT/GET OBJECT
-		//
 		
 
 		// ----------------------------
@@ -180,14 +198,22 @@ public class MetricsValues extends ODModelObject implements Serializable {
 		map.put("objectDeleteVersionCounter", nf_int.format(deleteObjectVersionCounter));
 
 		// ----------------------------
-		// CACHE
+		// OBJECT CACHE
 		//
 		
 		map.put("cacheObjectHitCounter", nf_int.format(cacheObjectHitCounter));
 		map.put("cacheObjectMissCounter", nf_int.format(cacheObjectMissCounter));
-		map.put("cacheObjectSize", nf_int.format(cacheSize));
+		map.put("cacheObjectSize", nf_int.format(cacheObjectSize));
 		
-
+		// ----------------------------
+		// FILE CACHE
+		//
+		map.put("cacheFileHitCounter", nf_int.format(cacheFileHitCounter));
+		map.put("cacheFileMissCounter", nf_int.format(cacheFileMissCounter));
+		map.put("cacheFileSize", nf_int.format(cacheFileSize));
+		map.put("cacheFileHardDiskUsage", nf_rat.format(Double.valueOf(cacheFileHardDiskUsage).doubleValue() / SharedConstant.d_gigabyte)+" GB");
+	
+		
 		// ----------------------------
 		// REPLICATION
 		//

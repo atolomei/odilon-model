@@ -19,7 +19,6 @@ package io.odilon.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 import io.odilon.util.Check;
 
@@ -43,6 +42,12 @@ import io.odilon.util.Check;
  * <br/>
  * <b>RAID 6 / Erasure Coding</b> <br/>
  * It is a method of encoding data into blocks that can be distributed across multiple disks or nodes and then reconstructed from a subset of those blocks. It has great flexibility since you can adjust the number and size of the blocks and the minimum required for recovery. It uses less disk space than RAID 1 and can withstand multiple full disk failures. Odilon implements this architecture using Reed Solomon error-correction codes.
+ * Odilon supports these configurations: <br/>
+ *  <ul>
+ *  <li>  3 Disks  -> data: 2, parity: 1</li>
+ *  <li>  6 Disks  -> data: 4, parity: 2</li>
+ *  <li> 12 Disks  -> data: 8, parity: 4</li>
+ *  </ul>
  * <br/>
  * <br/>
  * <br/>
@@ -52,7 +57,7 @@ public enum RedundancyLevel {
 			
 	RAID_0 	("RAID 0", 0), //(striping) no agrega redundancia, si hay mas de un mountpoint el resultado es mejor throughput porque se acceden los discos a la vez
 	RAID_1 	("RAID 1", 1), // (mirroring) 
-	RAID_6 	("RAID 6", 6); // (dual parity)
+	RAID_6 	("RAID 6", 6); // (Erasure Codes RS 4+2)
 		
 	private String name;
 	private int code;

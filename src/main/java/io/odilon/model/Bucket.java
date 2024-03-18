@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *  Every object contained by a bucket has a unique ObjectName in that bucket; therefore, 
  *  the pair <b>BucketName</b> + <b>ObjectName</b> is a Unique ID for each object in Odilon.
  * </p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class Bucket extends ODModelObject implements Serializable {
 

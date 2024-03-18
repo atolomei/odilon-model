@@ -19,6 +19,7 @@ package io.odilon.model;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,6 +29,7 @@ import io.odilon.log.Logger;
  * <p>Object's metadata (not the binary file)
  * It is returned by some of the API calls</p> 
  * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class ObjectMetadata extends ODModelObject implements Serializable {
 			
@@ -81,12 +83,19 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("sha256")
 	public String sha256;
 
+	@JsonProperty("sha256Blocks")
+	public List<String> sha256Blocks;
+	
+	@JsonProperty("totalBlocks")
+	public int totalBlocks;
+	
 	@JsonProperty("appVersion")
 	public String appVersion;
 	
 	@JsonProperty("lastModified")
 	public OffsetDateTime lastModified;
 	
+	/** Date it was synced to the standby server */
 	@JsonProperty("dateSynced")
 	public OffsetDateTime dateSynced;
 	
@@ -95,7 +104,6 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 
 	@JsonProperty("systemTags")
 	public String systemTags;
-
 
 	
 	public ObjectMetadata() {
@@ -112,6 +120,13 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 		this.contentType = "";
 	  }
 
+	public void setSha256Blocks(List<String> list) {
+		sha256Blocks = list;
+	}
+	
+	public List<String> getSha256Blocks() {
+		return sha256Blocks;
+	}
 	
 	public boolean isAccesible() {
 		if (status==null)

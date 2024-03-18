@@ -18,6 +18,9 @@ package io.odilon.model.list;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class ItemError {
 
 	@JsonProperty("message")

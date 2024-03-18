@@ -26,6 +26,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>A DataProvider that keeps track of the Server Agent that is processing its' page requests</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * 
  * @param <T>
  */
 public abstract class CachedDataProvider<T extends Serializable> implements DataProvider<T> {

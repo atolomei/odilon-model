@@ -29,6 +29,9 @@ import org.apache.commons.io.FileUtils;
 
 import io.odilon.log.Logger;
 
+/**
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class ODFileUtils  {
 																						
 	private static Logger logger = Logger.getLogger(ODFileUtils.class.getName());
@@ -54,37 +57,66 @@ public class ODFileUtils  {
 	public static void forceDelete(final File file) throws IOException {
 		FileUtils.forceDelete(file);
 	}
+
+	
+	public static String calculateSHA256String(final String string) throws IOException, NoSuchAlgorithmException {
+	
+		MessageDigest digest;
+		
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			logger.error(e);
+			throw e;
+		}
+		
+		try {
+			byte bytes[] = string.getBytes();
+		    digest.update(bytes, 0, bytes.length);
+		    return Base64.getEncoder().encodeToString(digest.digest());
+		    
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	}
+
+	
+	
+	
+	
 	
 	public static String calculateSHA256String(final File file) throws IOException, NoSuchAlgorithmException {
 
 		byte[] buffer= new byte[BUFFER_SIZE];
 		int count = 0;
+	
 		MessageDigest digest;
+		
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			logger.error(e);
+			throw e;
+		}
 		    
-			try {
-				digest = MessageDigest.getInstance("SHA-256");
-			} catch (NoSuchAlgorithmException e) {
-				logger.error(e);
-				throw e; 
-			}
-		    
-			BufferedInputStream bis = null;
+		BufferedInputStream bis = null;
 			
-			try {
-				bis = new BufferedInputStream(new FileInputStream(file));
-				while ((count = bis.read(buffer)) > 0)
-			        digest.update(buffer, 0, count);
-			    String sha256 = Base64.getEncoder().encodeToString(digest.digest());
-			    return sha256;
+		try {
+			bis = new BufferedInputStream(new FileInputStream(file));
+			while ((count = bis.read(buffer)) > 0)
+		        digest.update(buffer, 0, count);
+		    String sha256 = Base64.getEncoder().encodeToString(digest.digest());
+		    return sha256;
 		    
-			} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 				logger.error(e);
 				throw e;
 				
-			} catch (Exception e) {
-				logger.error(e);
-				throw e;
-			}
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
 			finally {
 				if (bis!=null) {
 					try {
@@ -94,8 +126,7 @@ public class ODFileUtils  {
 						logger.error(e);
 					}
 				}
-			}
-		
+		}
 	}
 	
 }

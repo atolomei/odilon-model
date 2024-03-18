@@ -29,7 +29,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.odilon.log.Logger;
 
-
+/**
+ * 
+ * <p>Odilon configuration info and some fixed server values</p>
+ * <p>For dynamic info on the status of the system we use {@link MetricsValues}</p>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ */
 public class SystemInfo extends ODModelObject {
 	
 	@SuppressWarnings("unused")
@@ -99,7 +105,7 @@ public class SystemInfo extends ODModelObject {
 	public Map<String, Long> serverStorage;
 	
 	public RedundancyLevel  redundancyLevel;
-	
+	public String 			redundancyLevelDetail;
 	
 	
 	
@@ -154,10 +160,14 @@ public class SystemInfo extends ODModelObject {
 		
 		
 		//map.put("redundancyLevel", serverDataStorage );
-		map.put("redundancyLevel", 	Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
+		map.put("redundancyLevel", 			Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
+		
+		if (redundancyLevelDetail!=null)
+			map.put("redundancyLevel.detail", 	redundancyLevelDetail);
+		
+		
 		
 		map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "" );
-	
 		
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "" );
 		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "" );

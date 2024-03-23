@@ -5,7 +5,7 @@
 
   	<groupId>io.odilon</groupId>
   	<artifactId>odilon-model</artifactId>
-  	<version>1.1-beta</version>
+  	<version>1.5-beta</version>
   	<name>odilon model</name>
   	<description>Classes used by Odilon Server and Odilon Client SDK. 
 	  Data requested by the client is sent in JSON format by the Server 
@@ -22,7 +22,7 @@
 	<commons-validator.version>1.8.0</commons-validator.version> 	<!--  01 /2024  -->
 	<disruptor-version>3.4.4</disruptor-version> 					<!--  01 /2024  3.4.4  version 4.0.0 no funciono. java.lang.ClassNotFoundException: com.lmax.disruptor.SequenceReportingEventHandler  --> 
 	<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024  31.1-jre -->
-	<jackson-version>2.16.1</jackson-version> 						<!--  01 /2024  2.16.0 -->
+	<jackson-version>2.17.0</jackson-version> 						<!--  03 /2024  2.16.1 -->
 	<java-version>11</java-version>
 	<junit-version>5.10.1</junit-version> 							<!--  01 /2024  4.13.2-->
 	<log4j2-version>2.22.1</log4j2-version> 						<!--  01 /2024  -->
@@ -96,6 +96,13 @@
 			    <groupId>commons-validator</groupId>
 			    <artifactId>commons-validator</artifactId>
 			    <version>${commons-validator.version}</version>
+			    
+			     <exclusions>
+				   	<exclusion>
+						<artifactId>commons-logging</artifactId>
+						<groupId>commons-logging</groupId>
+					</exclusion>
+				  </exclusions>
 			</dependency>
 		 		
 			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
@@ -128,41 +135,41 @@
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.3.2</version>
         </plugin>
         <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+          <version>3.13.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>3.2.5</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <version>${maven-jar-plugin-version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
+          <version>3.1.1</version>
         </plugin>
         <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
+          <version>3.12.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.5.0</version>
         </plugin>
       </plugins>
     </pluginManagement>

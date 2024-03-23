@@ -24,6 +24,7 @@ import java.util.Optional;
 public enum ErrorCode {
 			
 	NOT_MODIFIED (1000, "Not modified"), 
+	AUTHENTICATION_ERROR (1005, "Authentication error"),
 	ACCESS_DENIED (1010, "Access denied"), 
 	TOO_MANY_REQUESTS(1020, "Too many requests"),
 	INVALID_VERSION (1030, "Version in Request is older than the current Version"),  

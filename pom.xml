@@ -23,12 +23,12 @@
 	<disruptor-version>3.4.4</disruptor-version> 					<!--  01 /2024  3.4.4  version 4.0.0 no funciono. java.lang.ClassNotFoundException: com.lmax.disruptor.SequenceReportingEventHandler  --> 
 	<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024  31.1-jre -->
 	<jackson-version>2.17.0</jackson-version> 						<!--  03 /2024  2.16.1 -->
-	<java-version>17</java-version>
+	<java-version>11</java-version>
 	<junit-version>5.10.1</junit-version> 							<!--  01 /2024  4.13.2-->
 	<log4j2-version>2.22.1</log4j2-version> 						<!--  01 /2024  -->
     
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
 	<maven-javadoc-plugin-version>3.4.1</maven-javadoc-plugin-version>
 	<maven-jar-plugin-version>3.3.0</maven-jar-plugin-version>
     <maven.test.skip>true</maven.test.skip>

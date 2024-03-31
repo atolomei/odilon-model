@@ -64,7 +64,6 @@ public class OdilonServerInfo extends ODModelObject implements Serializable {
 
 	@JsonProperty("versionControlDate")
 	private OffsetDateTime versionControlDate;
-	
 
 	@JsonProperty("encryptionIntialized")
 	private boolean encryptionIntialized;
@@ -72,6 +71,15 @@ public class OdilonServerInfo extends ODModelObject implements Serializable {
 	@JsonProperty("encryptionInitializedDate")
 	private OffsetDateTime encryptionInitializedDate;
 
+	@JsonProperty("encryptionLastModifiedDate")
+	private OffsetDateTime encryptionLastModifiedDate;
+
+	
+	/**
+	 * 
+	 */
+	public OdilonServerInfo() {
+	}
 
 	
 	public void setEncryptionIntialized( boolean b) {
@@ -90,13 +98,14 @@ public class OdilonServerInfo extends ODModelObject implements Serializable {
 		encryptionInitializedDate=date;
 	}
 
-	
-	
-	/**
-	 * 
-	 */
-	public OdilonServerInfo() {
+	public OffsetDateTime getEncryptionLastModifiedDate() {
+		return (encryptionLastModifiedDate!=null ? encryptionLastModifiedDate : encryptionInitializedDate);
 	}
+
+	public void setEncryptionLastModifiedDate(OffsetDateTime date) {
+		encryptionLastModifiedDate=date;
+	}
+
 
 	public String getId() {
 		return id;
@@ -186,10 +195,6 @@ public class OdilonServerInfo extends ODModelObject implements Serializable {
 	public void setVersionControlDate(OffsetDateTime date) {
 		versionControlDate = date;
 	}
-
-
-
-	
 
 	
 }

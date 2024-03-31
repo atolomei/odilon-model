@@ -63,7 +63,6 @@ public class SystemInfo extends ODModelObject {
 	public String isEncryptEnabled;
 	public String isEncryptionInitialized;
 	
-	
 	public String isVaultEnabled;
 	public String vaultUrl;
 	

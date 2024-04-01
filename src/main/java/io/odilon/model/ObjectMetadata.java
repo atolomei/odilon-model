@@ -151,19 +151,63 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	    if (length != that.length) {
 	      return false;
 	    }
+	    
+	    if (bucketName!=null && that.bucketName==null)
+	    	return false;
+	    
+	    if (bucketName==null && that.bucketName!=null)
+	    	return false;
+	    
 	    if (!bucketName.equals(that.bucketName)) {
 	      return false;
 	    }
+	    
+	    
+	    
+	    if (objectName!=null && that.objectName==null)
+	    	return false;
+	    
+	    if (objectName==null && that.objectName!=null)
+	    	return false;
+	    
 	    if (!objectName.equals(that.objectName)) {
 	      return false;
 	    }
-	    if (!creationDate.equals(that.creationDate)) {
-	      return false;
+	    
+	    
+	    
+	    if (creationDate!=null && that.creationDate!=null) {
+		    if (!creationDate.equals(that.creationDate)) {
+		      return false;
+		    }
 	    }
-	    if (!etag.equals(that.etag)) {
-	      return false;
+	    
+	    if (etag!=null && that.etag!=null) {
+		    if (!etag.equals(that.etag)) {
+		      return false;
+		    }
 	    }
-	    return contentType.equals(that.contentType);
+
+	    
+	    if (fileName!=null && that.fileName==null)
+	    	return false;
+	    
+	    if (fileName==null && that.fileName!=null)
+	    	return false;
+	    
+    	if (!fileName.equals(that.fileName))
+    		return false;
+
+	    
+	    if (contentType!=null && that.contentType==null)
+	    	return false;
+	    
+	    if (contentType==null && that.contentType!=null)
+	    	return false;
+	    
+    	return contentType.equals(that.contentType);
+	    
+	    
 	  }
 
 	  /**
@@ -171,14 +215,32 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	   */
 	  @Override
 	  public int hashCode() {
-	    int result = bucketName.hashCode();
-	    result = 31 * result + objectName.hashCode();
-	    result = 31 * result + creationDate.hashCode();
+	    
+		  int result = 0;
+				  
+		  if (bucketName!=null)
+				result = bucketName.hashCode();
+
+		  if (objectName!=null)
+			  result = 31 * result + objectName.hashCode();
+	    
 	    result = 31 * result + (int) (length ^ (length >>> 32));
-	    result = 31 * result + etag.hashCode();
-	    result = 31 * result + contentType.hashCode();
+
+	    /** we can not use creation date because it may differ from drive to drive */
+	    
+	    if (etag!=null)
+	    	result = 31 * result + etag.hashCode();
+	    
+	    if (fileName!=null)
+	    	result = 31 * result + fileName.hashCode();
+	    
+	    if (contentType!=null)
+	    	result = 31 * result + contentType.hashCode();
+	    
 	    result = 31 * result + (int) (version ^ (version >>> 32));
+	    
 	    return result;
+	    
 	  }
 
 	  public void setSystemTags(String systemTags) {
@@ -241,5 +303,165 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 			this.systemTags = stag.replace("|", "#");
 		else
 			this.systemTags = this.systemTags + "|" + stag.replace("|", "#");
+	}
+
+	public String getBucketName() {
+		return bucketName;
+	}
+
+	public void setBucketName(String bucketName) {
+		this.bucketName = bucketName;
+	}
+
+	public String getObjectName() {
+		return objectName;
+	}
+
+	public void setObjectName(String objectName) {
+		this.objectName = objectName;
+	}
+
+	public String getDrive() {
+		return drive;
+	}
+
+	public void setDrive(String drive) {
+		this.drive = drive;
+	}
+
+	public OffsetDateTime getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(OffsetDateTime creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public OffsetDateTime getVersioncreationDate() {
+		return versioncreationDate;
+	}
+
+	public void setVersioncreationDate(OffsetDateTime versioncreationDate) {
+		this.versioncreationDate = versioncreationDate;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public long getLength() {
+		return length;
+	}
+
+	public void setLength(long length) {
+		this.length = length;
+	}
+
+	public boolean isEncrypt() {
+		return encrypt;
+	}
+
+	public void setEncrypt(boolean encrypt) {
+		this.encrypt = encrypt;
+	}
+
+	public boolean isVault() {
+		return vault;
+	}
+
+	public void setVault(boolean vault) {
+		this.vault = vault;
+	}
+
+	public String getEtag() {
+		return etag;
+	}
+
+	public void setEtag(String etag) {
+		this.etag = etag;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public ObjectStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ObjectStatus status) {
+		this.status = status;
+	}
+
+	public String getRaid() {
+		return raid;
+	}
+
+	public void setRaid(String raid) {
+		this.raid = raid;
+	}
+
+	public String getSha256() {
+		return sha256;
+	}
+
+	public void setSha256(String sha256) {
+		this.sha256 = sha256;
+	}
+
+	public int getTotalBlocks() {
+		return totalBlocks;
+	}
+
+	public void setTotalBlocks(int totalBlocks) {
+		this.totalBlocks = totalBlocks;
+	}
+
+	public String getAppVersion() {
+		return appVersion;
+	}
+
+	public void setAppVersion(String appVersion) {
+		this.appVersion = appVersion;
+	}
+
+	public OffsetDateTime getLastModified() {
+		return lastModified;
+	}
+
+	public void setLastModified(OffsetDateTime lastModified) {
+		this.lastModified = lastModified;
+	}
+
+	public OffsetDateTime getDateSynced() {
+		return dateSynced;
+	}
+
+	public void setDateSynced(OffsetDateTime dateSynced) {
+		this.dateSynced = dateSynced;
+	}
+
+	public OffsetDateTime getIntegrityCheck() {
+		return integrityCheck;
+	}
+
+	public void setIntegrityCheck(OffsetDateTime integrityCheck) {
+		this.integrityCheck = integrityCheck;
 	}
 }

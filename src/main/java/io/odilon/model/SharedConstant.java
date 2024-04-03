@@ -27,6 +27,8 @@ public class SharedConstant {
 	static final  public int DEFAULT_PAGE_SIZE = 60;
 	static final public int DEFAULT_EXPIRY_TIME = 7 * 24 * 3600;
 	
+	static final public int BUFFER_SIZE=8192;
+	 
 	
 	static final public int MAX_BUCKET_CHARS = 2048;
 	static final public int MAX_OBJECT_CHARS = 2048;

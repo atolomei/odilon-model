@@ -24,7 +24,7 @@ import io.odilon.model.ODModelObject;
 		
 /**
  * 
- * <p>Wrapper for Lists and other Iterable structures where some elements may not be a T but an error</p>
+ * <p>Wrapper for Lists and other Iterable structures where some elements may not be an instance of  {@code T} but an error</p>
  *
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)

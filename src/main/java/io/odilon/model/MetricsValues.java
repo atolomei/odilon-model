@@ -92,10 +92,22 @@ public class MetricsValues extends ODModelObject implements Serializable {
 	@JsonProperty("deleteObjectCounter")
 	public long deleteObjectCounter = 0;
 	
+
+	
 	@JsonProperty("deleteObjectVersionCounter")
 	public long deleteObjectVersionCounter = 0;
 
+	
 
+	@JsonProperty("objectDeleteAllVersionsCounter")
+	public long objectDeleteAllVersionsCounter = 0;
+
+	@JsonProperty("objectRestorePreviousVersionCounter")
+	public long objectRestorePreviousVersionCounter = 0;
+	
+	
+	
+	
 	// ----------------------------
 	// OBJECTMETADATA CACHE
 	
@@ -136,6 +148,17 @@ public class MetricsValues extends ODModelObject implements Serializable {
 	
 	@JsonProperty("replicaObjectDelete")
 	public long  replicaObjectDelete = 0;
+
+	
+	// REPLICATION VERSION CONTROL
+	
+	@JsonProperty("replicaRestoreObjectPreivousVersionCounter")
+	public long  replicaRestoreObjectPreviousVersionCounter = 0;
+
+	
+	@JsonProperty("replicaDeleteObjectAllVersionsCounter")
+	public long  replicaDeleteObjectAllVersionsCounter = 0;
+
 	
 
 	// ----------------------------
@@ -197,6 +220,11 @@ public class MetricsValues extends ODModelObject implements Serializable {
 		map.put("objectDeleteCounter", nf_int.format(deleteObjectCounter));
 		map.put("objectDeleteVersionCounter", nf_int.format(deleteObjectVersionCounter));
 
+		map.put("objectRestorePreviousVersionCounter", nf_int.format(objectRestorePreviousVersionCounter));
+		map.put("objectDeleteAllVersionsCounter", nf_int.format(objectDeleteAllVersionsCounter));
+
+		
+		
 		// ----------------------------
 		// OBJECT CACHE
 		//
@@ -221,6 +249,9 @@ public class MetricsValues extends ODModelObject implements Serializable {
 		map.put("replicaObjectCreate", nf_int.format(replicaObjectCreate));
 		map.put("replicaObjectUpdate", nf_int.format(replicaObjectUpdate));
 		map.put("replicaObjectDelete", nf_int.format(replicaObjectDelete));
+		
+		map.put("replicaRestoreObjectPreivousVersionCounter", nf_int.format(replicaRestoreObjectPreviousVersionCounter));
+		map.put("replicaDeleteObjectAllVersionsCounter", nf_int.format(replicaDeleteObjectAllVersionsCounter));
 		
 		
 		// ----------------------------

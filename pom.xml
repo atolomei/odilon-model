@@ -5,7 +5,7 @@
 
   	<groupId>io.odilon</groupId>
   	<artifactId>odilon-model</artifactId>
-  	<version>1.5-beta</version>
+  	<version>1.6-beta</version>
   	<name>odilon model</name>
   	<description>Classes used by Odilon Server and Odilon Client SDK. 
 	  Data requested by the client is sent in JSON format by the Server 

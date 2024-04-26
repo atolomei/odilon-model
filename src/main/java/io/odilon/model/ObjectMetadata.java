@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.odilon.log.Logger;
 
 /**
- * <p>Object's metadata (not the binary file)
+ * <p>Object's metadata (not the binary file) used both by the server and SDK client.
  * It is returned by some of the API calls</p> 
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)

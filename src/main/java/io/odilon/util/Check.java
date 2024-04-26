@@ -18,6 +18,7 @@ package io.odilon.util;
 
 
 /**
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class Check {

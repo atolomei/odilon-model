@@ -16,15 +16,16 @@
  */
 package io.odilon.model;
 
+
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-											
+
 /**
+ * <p>Metadata info a Odilon Bucket used both by the server and SDK clients</p>
  * 
- * 
- *  
+ *  @see {@link Bucket} JSON representation of a Bucket, used both by the server and SDK client 
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei) 
  */

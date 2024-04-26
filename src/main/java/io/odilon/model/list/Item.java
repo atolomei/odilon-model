@@ -24,11 +24,33 @@ import io.odilon.model.ODModelObject;
 		
 /**
  * 
- * <p>Wrapper for Lists and other Iterable structures where some elements may not be an instance of  {@code T} but an error</p>
- *
+ * <p>Wrapper for Lists and other {@link Iterable} structures 
+ * where some elements may not be an instance of  {@code T} but an error</p>
+ * 
+ * <p>Iterators shoud check the value of {@code isOk()} before using the instance of {@code T}
+ * contained in the Item.
+ * </p>
+ * 
+ * Example from {@code odilon-client project}, list all bucket's objects:
+ * <pre> {@code 
+ * try {
+ *	ResultSet<Item <ObjectMetadata>> resultSet = client.listObjects(bucket.getName());
+ *		while (resultSet.hasNext()) {
+ *			Item item = resultSet.next();
+ *			if (item.isOk())
+ *				System.out.println("ObjectName:" +  item.getObject().objectName + " | file: " + item.getObject().fileName);
+ *			else
+ *				System.out.println(item.getErrorString());
+ *		}
+ *	} catch (ODClientException e) {
+ *	   	System.out.println(String.valueOf( e.getHttpStatus())+ " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()) );
+ *	}
+ *}
+ * </pre>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
- * @param <T>
+ * @param <T> must be {@link Serializable}, it is used to iterate {@link ObjectMetadata} 
+ * 
  */
 public class Item<T extends Serializable> extends ODModelObject implements Serializable {
 	

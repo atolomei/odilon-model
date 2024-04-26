@@ -18,7 +18,10 @@ package io.odilon.errors;
 
 
 /**
- * <p>Main Odilon Exception when there is a critical error</p>
+ * <p>Main Odilon unchecked Exception</p>
+ * 
+ * <p>Unchecked exceptions do not need to be declared in a method or constructor's throws clause.
+ * They are thrown if something that has gone wrong with the program and is unrecoverable.</p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */

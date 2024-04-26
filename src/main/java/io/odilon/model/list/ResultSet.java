@@ -25,8 +25,30 @@ import io.odilon.errors.InternalCriticalException;
 import io.odilon.log.Logger;
 
 /**
- * @author atolomei@novamens.com (Alejandro Tolomei)
+ * Iterator 
+ * 
  * @param <T>
+ * 
+ * Example list all bucket's objects (from project {@code odilon-client}):
+ * 
+ * <pre> {@code 
+ * try {
+ *	ResultSet<Item <ObjectMetadata>> resultSet = client.listObjects(bucket.getName());
+ *		while (resultSet.hasNext()) {
+ *			Item item = resultSet.next();
+ *			if (item.isOk())
+ *				System.out.println("ObjectName:" +  item.getObject().objectName + " | file: " + item.getObject().fileName);
+ *			else
+ *				System.out.println(item.getErrorString());
+ *		}
+ *	} catch (ODClientException e) {
+ *	   	System.out.println(String.valueOf( e.getHttpStatus())+ " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()) );
+ *	}
+ *}
+ * </pre>
+ * 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
+ * 
  */
 public class ResultSet<T extends Serializable> implements Iterator<T> {
 			

@@ -23,8 +23,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
- * 
+ * <p>Server info stored on disk when the server is started for the first time. 
+ * It is also updated when the server is restarted with relevant changes on the config file
+ * odilon.properties</p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */

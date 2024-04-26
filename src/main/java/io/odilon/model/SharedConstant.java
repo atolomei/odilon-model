@@ -17,7 +17,7 @@
 package io.odilon.model;
 
 /**
- * <p>Constants used by Odilon Client and Server</p>
+ * <p>Constants used by Odilon Server and Java SDK client/p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 

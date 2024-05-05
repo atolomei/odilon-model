@@ -22,7 +22,7 @@
 	<commons-validator.version>1.8.0</commons-validator.version> 	<!--  01 /2024  -->
 	<disruptor-version>3.4.4</disruptor-version> 					<!--  01 /2024  3.4.4  version 4.0.0 no funciono. java.lang.ClassNotFoundException: com.lmax.disruptor.SequenceReportingEventHandler  --> 
 	<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024  31.1-jre -->
-	<jackson-version>2.17.0</jackson-version> 						<!--  03 /2024  2.16.1 -->
+	<jackson-version>2.17.0</jackson-version> 						<!--  03 /2024   -->
 	<java-version>11</java-version>
 	<junit-version>5.10.1</junit-version> 							<!--  01 /2024  4.13.2-->
 	<log4j2-version>2.22.1</log4j2-version> 						<!--  01 /2024  -->
@@ -120,11 +120,20 @@
 			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
-				<dependency>
+			<dependency>
 				    <groupId>com.fasterxml.jackson.datatype</groupId>
 				    <artifactId>jackson-datatype-jsr310</artifactId>
 				    <version>${jackson-version}</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jdk8 -->
+				<dependency>
+				    <groupId>com.fasterxml.jackson.datatype</groupId>
+				    <artifactId>jackson-datatype-jdk8</artifactId>
+				    <version>${jackson-version}</version>
 				</dependency>
+
+
 
 		<!--  Client Java SDK  (end) =====================================================================================  -->
   </dependencies>

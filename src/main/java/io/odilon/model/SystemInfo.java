@@ -157,8 +157,6 @@ public class SystemInfo extends ODModelObject {
 		map.put("serverMode", Optional.ofNullable(serverMode).isPresent() ? serverMode : "" );
 		map.put("dataStorageMode", serverDataStorageMode );
 		
-		
-		//map.put("redundancyLevel", serverDataStorage );
 		map.put("redundancyLevel", 			Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
 		
 		if (redundancyLevelDetail!=null)

@@ -23,15 +23,17 @@ import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>JSON representation of a Bucket used both by the Odilon server and Odilon client SDK. The JOSN is stored in disk on the server and also 
- * sent to clients through the network or Internet.</p>
- *  
  * <p>Odilon stores objects using a flat structure of containers called Buckets.
  * A bucket is like a folder, it just contains binary objects, potentially a very large number. 
  *  Every object contained by a bucket has a unique ObjectName in that bucket; therefore, 
  *  the pair <b>BucketName</b> + <b>ObjectName</b> is a Unique ID for each object in Odilon.
  * </p>
  * 
+ * <p>This class is a JSON representation of a Bucket used both by the 
+ * Odilon server and Odilon client SDK. These JSON objects are stored 
+ * in disk on the server and also sent to clients through the network 
+ * or Internet.</p>
+ *  
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
  */

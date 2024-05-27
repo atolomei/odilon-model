@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+
+  	<groupId>io.odilon</groupId>
+  	<artifactId>odilon-model</artifactId>
+  	<version>1.6-beta</version>
+  	<name>odilon model</name>
+  	<packaging>jar</packaging>
+  	
+  	<description>
+		Classes used by Odilon Server and Odilon Client SDK. 
+		Data requested by the client is sent in JSON format by 
+		the Server and deserialized into a Java Object at the client 
+	</description>
+  
+  	<url>https://odilon.io</url>
+  
+  	<licenses>
+	    <license>
+	      <name>Apache License, Version 2.0</name>
+	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	      <distribution>repo</distribution>
+	    </license>
+  	</licenses>
+  
+
+  <properties>
+
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
+		<commons-io-version>2.15.1</commons-io-version> 				<!--  12 /2023  -->
+		<commons-lang3-version>3.14.0</commons-lang3-version> 			<!--  12 /2023  -->			
+		<commons-validator.version>1.8.0</commons-validator.version> 	<!--  01 /2024  -->
+		<disruptor-version>3.4.4</disruptor-version> 					<!--  01 /2024  3.4.4  version 4.0.0 no funciono. java.lang.ClassNotFoundException: com.lmax.disruptor.SequenceReportingEventHandler  --> 
+		<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024  31.1-jre -->
+		<jackson-version>2.17.0</jackson-version> 						<!--  03 /2024   -->
+		<java-version>11</java-version>
+		<junit-version>5.10.1</junit-version> 							<!--  01 /2024  4.13.2-->
+		<log4j2-version>2.22.1</log4j2-version> 						<!--  01 /2024  -->
+	    <maven.compiler.source>11</maven.compiler.source>
+	    <maven.compiler.target>11</maven.compiler.target>
+		<maven-javadoc-plugin-version>3.4.1</maven-javadoc-plugin-version>
+		<maven-jar-plugin-version>3.3.0</maven-jar-plugin-version>
+	    <maven.test.skip>true</maven.test.skip>
+	
+  </properties>
+    
+    <developers>
+        <developer>
+            <id>aferraria</id>
+            <name>Alejo Ferraria</name>
+            <email>aferraria@novamens.com</email>
+        </developer>
+
+        <developer>
+            <id>atolomei</id>
+            <name>Alejandro Tolomei</name>
+            <email>atolomei@novamens.com</email>
+        </developer>
+    </developers>
+  	
+	<scm>
+	  <connection>scm:git:git://github.com/atolomei/odilon-model.git</connection>
+	  <developerConnection>scm:git:ssh://github.com:atolomei/odilon-model.git</developerConnection>
+	  <url>https://github.com/atolomei/odilon-model/tree/v1.6</url>
+	</scm>
+
+  	<dependencies>
+		
+    	<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j2-version}</version> 
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j2-version}</version> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j2-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io-version}</version> 			
+		</dependency>
+
+	
+
+			<!--  LOG4J2 =====================================================================================  -->
+
+			<dependency>
+				<groupId>com.lmax</groupId>
+				<artifactId>disruptor</artifactId>			
+				<version>${disruptor-version}</version>
+			</dependency>
+						
+			<dependency>
+			    <groupId>commons-validator</groupId>
+			    <artifactId>commons-validator</artifactId>
+			    <version>${commons-validator.version}</version>
+			    
+			     <exclusions>
+				   	<exclusion>
+						<artifactId>commons-logging</artifactId>
+						<groupId>commons-logging</groupId>
+					</exclusion>
+				  </exclusions>
+			</dependency>
+		 		
+		 	<!--  LOG4J2 (end) ================================================================================  -->
+
+
+
+			<!--  JACKSON =====================================================================================  -->
+			
+			<dependency>
+				    <groupId>com.fasterxml.jackson.core</groupId>
+				    <artifactId>jackson-core</artifactId>
+					<version>${jackson-version}</version>
+			</dependency>
+
+			<dependency>
+				    <groupId>com.fasterxml.jackson.core</groupId>
+				    <artifactId>jackson-databind</artifactId>
+				    <version>${jackson-version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+			<dependency>
+				    <groupId>com.fasterxml.jackson.datatype</groupId>
+				    <artifactId>jackson-datatype-jsr310</artifactId>
+				    <version>${jackson-version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.fasterxml.jackson.datatype</groupId>
+			    <artifactId>jackson-datatype-jdk8</artifactId>
+			    <version>${jackson-version}</version>
+			</dependency>
+			
+			<!--  JACKSON (end) ====================================================================================  -->
+			
+			<dependency>
+			    <groupId>org.junit.jupiter</groupId>
+			   	<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit-version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
+  </dependencies>
+
+
+	  <build>
+	    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+	      <plugins>
+	        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+	        <plugin>
+	          <artifactId>maven-clean-plugin</artifactId>
+	          <version>3.3.2</version>
+	        </plugin>
+	        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+	        <plugin>
+	          <artifactId>maven-resources-plugin</artifactId>
+	          <version>3.3.1</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-compiler-plugin</artifactId>
+	          <version>3.13.0</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-surefire-plugin</artifactId>
+	          <version>3.2.5</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-jar-plugin</artifactId>
+	          <version>${maven-jar-plugin-version}</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-install-plugin</artifactId>
+	          <version>3.1.1</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-deploy-plugin</artifactId>
+	          <version>3.1.1</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-site-plugin</artifactId>
+	          <version>3.12.1</version>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-project-info-reports-plugin</artifactId>
+	          <version>3.5.0</version>
+	        </plugin>
+	      </plugins>
+	    </pluginManagement>
+	  </build>
+  
+  
+</project>

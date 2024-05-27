@@ -25,7 +25,9 @@ import io.odilon.errors.InternalCriticalException;
 import io.odilon.log.Logger;
 
 /**
- * Iterator 
+ * 
+ * <p>A ResultSet is the set of results returned by a query. 
+ * ResultSsets are {@link Iterable} and every result in the set must be {@link Serializable}</p> 
  * 
  * @param <T>
  * 
@@ -86,6 +88,7 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 
 	/**
 	 * 
+	 *  @return next element in the set. If there are no elements throws {@link IndexOutOfBoundsException}
 	 */
 	@Override
 	public synchronized T next() {
@@ -98,12 +101,11 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 			return object;
 		}
 		
+		/** fill in the buffer */
 		boolean hasItems = fetch();	
 		
 		if (!hasItems)
-			throw new IndexOutOfBoundsException("No more items available. "	+ 
-												"Check hasNext() before calling this method. " +
-												"[returned so far -> " + String.valueOf(cumulativeIndex)+")]");
+			throw new IndexOutOfBoundsException("No more items available. Normally the caller should check hasNext() before calling this method [returned so far -> " + String.valueOf(cumulativeIndex)+")]");
 		
 		T object = this.dataList.get(relativeIndex);
 
@@ -114,7 +116,7 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 	}
 
 	public synchronized long getPageSize() {
-		return this.dataList!=null ? this.dataList.getPageSize() : 0;
+		return (this.dataList!=null ? this.dataList.getPageSize() : 0);
 	}
 	
 	/**
@@ -133,7 +135,7 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 		return this.dataList.getSize();
 	}
 	
-	/**
+	/*
 	 * cumulativeIndex is the total items returned so far ->  0 .. cumulativeIndex-1
 	 * when we fetch from the server, the next item required is #cumulativeIndex  
 	 */

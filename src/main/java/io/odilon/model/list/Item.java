@@ -31,7 +31,8 @@ import io.odilon.model.ODModelObject;
  * contained in the Item.
  * </p>
  * 
- * Example from {@code odilon-client project}, list all bucket's objects:
+ * 
+ * <p>Example from {@code odilon-client project}, list all bucket's objects:</p>
  * <pre> {@code 
  * try {
  *	ResultSet<Item <ObjectMetadata>> resultSet = client.listObjects(bucket.getName());

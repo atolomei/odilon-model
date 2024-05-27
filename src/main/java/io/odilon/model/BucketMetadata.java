@@ -35,6 +35,10 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 
 	@JsonProperty("bucketName")  
 	public String bucketName;
+	
+	//@JsonProperty("id")  
+	//public String id;
+	
 	  
 	@JsonProperty("creationDate")
 	public  OffsetDateTime creationDate;

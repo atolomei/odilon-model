@@ -47,6 +47,9 @@ public class Bucket extends ODModelObject implements Serializable {
 	@JsonProperty("creationDate")
 	private OffsetDateTime creationDate;
 	
+	//@JsonProperty("id")
+	//private String id;
+	
 	@JsonProperty("status")
 	private BucketStatus status;
 	

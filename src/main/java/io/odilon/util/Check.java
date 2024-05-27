@@ -16,7 +16,6 @@
  */
 package io.odilon.util;
 
-import java.io.InputStream;
 
 /**
  * 

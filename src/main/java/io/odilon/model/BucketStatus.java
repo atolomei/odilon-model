@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 import io.odilon.util.Check;
 
 
-
 /**
  * <p>Status of a Bucket</p>
  * 

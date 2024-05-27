@@ -27,7 +27,6 @@ import io.odilon.log.Logger;
 
 /**
  * <p>Object's metadata (excluding the binary file) used both by the Odilon Server and Odilon Java SDK client.</p>
- * It is returned by some of the API calls</p> 
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */

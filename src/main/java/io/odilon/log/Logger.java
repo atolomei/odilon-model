@@ -21,8 +21,7 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 
 /**
- * <p>Simple Wrapper for {@linkplain org.apache.logging.log4j.Logger} loggers.<br/>
- * The addition is that it formats output.</p>
+ * <p>Simple Wrapper for {@linkplain org.apache.logging.log4j.Logger} that formats output</p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
@@ -31,6 +30,7 @@ public class Logger {
 
 	private org.apache.logging.log4j.Logger logger;
 
+	
 	public static Logger getLogger(String name) {
 		return new Logger(name);
 	}

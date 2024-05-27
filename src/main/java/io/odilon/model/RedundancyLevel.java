@@ -56,9 +56,9 @@ import io.odilon.util.Check;
  */
 public enum RedundancyLevel {
 			
-	RAID_0 	("RAID 0", 0), //(striping) no agrega redundancia, si hay mas de un mountpoint el resultado es mejor throughput porque se acceden los discos a la vez
+	RAID_0 	("RAID 0", 0), //(striping)
 	RAID_1 	("RAID 1", 1), // (mirroring) 
-	RAID_6 	("RAID 6", 6); // (Erasure Codes RS 4+2)
+	RAID_6 	("RAID 6", 6); // (Erasure Codes Reed Solomon -> 2+1, 4+2, 8+4, 16+8)
 		
 	private String name;
 	private int code;

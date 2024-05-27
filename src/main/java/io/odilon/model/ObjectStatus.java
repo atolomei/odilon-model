@@ -22,7 +22,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * <p>Odilon Object's status</p>
+ * <p>Odilon Object's Status</p>
  *  
  *  @author atolomei@novamens.com (Alejandro Tolomei)
  */

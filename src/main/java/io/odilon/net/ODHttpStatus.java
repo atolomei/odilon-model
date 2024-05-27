@@ -416,19 +416,16 @@ public enum ODHttpStatus {
 		VALUES = values();
 	}
 
-
 	private final int value;
-
 	private final Series series;
-
 	private final String reasonPhrase;
+
 
 	ODHttpStatus(int value, Series series, String reasonPhrase) {
 		this.value = value;
 		this.series = series;
 		this.reasonPhrase = reasonPhrase;
 	}
-
 
 	/**
 	 * Return the integer value of this status code.
@@ -454,10 +451,7 @@ public enum ODHttpStatus {
 
 	/**
 	 * Whether this status code is in the HTTP series
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#INFORMATIONAL}.
-	 * <p>This is a shortcut for checking the value of {@link #series()}.
-	 * @since 4.0
-	 * @see #series()
+	 * {@link io.odilon.net.ODHttpStatus.Series#INFORMATIONAL}.
 	 */
 	public boolean is1xxInformational() {
 		return (series() == Series.INFORMATIONAL);
@@ -465,10 +459,7 @@ public enum ODHttpStatus {
 
 	/**
 	 * Whether this status code is in the HTTP series
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#SUCCESSFUL}.
-	 * <p>This is a shortcut for checking the value of {@link #series()}.
-	 * @since 4.0
-	 * @see #series()
+	 * {@link io.odilon.net.ODHttpStatus.Series#SUCCESSFUL}.
 	 */
 	public boolean is2xxSuccessful() {
 		return (series() == Series.SUCCESSFUL);
@@ -476,10 +467,6 @@ public enum ODHttpStatus {
 
 	/**
 	 * Whether this status code is in the HTTP series
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#REDIRECTION}.
-	 * <p>This is a shortcut for checking the value of {@link #series()}.
-	 * @since 4.0
-	 * @see #series()
 	 */
 	public boolean is3xxRedirection() {
 		return (series() == Series.REDIRECTION);
@@ -487,10 +474,6 @@ public enum ODHttpStatus {
 
 	/**
 	 * Whether this status code is in the HTTP series
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#CLIENT_ERROR}.
-	 * <p>This is a shortcut for checking the value of {@link #series()}.
-	 * @since 4.0
-	 * @see #series()
 	 */
 	public boolean is4xxClientError() {
 		return (series() == Series.CLIENT_ERROR);
@@ -498,10 +481,6 @@ public enum ODHttpStatus {
 
 	/**
 	 * Whether this status code is in the HTTP series
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#SERVER_ERROR}.
-	 * <p>This is a shortcut for checking the value of {@link #series()}.
-	 * @since 4.0
-	 * @see #series()
 	 */
 	public boolean is5xxServerError() {
 		return (series() == Series.SERVER_ERROR);
@@ -509,12 +488,6 @@ public enum ODHttpStatus {
 
 	/**
 	 * Whether this status code is in the HTTP series
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#CLIENT_ERROR} or
-	 * {@link org.ODHttpStatus.http.HttpStatus.Series#SERVER_ERROR}.
-	 * <p>This is a shortcut for checking the value of {@link #series()}.
-	 * @since 5.0
-	 * @see #is4xxClientError()
-	 * @see #is5xxServerError()
 	 */
 	public boolean isError() {
 		return (is4xxClientError() || is5xxServerError());

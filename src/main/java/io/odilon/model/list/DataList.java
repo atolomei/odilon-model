@@ -113,7 +113,7 @@ public class DataList<T extends Serializable> implements Serializable {
 	 * stream (End Of Data) on the side of the server. It is used
 	 * to prevent the last pull from the server to get an empty resultSet. 
 	 * </p>
-	 * @return
+	 * @return true if there is no more data to fetch.
 	 */
 	public boolean isEOD() {
 		return eod;

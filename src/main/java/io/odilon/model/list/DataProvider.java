@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.Serializable;
  
 /**
+ * <p>Odilon's Data Provider for queries</p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * @param <T>
  */

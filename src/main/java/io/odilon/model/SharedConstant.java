@@ -17,7 +17,7 @@
 package io.odilon.model;
 
 /**
- * <p>Constants used by Odilon Server and Java SDK client/p>
+ * <p>Constants used both by Odilon Server and Odilon Java SDK client</p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
@@ -55,5 +55,8 @@ public class SharedConstant {
 	static final public double d_exabyte	= (d_petabyte * 1024);
 	static final public double d_zettabyte 	= (d_exabyte * 1024);
 	static final public double d_yottabyte 	= (d_zettabyte * 1024);
+	
+	static final public String NOT_THROWN = "---- not thrown ----";
+	
 	
 }

@@ -23,7 +23,8 @@ import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
+ * <p>Used to store a page of Objects or Buckets</p> 
+ *  
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
  * @param <T>

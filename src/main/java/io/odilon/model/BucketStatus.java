@@ -26,6 +26,8 @@ import io.odilon.util.Check;
 
 
 /**
+ * <p>Status of a Bucket</p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public enum BucketStatus {

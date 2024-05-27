@@ -28,6 +28,7 @@ import java.util.Base64;
 import org.apache.commons.io.FileUtils;
 
 import io.odilon.log.Logger;
+import io.odilon.model.SharedConstant;
 
 /**
  * @author atolomei@novamens.com (Alejandro Tolomei)
@@ -66,7 +67,7 @@ public class ODFileUtils  {
 		try {
 			digest = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			logger.error(e);
+			logger.error(" calculateSHA256String -> " + (string!=null?string:"null"));
 			throw e;
 		}
 		
@@ -76,14 +77,11 @@ public class ODFileUtils  {
 		    return Base64.getEncoder().encodeToString(digest.digest());
 		    
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error(" calculateSHA256String -> " + (string!=null?string:"null"));
 			throw e;
 		}
 	}
 
-	
-	
-	
 	
 	
 	public static String calculateSHA256String(final File file) throws IOException, NoSuchAlgorithmException {
@@ -96,7 +94,7 @@ public class ODFileUtils  {
 		try {
 			digest = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			logger.error(e);
+			logger.error(" calculateSHA256String | File -> " + (file!=null?file.getName():"null"));
 			throw e;
 		}
 		    
@@ -106,11 +104,10 @@ public class ODFileUtils  {
 			bis = new BufferedInputStream(new FileInputStream(file));
 			while ((count = bis.read(buffer)) > 0)
 		        digest.update(buffer, 0, count);
-		    String sha256 = Base64.getEncoder().encodeToString(digest.digest());
-		    return sha256;
+		    return Base64.getEncoder().encodeToString(digest.digest());
 		    
 		} catch (FileNotFoundException e) {
-				logger.error(e);
+				logger.error(" calculateSHA256String | File -> " + (file!=null?file.getName():"null"));
 				throw e;
 				
 		} catch (Exception e) {
@@ -121,9 +118,8 @@ public class ODFileUtils  {
 				if (bis!=null) {
 					try {
 						bis.close();
-						
 					} catch (IOException e) {
-						logger.error(e);
+						logger.error(e, SharedConstant.NOT_THROWN);
 					}
 				}
 		}

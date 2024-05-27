@@ -23,8 +23,8 @@ import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Odilon stores objects using a flat structure of containers called Buckets.
- * A bucket is like a folder, it just contains binary objects, potentially a very large number. 
+ * <p>Odilon stores objects using a flat structure of containers called Buckets.</p>
+ * <p>A bucket is like a folder, it just contains binary objects, potentially a very large number. 
  *  Every object contained by a bucket has a unique ObjectName in that bucket; therefore, 
  *  the pair <b>BucketName</b> + <b>ObjectName</b> is a Unique ID for each object in Odilon.
  * </p>

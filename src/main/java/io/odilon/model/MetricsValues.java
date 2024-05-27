@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
- * <p>Odilon monitoring</p>
+ * <p>Values for Server monitoring</p>
  * 
  *@see Dropwizard metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
  *

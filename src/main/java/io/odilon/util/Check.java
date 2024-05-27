@@ -16,8 +16,22 @@
  */
 package io.odilon.util;
 
+import java.io.InputStream;
 
 /**
+ * 
+ * <p>Checks used for preconditions in methods</p>
+ *	<p>Example:</p> 
+ <pre> {@code 
+ public void putObject(String bucketName, String objectName, InputStream is, String fileName, String contentType) {
+
+		Check.requireNonNullStringArgument(bucketName, "bucketName can not be null or empty");
+		Check.requireNonNullStringArgument(objectName, "objectName can not be null or empty | b:"+ bucketName);
+		Check.requireNonNullStringArgument(fileName, "file is null | b: " + bucketName + " o:" + objectName);
+		Check.requireNonNullArgument(is, "InpuStream can not null -> b:" + bucketName+ " | o:"+objectName);
+		...
+}
+ * </pre>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */

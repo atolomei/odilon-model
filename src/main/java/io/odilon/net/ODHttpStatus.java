@@ -20,6 +20,8 @@ import java.util.Optional;
 
 /**
  * 
+ * <p>HTTP standard error codes</p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public enum ODHttpStatus {

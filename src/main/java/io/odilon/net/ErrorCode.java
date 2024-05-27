@@ -19,6 +19,8 @@ package io.odilon.net;
 import java.util.Optional;
 
 /**
+ * <p>Odilon server's error codes</p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public enum ErrorCode {

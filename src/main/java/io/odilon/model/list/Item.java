@@ -50,7 +50,7 @@ import io.odilon.model.ODModelObject;
  * </pre>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
- * @param <T> must be {@link Serializable}, it is used to iterate {@link ObjectMetadata} 
+ * @param <T> must be {@link Serializable}, it is used to iterate  
  * 
  */
 public class Item<T extends Serializable> extends ODModelObject implements Serializable {

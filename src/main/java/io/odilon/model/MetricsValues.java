@@ -29,8 +29,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * <p>Values for Server monitoring</p>
- * 
- *@see Dropwizard metrics {@link https://metrics.dropwizard.io/4.2.0/index.html}
+ * See <a href="https://metrics.dropwizard.io/4.2.0/index.html">Dropwizard Metrics</a>
  *
  * @author atolomei@novamens.com (Alejandro Tolomei)
  *

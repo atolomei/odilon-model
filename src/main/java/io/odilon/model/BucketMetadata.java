@@ -24,8 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>Metadata info for an Odilon Bucket, used both by the Odilon Server and Odilon Java SDK clients</p>
- * 
- *  @see {@link Bucket} JSON representation of a Bucket, used both by the server and SDK client 
+ *  <p>See {@link Bucket} JSON representation of a {@link Bucket}, used both by the server and SDK client</p> 
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei) 
  */
@@ -102,7 +101,7 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 	  }
 
 	  /**
-	   * Returns bucket name.
+	   *<p>Returns bucket name</p>
 	   */
 	  public String bucketName() {
 	    return bucketName;
@@ -110,7 +109,7 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 
 
 	  /**
-	   * Returns created time.
+	   * <p>Returns created time</p>
 	   */
 	  public OffsetDateTime creationDate() {
 	    return creationDate;

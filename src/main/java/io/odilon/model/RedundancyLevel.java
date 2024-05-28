@@ -43,16 +43,15 @@ import io.odilon.util.Check;
  * <b>RAID 6 / Erasure Coding</b> <br/>
  * It is a method of encoding data into blocks that can be distributed across multiple disks or nodes and then reconstructed from a subset of those blocks. It has great flexibility since you can adjust the number and size of the blocks and the minimum required for recovery. It uses less disk space than RAID 1 and can withstand multiple full disk failures. Odilon implements this architecture using Reed Solomon error-correction codes.
  * Odilon supports these configurations: <br/>
+ * </p>
  *  <ul>
  *  <li>  3 Disks  -> data: 2, parity: 1</li>
  *  <li>  6 Disks  -> data: 4, parity: 2</li>
  *  <li> 12 Disks  -> data: 8, parity: 4</li>
  *  <li> 24 Disks  -> data: 16, parity: 8</li>
  *  </ul>
- * <br/>
- * <br/>
- * <br/>
- * </p>
+ * 
+ * 
  */
 public enum RedundancyLevel {
 			

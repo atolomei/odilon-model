@@ -96,6 +96,10 @@ public class Logger {
 	}
 
 				
+	/**
+	 * 
+	 * @param strings
+	 */
 	public void debug(String ... strings) {
 		StringBuilder str = new StringBuilder();
 		for (String s: strings)
@@ -103,12 +107,16 @@ public class Logger {
 		logger.debug(Thread.currentThread().getStackTrace()[2].getMethodName() + (str.length()>0?" | " + str.toString():""));
 	}
 
-	
+
+	/**
+	 * 
+	 * @param e
+	 * @param strings
+	 */
 	public void debug(Throwable e, String ... strings) {
 		StringBuilder str = new StringBuilder();
 		for (String s: strings)
 			str.append((str.length()>0?" | ":"")+s);
-
 		String ca =  (e.getCause()!=null? ( " | " + e.getCause().getMessage() + " | ") :"");
 		logger.debug(e.getClass().getName() + " | " +  Thread.currentThread().getStackTrace()[2].getMethodName() + " | " + e.getMessage() +   ca    + (str.length()>0?" | " + str.toString():""));
 	}

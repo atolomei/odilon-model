@@ -28,14 +28,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * <p>A {@link DataProvider} that keeps track of the 
  * Server Agent that is processing its' page requests. </p>
  * 
- * It is used by the client to iterate through a bucket's Objects.
+ * <p>	It is used by the client to iterate through a bucket's Objects.
  * The cacheKey serves as a reference for the server, who uses
  * it to optimize the iteration (for example prevents the client
  * from fetching more results when there are no more items)</p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
- * @param <T>
+ * @param <T> must be Serializable
  */
 public abstract class CachedDataProvider<T extends Serializable> implements DataProvider<T> {
 

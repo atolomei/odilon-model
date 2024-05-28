@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *  
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
- * @param <T>
+ * @param <T> must be Serializable
  */
 public class DataList<T extends Serializable> implements Serializable {
 	

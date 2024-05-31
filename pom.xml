@@ -9,10 +9,7 @@
   	<name>odilon model</name>
   	<packaging>jar</packaging>
   	
-  	<description>
-		Classes used by Odilon Server and Odilon Client SDK. 
-		Data requested by the client is sent in JSON format by 
-		the Server and deserialized into a Java Object at the client 
+  	<description>Classes used by Odilon Server and Odilon Client SDK. Data requested by the client is sent in JSON format by the Server and deserialized into a Java Object by the client. 
 	</description>
   
   	<url>https://odilon.io</url>
@@ -28,14 +25,16 @@
   <properties>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    
-		<commons-io-version>2.15.1</commons-io-version> 				<!--  12 /2023  -->
-		<commons-lang3-version>3.14.0</commons-lang3-version> 			<!--  12 /2023  -->			
-		<commons-validator.version>1.8.0</commons-validator.version> 	<!--  01 /2024  -->
+		<commons-io-version>2.16.1</commons-io-version> 				<!--  06 /2024  -->
+		<commons-lang3-version>3.14.0</commons-lang3-version> 			<!--  06 /2023  -->			
+		<commons-validator.version>1.9.0</commons-validator.version> 	<!--  06 /2024  -->
 		<disruptor-version>3.4.4</disruptor-version> 					<!--  01 /2024  3.4.4  version 4.0.0 no funciono. java.lang.ClassNotFoundException: com.lmax.disruptor.SequenceReportingEventHandler  --> 
-		<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024  31.1-jre -->
-		<jackson-version>2.17.0</jackson-version> 						<!--  03 /2024   -->
+		<google-guava.version>33.2.0-jre</google-guava.version>
+		
+		<jackson-version>2.17.1</jackson-version> 						<!--  06 /2024   -->
 		<java-version>11</java-version>
 		<junit-version>5.10.1</junit-version> 							<!--  01 /2024  4.13.2-->
+		
 		<log4j2-version>2.22.1</log4j2-version> 						<!--  01 /2024  -->
 	    <maven.compiler.source>11</maven.compiler.source>
 	    <maven.compiler.target>11</maven.compiler.target>

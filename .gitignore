@@ -1,1 +1,6 @@
+
 /target/
+/deploy-maven-central
+/logs
+JenkinsFile
+

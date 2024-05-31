@@ -21,9 +21,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 import org.apache.commons.io.FileUtils;
 
@@ -60,6 +60,32 @@ public class ODFileUtils  {
 	}
 
 	
+	public static String calculateMD5String(final byte [] data) throws IOException, NoSuchAlgorithmException {
+		byte[] md5Hash = MessageDigest.getInstance("MD5").digest(data);
+		return String.format("%32s", new BigInteger(1,  md5Hash).toString(16)).replace(' ', '0');
+	}
+
+	public static String calculateSHA1String(final byte [] data) throws IOException, NoSuchAlgorithmException {
+		byte[] hash = MessageDigest.getInstance("SHA-1").digest(data);
+		return String.format("%40s", new BigInteger(1,  hash).toString(16)).replace(' ', '0');
+	}
+	
+										
+	public static String calculateSHA256String(final byte [] data) throws IOException, NoSuchAlgorithmException {
+		byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
+		return String.format("%64s", new BigInteger(1,  hash).toString(16)).replace(' ', '0');
+	}
+
+	
+	
+	
+	/**
+	 * 
+	 * @param string
+	 * @return
+	 * @throws IOException
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static String calculateSHA256String(final String string) throws IOException, NoSuchAlgorithmException {
 	
 		MessageDigest digest;
@@ -74,7 +100,8 @@ public class ODFileUtils  {
 		try {
 			byte bytes[] = string.getBytes();
 		    digest.update(bytes, 0, bytes.length);
-		    return Base64.getEncoder().encodeToString(digest.digest());
+		    
+		    return String.format("%64s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
 		    
 		} catch (Exception e) {
 			logger.error(" calculateSHA256String -> " + (string!=null?string:"null"));
@@ -83,7 +110,13 @@ public class ODFileUtils  {
 	}
 
 	
-	
+	/**
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static String calculateSHA256String(final File file) throws IOException, NoSuchAlgorithmException {
 
 		byte[] buffer= new byte[BUFFER_SIZE];
@@ -101,10 +134,14 @@ public class ODFileUtils  {
 		BufferedInputStream bis = null;
 			
 		try {
+			
 			bis = new BufferedInputStream(new FileInputStream(file));
+			
 			while ((count = bis.read(buffer)) > 0)
 		        digest.update(buffer, 0, count);
-		    return Base64.getEncoder().encodeToString(digest.digest());
+			
+			return String.format("%64s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
+			
 		    
 		} catch (FileNotFoundException e) {
 				logger.error(" calculateSHA256String | File -> " + (file!=null?file.getName():"null"));
@@ -124,5 +161,73 @@ public class ODFileUtils  {
 				}
 		}
 	}
+	
+	
+	
+	/**
+	 * 
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 * @throws NoSuchAlgorithmException
+	 */
+	
+	public static String calculateMD5String(final File file) throws IOException, NoSuchAlgorithmException {
+
+		byte[] buffer= new byte[BUFFER_SIZE];
+		int count = 0;
+	
+		MessageDigest digest;
+		
+		try {
+			digest = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			logger.error(" calculateMD5String | File -> " + (file!=null?file.getName():"null"));
+			throw e;
+		}
+		    
+		BufferedInputStream bis = null;
+			
+		try {
+			bis = new BufferedInputStream(new FileInputStream(file));
+			while ((count = bis.read(buffer)) > 0)
+		        digest.update(buffer, 0, count);
+			
+			return String.format("%32s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
+			
+		    
+		} catch (FileNotFoundException e) {
+				logger.error(" calculateMD5String | File -> " + (file!=null?file.getName():"null"));
+				throw e;
+				
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+			finally {
+				if (bis!=null) {
+					try {
+						bis.close();
+					} catch (IOException e) {
+						logger.error(e, SharedConstant.NOT_THROWN);
+					}
+				}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

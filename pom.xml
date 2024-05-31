@@ -160,6 +160,14 @@
 			</dependency>
 			
 			
+		<dependency>
+		    <groupId>net.nicoulaj.maven.plugins</groupId>
+		    <artifactId>checksum-maven-plugin</artifactId>
+		    <version>1.11</version>
+		</dependency>
+
+
+			
   </dependencies>
   
   	  <build>
@@ -200,17 +208,28 @@
 				</plugin>
 				
 				
+				<plugin>
+    				<groupId>net.nicoulaj.maven.plugins</groupId>
+			        <artifactId>checksum-maven-plugin</artifactId>
+			        <version>1.11</version>
+			        <executions>
+			          <execution>
+			            <goals>
+			              <goal>artifacts</goal>
+			            </goals>
+			          </execution>
+			        </executions>
+			        <configuration>
+			          <csvSummary>true</csvSummary>
+			          <csvSummaryFile>artifacts-checksums.csv</csvSummaryFile>
+			          <xmlSummary>true</xmlSummary>
+			          <xmlSummaryFile>artifacts-checksums.xml</xmlSummaryFile>
+			        </configuration>
+		      </plugin>
 			</plugins>
+			
     </pluginManagement>
 	  </build>  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
 </project>

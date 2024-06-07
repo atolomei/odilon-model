@@ -40,6 +40,9 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("bucketName")  
 	public String bucketName;
 	  
+	@JsonProperty("bucketId")  
+	public Long bucketId;
+	
 	@JsonProperty("objectName")
 	public String objectName;
 	
@@ -108,15 +111,16 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	public ObjectMetadata() {
 	}
 	
-	public ObjectMetadata(String bucketName, String objectName) {
+	public ObjectMetadata(Long bucketId, String objectName) {
 		  
-		this.bucketName = bucketName;
+		this.bucketId = bucketId;
 		this.objectName = objectName;
 		this.creationDate = OffsetDateTime.now();
 		this.length = 0;
 		this.version = 0;
 		this.etag = "";
 		this.contentType = "";
+		this.bucketName="";
 	  }
 
 	public void setSha256Blocks(List<String> list) {
@@ -151,17 +155,15 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	      return false;
 	    }
 	    
-	    if (bucketName!=null && that.bucketName==null)
+	    if (bucketId!=null && that.bucketId==null)
 	    	return false;
 	    
-	    if (bucketName==null && that.bucketName!=null)
+	    if (bucketId==null && that.bucketId!=null)
 	    	return false;
 	    
-	    if (!bucketName.equals(that.bucketName)) {
+	    if (bucketId.longValue()!=that.bucketId.longValue()) {
 	      return false;
 	    }
-	    
-	    
 	    
 	    if (objectName!=null && that.objectName==null)
 	    	return false;
@@ -172,8 +174,6 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	    if (!objectName.equals(that.objectName)) {
 	      return false;
 	    }
-	    
-	    
 	    
 	    if (creationDate!=null && that.creationDate!=null) {
 		    if (!creationDate.equals(that.creationDate)) {
@@ -186,7 +186,6 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 		      return false;
 		    }
 	    }
-
 	    
 	    if (fileName!=null && that.fileName==null)
 	    	return false;
@@ -217,8 +216,8 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	    
 		  int result = 0;
 				  
-		  if (bucketName!=null)
-				result = bucketName.hashCode();
+		  if (bucketId!=null)
+				result = bucketId.hashCode();
 
 		  if (objectName!=null)
 			  result = 31 * result + objectName.hashCode();
@@ -254,7 +253,7 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	   * Returns bucket name.
 	   */
 	  public String bucketName() {
-	    return bucketName;
+	    return "bucketName";
 	  }
 
 	  /**
@@ -305,7 +304,7 @@ public class ObjectMetadata extends ODModelObject implements Serializable {
 	}
 
 	public String getBucketName() {
-		return bucketName;
+		return this.bucketName;
 	}
 
 	public void setBucketName(String bucketName) {

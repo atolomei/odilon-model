@@ -47,8 +47,8 @@ public class Bucket extends ODModelObject implements Serializable {
 	@JsonProperty("creationDate")
 	private OffsetDateTime creationDate;
 	
-	//@JsonProperty("id")
-	//private String id;
+	@JsonProperty("id")
+	private Long id;
 	
 	@JsonProperty("status")
 	private BucketStatus status;
@@ -59,8 +59,9 @@ public class Bucket extends ODModelObject implements Serializable {
 	public Bucket() {
 	}
 	
-	public Bucket(String name, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
+	public Bucket(String name, Long id, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
 	  this.name=name;
+	  this.id=id;
 	  this.creationDate=creationDate;
 	  this.lastModified=lastModified;
 	  this.status=status;
@@ -72,6 +73,10 @@ public class Bucket extends ODModelObject implements Serializable {
 
 	public String getName() {
 	   return name;
+	}
+	
+	public Long getId() {
+	   return id;
 	}
 	
 	public OffsetDateTime getCreationDate() {

@@ -35,9 +35,8 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 	@JsonProperty("bucketName")  
 	public String bucketName;
 	
-	//@JsonProperty("id")  
-	//public String id;
-	
+	@JsonProperty("id")  
+	public Long id;
 	  
 	@JsonProperty("creationDate")
 	public  OffsetDateTime creationDate;
@@ -65,6 +64,8 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 		clone.status=status;
 		clone.appVersion=appVersion;
 		clone.lastModified=lastModified;
+		if (id!=null)
+			clone.id= Long.valueOf(id.longValue());
 		return clone;
 	}
 	
@@ -77,18 +78,31 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 		  if (this == o) {
 	      return true;
 	    }
-	    if (o == null || getClass() != o.getClass()) {
+	    
+		if (o == null || getClass() != o.getClass()) {
 	      return false;
 	    }
 
 	    BucketMetadata that = (BucketMetadata) o;
 
-	    if (!bucketName.equals(that.bucketName)) {
-	      return false;
+		  if (this.id!=null) {
+			  if (that.id!=null)
+				  return this.id.longValue()==that.id.longValue();
+			  else
+				  return false;
+		  }
+		  else {
+			  if (that.id!=null)
+				  return false;
+		  }
+	    
+	    if (bucketName.equals(that.bucketName)) {
+	      return true;
 	    }
 
-	    return true;
+	    return false;
 	  }
+	  
 
 	  /**
 	   * Returns hash of this ObjectStat.
@@ -117,7 +131,11 @@ public class BucketMetadata extends ODModelObject implements Serializable {
 
 	  public BucketStatus getStatus() {
 		    return status;
-		  }
+	  }
+	  
+	  public Long getId() {
+		  return id;
+	  }
 
 
 	  

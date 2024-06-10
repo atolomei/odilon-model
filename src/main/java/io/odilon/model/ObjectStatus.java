@@ -48,8 +48,9 @@ public enum ObjectStatus {
 	}
 	
 	public String getDescription(Locale locale) {
-		ResourceBundle res = ResourceBundle.getBundle(ObjectStatus.this.getClass().getName(), locale);
-		return res.getString(this.getName());
+		//ResourceBundle res = ResourceBundle.getBundle(ObjectStatus.this.getClass().getName(), locale);
+		//return res.getString(this.getName());
+		return this.getName();
 	}
 	
 	public String toJSON() {

@@ -19,7 +19,7 @@ package io.odilon.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.ResourceBundle;
+
 
 /**
  * <p>Odilon Object's Status</p>

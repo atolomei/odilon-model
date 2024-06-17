@@ -107,10 +107,6 @@ public class SystemInfo extends ODModelObject {
 	public String 			redundancyLevelDetail;
 	
 	
-	
-	
-	/** ----------------------------------------- */
-	
 	@JsonIgnore
 	public Map<String, Long> totalStorage;
 	

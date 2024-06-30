@@ -30,7 +30,7 @@ import io.odilon.log.Logger;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public class ObjectMetadata extends ODModelObject implements Serializable {
+public class ObjectMetadata extends OdilonModelObject implements Serializable {
 			
 	@SuppressWarnings("unused")
 	static private Logger logger =	Logger.getLogger(ObjectMetadata.class.getName());

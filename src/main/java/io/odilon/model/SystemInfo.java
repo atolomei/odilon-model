@@ -36,7 +36,7 @@ import io.odilon.log.Logger;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public class SystemInfo extends ODModelObject {
+public class SystemInfo extends OdilonModelObject {
 	
 	@SuppressWarnings("unused")
 	static private Logger logger =	Logger.getLogger(SystemInfo.class.getName());

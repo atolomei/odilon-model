@@ -34,7 +34,7 @@ import io.odilon.util.RandomIDGenerator;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei) 
  */
-public abstract class ODModelObject {
+public abstract class OdilonModelObject {
 										
 	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
@@ -51,7 +51,7 @@ public abstract class ODModelObject {
 		
 	}
 	
-	public ODModelObject() {
+	public OdilonModelObject() {
 	}
 	
 	@JsonIgnore 

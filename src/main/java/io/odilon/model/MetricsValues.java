@@ -34,7 +34,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
  * @author atolomei@novamens.com (Alejandro Tolomei)
  *
  */
-public class MetricsValues extends ODModelObject implements Serializable {
+public class MetricsValues extends OdilonModelObject implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

@@ -21,14 +21,14 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.odilon.model.ODModelObject;
+import io.odilon.model.OdilonModelObject;
 
 /**
  * <p>JSON version of Odilon errors</p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public class OdilonErrorProxy extends ODModelObject {
+public class OdilonErrorProxy extends OdilonModelObject {
 
 	@JsonProperty("httpStatus")
 	private int httpStatus;

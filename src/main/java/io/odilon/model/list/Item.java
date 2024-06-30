@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.odilon.model.ODModelObject;
+import io.odilon.model.OdilonModelObject;
 		
 /**
  * 
@@ -53,7 +53,7 @@ import io.odilon.model.ODModelObject;
  * @param <T> must be {@link Serializable}, it is used to iterate  
  * 
  */
-public class Item<T extends Serializable> extends ODModelObject implements Serializable {
+public class Item<T extends Serializable> extends OdilonModelObject implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

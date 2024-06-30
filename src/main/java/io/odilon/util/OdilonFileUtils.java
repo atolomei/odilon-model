@@ -33,9 +33,9 @@ import io.odilon.model.SharedConstant;
 /**
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public class ODFileUtils  {
+public class OdilonFileUtils  {
 																						
-	private static Logger logger = Logger.getLogger(ODFileUtils.class.getName());
+	private static Logger logger = Logger.getLogger(OdilonFileUtils.class.getName());
 
 	static final int BUFFER_SIZE = 16384;
 	

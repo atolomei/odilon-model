@@ -31,6 +31,8 @@ import io.odilon.log.Logger;
 import io.odilon.model.SharedConstant;
 
 /**
+ * <p>File utilities, mainly to calculate SHA1, MD5, SHA256</p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class OdilonFileUtils  {

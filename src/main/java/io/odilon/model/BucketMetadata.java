@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Metadata info for an Odilon Bucket, used both by the Odilon Server and Odilon Java SDK clients</p>
+ *  <p>Metadata info for an Odilon Bucket, used both by the Odilon Server and Odilon Java SDK clients</p>
  *  <p>See {@link Bucket} JSON representation of a {@link Bucket}, used both by the server and SDK client</p> 
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei) 

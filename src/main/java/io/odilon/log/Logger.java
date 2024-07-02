@@ -154,7 +154,7 @@ public class Logger {
 	}
 	
 	
-	private Optional<String> getMethodFromStack() { 
+	public Optional<String> getMethodFromStack() { 
 		Optional<String> methodName =StackWalker.getInstance().walk(frames -> frames
 			      .findFirst()
 			      .map(StackWalker.StackFrame::getMethodName));

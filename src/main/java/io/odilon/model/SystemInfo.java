@@ -147,9 +147,7 @@ public class SystemInfo extends OdilonModelObject {
 		
 					
 		map.put("appVersion", Optional.ofNullable(appVersion).isPresent() ? appVersion : "" );
-		
 		map.put("serverHost", Optional.ofNullable(serverHost).isPresent() ? serverHost : "" );
-						
 		map.put("serverMode", Optional.ofNullable(serverMode).isPresent() ? serverMode : "" );
 		map.put("dataStorageMode", serverDataStorageMode );
 		
@@ -158,26 +156,21 @@ public class SystemInfo extends OdilonModelObject {
 		if (redundancyLevelDetail!=null)
 			map.put("redundancyLevel.detail", 	redundancyLevelDetail);
 		
-		
-		
 		map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "" );
 		
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "" );
 		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "" );
-		
-		
 		map.put("versionControl.enabled", isVersionControl );
+		map.put("vault.enabled", isVaultEnabled);
 		
-		map.put("vault.enabled", isVaultEnabled );
-		
-		if ( (vaultUrl !=null) && vaultUrl.length()>0) {
+		if ((vaultUrl !=null) && vaultUrl.length()>0)
 			map.put("vault.url", vaultUrl );
-		}
 		
 		if ( (isStandby!=null) && isStandby.equals("true")) {
 			map.put("standby.url", Optional.ofNullable(standbyUrl).isPresent() ? standbyUrl : "" );
 			map.put("standby.port", Optional.ofNullable(standbyPort).isPresent() ? standbyPort : "" );
 		}
+		
 		map.put("availableProcessors",	Optional.ofNullable(availableProcessors).isPresent() ? availableProcessors.toString() : "null");
 		
 		if (cpuLoadAverage!=null)
@@ -198,7 +191,10 @@ public class SystemInfo extends OdilonModelObject {
 
 		return map;
 	}
-	
+
+	public boolean isVersionControl() {
+		return isVersionControl!=null && isVersionControl.equals("true");
+	}
 	
 	@JsonIgnore
 	private String formatFileSize(long size) {
@@ -225,10 +221,5 @@ public class SystemInfo extends OdilonModelObject {
             return e.getClass().getName() + e.getMessage();
         }
     }
-
-
-	public boolean isVersionControl() {
-		return isVersionControl!=null && isVersionControl.equals("true");
-	}
 	
 }

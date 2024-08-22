@@ -30,8 +30,7 @@ package io.odilon.util;
 		Check.requireNonNullArgument(is, "InpuStream can not null -> b:" + bucketName+ " | o:"+objectName);
 		...
 }
-}
- * </pre>
+}</pre>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */

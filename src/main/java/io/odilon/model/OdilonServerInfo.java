@@ -197,6 +197,5 @@ public class OdilonServerInfo extends OdilonModelObject implements Serializable 
 	public void setVersionControlDate(OffsetDateTime date) {
 		versionControlDate = date;
 	}
-
 	
 }

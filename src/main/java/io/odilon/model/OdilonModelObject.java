@@ -71,7 +71,7 @@ public abstract class OdilonModelObject {
 	  try {
 			return getObjectMapper().writeValueAsString(this);
 		} catch (JsonProcessingException e) {
-					logger.error(e);
+					logger.error(e, SharedConstant.NOT_THROWN);
 					return "\"error\":\"" + e.getClass().getName()+ " | " + e.getMessage()+"\""; 
 		}
 	}

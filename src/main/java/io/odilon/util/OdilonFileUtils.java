@@ -150,7 +150,6 @@ public class OdilonFileUtils  {
 				throw e;
 				
 		} catch (Exception e) {
-			logger.error(e);
 			throw e;
 		}
 			finally {
@@ -204,7 +203,6 @@ public class OdilonFileUtils  {
 				throw e;
 				
 		} catch (Exception e) {
-			logger.error(e);
 			throw e;
 		}
 			finally {

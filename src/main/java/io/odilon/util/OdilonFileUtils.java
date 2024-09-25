@@ -41,10 +41,10 @@ public class OdilonFileUtils  {
 
 	static final int BUFFER_SIZE = 16384;
 	
-	
 	public static void forceMkdir(File directory) throws IOException {
 		 FileUtils.forceMkdir(directory);
 	}
+	
 	public static long sizeOf(File file) {
 		return FileUtils.sizeOf(file);
 	}
@@ -61,7 +61,6 @@ public class OdilonFileUtils  {
 		FileUtils.forceDelete(file);
 	}
 
-	
 	public static String calculateMD5String(final byte [] data) throws IOException, NoSuchAlgorithmException {
 		byte[] md5Hash = MessageDigest.getInstance("MD5").digest(data);
 		return String.format("%32s", new BigInteger(1,  md5Hash).toString(16)).replace(' ', '0');
@@ -72,17 +71,12 @@ public class OdilonFileUtils  {
 		return String.format("%40s", new BigInteger(1,  hash).toString(16)).replace(' ', '0');
 	}
 	
-										
 	public static String calculateSHA256String(final byte [] data) throws IOException, NoSuchAlgorithmException {
 		byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
 		return String.format("%64s", new BigInteger(1,  hash).toString(16)).replace(' ', '0');
 	}
 
-	
-	
-	
 	/**
-	 * 
 	 * @param string
 	 * @return
 	 * @throws IOException
@@ -215,19 +209,4 @@ public class OdilonFileUtils  {
 				}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

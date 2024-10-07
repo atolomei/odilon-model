@@ -164,8 +164,6 @@
 		    <artifactId>checksum-maven-plugin</artifactId>
 		    <version>1.11</version>
 		</dependency>
-
-
 			
   </dependencies>
   

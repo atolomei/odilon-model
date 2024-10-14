@@ -107,6 +107,9 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	@JsonProperty("systemTags")
 	public String systemTags;
 
+	@JsonProperty("customTags")
+	public List<String> customTags;
+
 	
 	public ObjectMetadata() {
 	}
@@ -130,6 +133,16 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	public List<String> getSha256Blocks() {
 		return sha256Blocks;
 	}
+	
+	
+	public void setCustomTags(List<String> list) {
+		customTags = list;
+	}
+	
+	public List<String> getCustomTags() {
+		return customTags;
+	}
+
 	
 	public boolean isAccesible() {
 		if (status==null)

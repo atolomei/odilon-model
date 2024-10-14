@@ -76,9 +76,6 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 	public double putObjectMeter[]  = new double[3];
 
 	
-	//public long cacheSize = 0;
-	
-	
 	// ----------------------------
 	// OBJECT CRUD
 
@@ -203,12 +200,9 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 
 		Map<String, String> map = new TreeMap<String, String>();
 
-		
-
 		// ----------------------------
 		// OBJECT CRUD
 		//
-		
 		map.put("objectGetMeter", str(getObjectMeter));
 		map.put("objectPutMeter", str(putObjectMeter));
 		
@@ -222,15 +216,13 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		map.put("objectRestorePreviousVersionCounter", nf_int.format(objectRestorePreviousVersionCounter));
 		map.put("objectDeleteAllVersionsCounter", nf_int.format(objectDeleteAllVersionsCounter));
 
-		
-		
 		// ----------------------------
 		// OBJECT CACHE
 		//
-		
 		map.put("cacheObjectHitCounter", nf_int.format(cacheObjectHitCounter));
 		map.put("cacheObjectMissCounter", nf_int.format(cacheObjectMissCounter));
 		map.put("cacheObjectSize", nf_int.format(cacheObjectSize));
+
 		
 		// ----------------------------
 		// FILE CACHE
@@ -244,7 +236,6 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		// ----------------------------
 		// REPLICATION
 		//
-		
 		map.put("replicaObjectCreate", nf_int.format(replicaObjectCreate));
 		map.put("replicaObjectUpdate", nf_int.format(replicaObjectUpdate));
 		map.put("replicaObjectDelete", nf_int.format(replicaObjectDelete));
@@ -256,7 +247,6 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		// ----------------------------
 		// ENCRYPTION
 		// 
-		
 		map.put("encrpytFileMeter", str(encrpytFileMeter));
 		map.put("decryptFileMeter", str(decryptFileMeter));
 		
@@ -264,14 +254,11 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		// ----------------------------
 		// VAULT
 		// 
-		
 		map.put("vaultEncryptMeter", str(encryptVaultMeter));
 		map.put("vaultDecryptMeter", str(decryptVaultMeter));
 		
 		return map;
 	}
-		
-	
 
 	
 }

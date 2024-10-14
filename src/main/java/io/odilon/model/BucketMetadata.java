@@ -96,7 +96,7 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 				  return false;
 		  }
 	    
-	    if (bucketName.equals(that.bucketName)) {
+	    if (this.bucketName.equals(that.bucketName)) {
 	      return true;
 	    }
 
@@ -118,7 +118,7 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 	   *<p>Returns bucket name</p>
 	   */
 	  public String bucketName() {
-	    return bucketName;
+	    return this.bucketName;
 	  }
 
 
@@ -126,19 +126,14 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 	   * <p>Returns created time</p>
 	   */
 	  public OffsetDateTime creationDate() {
-	    return creationDate;
+	    return this.creationDate;
 	  }
 
 	  public BucketStatus getStatus() {
-		    return status;
+		    return this.status;
 	  }
 	  
 	  public Long getId() {
-		  return id;
+		  return this.id;
 	  }
-
-
-	  
-	
-
 }

@@ -66,6 +66,8 @@ public class SystemInfo extends OdilonModelObject {
 	public String isVaultEnabled;
 	public String vaultUrl;
 	
+	public String isHttps;
+	
 	public Long maxMemory;
 	public Long totalMemory;
 	
@@ -162,6 +164,8 @@ public class SystemInfo extends OdilonModelObject {
 		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "" );
 		map.put("versionControl.enabled", isVersionControl );
 		map.put("vault.enabled", isVaultEnabled);
+		
+		map.put("https", this.isHttps);
 		
 		if ((vaultUrl !=null) && vaultUrl.length()>0)
 			map.put("vault.url", vaultUrl );

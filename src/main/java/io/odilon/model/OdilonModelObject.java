@@ -18,6 +18,10 @@ package io.odilon.model;
 
 
 
+import java.time.OffsetDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -27,6 +31,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 
 import io.odilon.log.Logger;
+import io.odilon.util.Check;
 import io.odilon.util.RandomIDGenerator;
 
 /**
@@ -34,29 +39,15 @@ import io.odilon.util.RandomIDGenerator;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei) 
  */
-public abstract class OdilonModelObject {
+public abstract class OdilonModelObject extends BaseObject {
 										
 	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
-	@JsonIgnore 
-	static final private ObjectMapper mapper = new ObjectMapper();
-
 	@JsonIgnore
-	static  final private RandomIDGenerator idGenerator = new RandomIDGenerator();  
+	static  final private RandomIDGenerator idGenerator = new RandomIDGenerator();
 	
-	static  {
-		mapper.registerModule(new JavaTimeModule());
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		mapper.registerModule(new Jdk8Module());
-		
-	}
 	
 	public OdilonModelObject() {
-	}
-	
-	@JsonIgnore 
-	public ObjectMapper getObjectMapper() {
-		return mapper;
 	}
 	
 	@Override
@@ -67,17 +58,12 @@ public abstract class OdilonModelObject {
 			return str.toString();
 	}
 		
-	public String toJSON() {
-	  try {
-			return getObjectMapper().writeValueAsString(this);
-		} catch (JsonProcessingException e) {
-					logger.error(e, SharedConstant.NOT_THROWN);
-					return "\"error\":\"" + e.getClass().getName()+ " | " + e.getMessage()+"\""; 
-		}
-	}
 	
 	protected String randomString(final int size) {
 		return idGenerator.randomString(size);
 	}
+	
+
+
 	 
 }

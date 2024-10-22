@@ -27,7 +27,7 @@ import io.odilon.log.Logger;
 /**
  * 
  * <p>A ResultSet is the set of results returned by a query. 
- * ResultSsets are {@link Iterable} and every result in the set must be {@link Serializable}</p> 
+ * ResultSets are {@link Iterable} and every result in the set must be {@link Serializable}</p> 
  * 
  * @param <T>
  * 

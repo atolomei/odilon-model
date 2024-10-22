@@ -18,20 +18,11 @@ package io.odilon.model;
 
 
 
-import java.time.OffsetDateTime;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 
 import io.odilon.log.Logger;
-import io.odilon.util.Check;
 import io.odilon.util.RandomIDGenerator;
 
 /**
@@ -41,6 +32,7 @@ import io.odilon.util.RandomIDGenerator;
  */
 public abstract class OdilonModelObject extends BaseObject {
 										
+	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
 	@JsonIgnore

@@ -49,6 +49,7 @@ import io.odilon.util.Check;
  *  <li>  6 Disks  -> data: 4, parity: 2</li>
  *  <li> 12 Disks  -> data: 8, parity: 4</li>
  *  <li> 24 Disks  -> data: 16, parity: 8</li>
+ *  <li> 48 Disks  -> data: 32, parity: 16</li>
  *  </ul>
  * 
  * 

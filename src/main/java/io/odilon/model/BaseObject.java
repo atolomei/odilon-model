@@ -8,13 +8,17 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import io.odilon.log.Logger;
+import io.odilon.util.RandomIDGenerator;
 
-public abstract class BaseObject {
+public abstract class BaseObject implements JSONObject {
 			
 	static private Logger logger = Logger.getLogger(BaseObject.class.getName());
 	
 	@JsonIgnore 
 	static final private ObjectMapper mapper = new ObjectMapper();
+	
+	@JsonIgnore
+	static  final private RandomIDGenerator idGenerator = new RandomIDGenerator();
 
 	
 	static  {
@@ -35,5 +39,11 @@ public abstract class BaseObject {
 						logger.error(e, SharedConstant.NOT_THROWN);
 						return "\"error\":\"" + e.getClass().getName()+ " | " + e.getMessage()+"\""; 
 			}
-		}
+	}
+	
+	
+	protected String randomString(final int size) {
+		return idGenerator.randomString(size);
+	}
+	
 }

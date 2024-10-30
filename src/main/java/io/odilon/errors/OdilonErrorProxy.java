@@ -21,6 +21,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.odilon.model.BaseObject;
 import io.odilon.model.OdilonModelObject;
 
 /**
@@ -28,7 +29,7 @@ import io.odilon.model.OdilonModelObject;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public class OdilonErrorProxy extends OdilonModelObject {
+public class OdilonErrorProxy extends BaseObject {
 
 	@JsonProperty("httpStatus")
 	private int httpStatus;

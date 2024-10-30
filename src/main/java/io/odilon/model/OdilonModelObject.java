@@ -18,12 +18,7 @@ package io.odilon.model;
 
 
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 import io.odilon.log.Logger;
-import io.odilon.util.RandomIDGenerator;
 
 /**
  * <p>Abstract class for Odilon Information Model</p>
@@ -35,10 +30,6 @@ public abstract class OdilonModelObject extends BaseObject {
 	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
-	@JsonIgnore
-	static  final private RandomIDGenerator idGenerator = new RandomIDGenerator();
-	
-	
 	public OdilonModelObject() {
 	}
 	
@@ -51,9 +42,7 @@ public abstract class OdilonModelObject extends BaseObject {
 	}
 		
 	
-	protected String randomString(final int size) {
-		return idGenerator.randomString(size);
-	}
+	
 	
 
 

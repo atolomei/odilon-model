@@ -65,8 +65,14 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 		clone.appVersion=appVersion;
 		clone.lastModified=lastModified;
 		if (id!=null)
-			clone.id= Long.valueOf(id.longValue());
+			clone.id=Long.valueOf(id.longValue());
 		return clone;
+	}
+	
+	
+	
+	public String getBucketName() {
+		return this.bucketName;
 	}
 	
 	  /**

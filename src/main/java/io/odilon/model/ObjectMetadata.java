@@ -126,6 +126,11 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 		this.bucketName="";
 	  }
 
+	public Long getBucketId() {
+		return this.bucketId;
+	}
+	
+	
 	public void setSha256Blocks(List<String> list) {
 		sha256Blocks = list;
 	}
@@ -373,7 +378,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	}
 
 	public boolean isEncrypt() {
-		return encrypt;
+		return this.encrypt;
 	}
 
 	public void setEncrypt(boolean encrypt) {

@@ -42,7 +42,7 @@ public class Bucket extends OdilonModelObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@JsonProperty("name")
-	private String name;
+	private String bucketName;
 	
 	@JsonProperty("creationDate")
 	private OffsetDateTime creationDate;
@@ -60,7 +60,7 @@ public class Bucket extends OdilonModelObject implements Serializable {
 	}
 	
 	public Bucket(String name, Long id, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
-	  this.name=name;
+	  this.bucketName=name;
 	  this.id=id;
 	  this.creationDate=creationDate;
 	  this.lastModified=lastModified;
@@ -72,7 +72,7 @@ public class Bucket extends OdilonModelObject implements Serializable {
 	}
 
 	public String getName() {
-	   return name;
+	   return bucketName;
 	}
 	
 	public Long getId() {

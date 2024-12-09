@@ -49,6 +49,12 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 
 	@JsonProperty("lastModified")
 	public OffsetDateTime lastModified;
+
+	
+	public void setLastModified(OffsetDateTime now) {
+	        this.lastModified=now;
+    }
+	
 	
 	public BucketMetadata() {
 	}
@@ -142,4 +148,31 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 	  public Long getId() {
 		  return this.id;
 	  }
+
+
+	  public void setCreationDate(OffsetDateTime now) {
+	      this.creationDate=now;
+	  }
+
+
+    public void setBucketName(String bucketName) {
+        this.bucketName=bucketName;
+    }
+
+
+    public void setStatus(BucketStatus status) {
+        this.status=status;
+    }
+
+
+    public void setAppVersion(String version) {
+            this.appVersion=version;
+    }
+
+
+    public void setId(Long id) {
+            this.id=id;
+    }
+
+    
 }

@@ -38,7 +38,7 @@
 		<java-version>11</java-version>
 		<junit-version>5.10.1</junit-version> 							<!--  01 /2024  4.13.2-->
 		
-		<log4j2-version>2.23.1</log4j2-version> 						<!--  06 /2024  We use the same version as Spring -->
+		<log4j2-version>2.24.1</log4j2-version> 						<!--  12 /2024  -->
 	    <maven.compiler.source>11</maven.compiler.source>
 	    <maven.compiler.target>11</maven.compiler.target>
 		<maven-javadoc-plugin-version>3.4.1</maven-javadoc-plugin-version>

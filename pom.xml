@@ -64,14 +64,13 @@
 	<scm>
 	  <connection>scm:git:git://github.com/atolomei/odilon-model.git</connection>
 	  <developerConnection>scm:git:ssh://github.com:atolomei/odilon-model.git</developerConnection>
-	  <url>https://github.com/atolomei/odilon-model/tree/v1.6</url>
+	  <url>https://github.com/atolomei/odilon-model/tree/v1.10</url>
 	</scm>
 
   	<dependencies>
-		
-		<!--  LOG4J2 =====================================================================================  -->
-		
-    	<dependency>
+	
+		 		
+		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>${log4j2-version}</version> 
@@ -88,12 +87,14 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>${log4j2-version}</version>
 		</dependency>
-
+		
+		
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io-version}</version> 			
 		</dependency>
+		
 
 		<dependency>
 			<groupId>com.lmax</groupId>
@@ -113,8 +114,7 @@
 					</exclusion>
 				  </exclusions>
 		</dependency>
-		 		
-
+		
 		<!--  JACKSON =====================================================================================  -->
 
 			<dependency>

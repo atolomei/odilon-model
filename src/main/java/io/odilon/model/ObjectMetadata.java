@@ -32,9 +32,6 @@ import io.odilon.log.Logger;
  */
 public class ObjectMetadata extends OdilonModelObject implements Serializable {
 			
-	@SuppressWarnings("unused")
-	static private Logger logger =	Logger.getLogger(ObjectMetadata.class.getName());
-	
 	private static final long serialVersionUID = 1L;
 
 	@JsonProperty("bucketName")  

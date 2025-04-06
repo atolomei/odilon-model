@@ -55,7 +55,6 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 	        this.lastModified=now;
     }
 	
-	
 	public BucketMetadata() {
 	}
 	
@@ -74,7 +73,6 @@ public class BucketMetadata extends OdilonModelObject implements Serializable {
 			clone.id=Long.valueOf(id.longValue());
 		return clone;
 	}
-	
 	
 	
 	public String getBucketName() {

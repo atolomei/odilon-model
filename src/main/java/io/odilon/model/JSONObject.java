@@ -17,12 +17,14 @@
 package io.odilon.model;
 
 /**
- * <p>All classes that make up the API</p>
+ * <p>
+ * All classes that make up the API
+ * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public interface JSONObject {
 
-	public String toJSON();
-	
+    public String toJSON();
+
 }

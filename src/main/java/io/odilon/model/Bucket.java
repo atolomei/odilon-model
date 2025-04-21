@@ -23,66 +23,69 @@ import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Odilon stores objects using a flat structure of containers called Buckets.</p>
- * <p>A bucket is like a folder, it just contains binary objects, potentially a very large number. 
- *  Every object contained by a bucket has a unique ObjectName in that bucket; therefore, 
- *  the pair <b>BucketName</b> + <b>ObjectName</b> is a Unique ID for each object in Odilon.
+ * <p>
+ * Odilon stores objects using a flat structure of containers called Buckets.
+ * </p>
+ * <p>
+ * A bucket is like a folder, it just contains binary objects, potentially a
+ * very large number. Every object contained by a bucket has a unique ObjectName
+ * in that bucket; therefore, the pair <b>BucketName</b> + <b>ObjectName</b> is
+ * a Unique ID for each object in Odilon.
  * </p>
  * 
- * <p>This class is a JSON representation of a Bucket used both by the 
- * Odilon server and Odilon client SDK. These JSON objects are stored 
- * in disk on the server and also sent to clients through the network 
- * or Internet.</p>
- *  
+ * <p>
+ * This class is a JSON representation of a Bucket used both by the Odilon
+ * server and Odilon client SDK. These JSON objects are stored in disk on the
+ * server and also sent to clients through the network or Internet.
+ * </p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
  */
 public class Bucket extends OdilonModelObject implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	@JsonProperty("name")
-	private String bucketName;
-	
-	@JsonProperty("creationDate")
-	private OffsetDateTime creationDate;
-	
-	@JsonProperty("id")
-	private Long id;
-	
-	@JsonProperty("status")
-	private BucketStatus status;
-	
-	@JsonProperty("lastModified")
-	public OffsetDateTime lastModified;
-	
-	public Bucket() {
-	}
-	
-	public Bucket(String name, Long id, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
-	  this.bucketName=name;
-	  this.id=id;
-	  this.creationDate=creationDate;
-	  this.lastModified=lastModified;
-	  this.status=status;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public BucketStatus getStatus() {
-	   return status;
-	}
+    @JsonProperty("name")
+    private String bucketName;
 
-	public String getName() {
-	   return bucketName;
-	}
-	
-	public Long getId() {
-	   return id;
-	}
-	
-	public OffsetDateTime getCreationDate() {
-		 return creationDate;
-	}
-	 
+    @JsonProperty("creationDate")
+    private OffsetDateTime creationDate;
 
-	  
+    @JsonProperty("id")
+    private Long id;
+
+    @JsonProperty("status")
+    private BucketStatus status;
+
+    @JsonProperty("lastModified")
+    public OffsetDateTime lastModified;
+
+    public Bucket() {
+    }
+
+    public Bucket(String name, Long id, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
+        this.bucketName = name;
+        this.id = id;
+        this.creationDate = creationDate;
+        this.lastModified = lastModified;
+        this.status = status;
+    }
+
+    public BucketStatus getStatus() {
+        return status;
+    }
+
+    public String getName() {
+        return bucketName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public OffsetDateTime getCreationDate() {
+        return creationDate;
+    }
+
 }

@@ -18,15 +18,18 @@ package io.odilon.model.list;
 
 import java.io.IOException;
 import java.io.Serializable;
- 
+
 /**
- * <p>Odilon's Data Provider for queries</p>
+ * <p>
+ * Odilon's Data Provider for queries
+ * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * @param <T>
  */
 public interface DataProvider<T extends Serializable> extends Serializable {
-	
-	public DataList<T> fetch() throws IOException;
-	public DataList<T> fetch(long offset) throws IOException;
+
+    public DataList<T> fetch() throws IOException;
+
+    public DataList<T> fetch(long offset) throws IOException;
 }

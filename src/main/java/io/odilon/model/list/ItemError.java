@@ -19,13 +19,16 @@ package io.odilon.model.list;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>This class contains an error message when an Item in a DataList could not be loaded</p>
+ * <p>
+ * This class contains an error message when an Item in a DataList could not be
+ * loaded
+ * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class ItemError {
 
-	@JsonProperty("message")
-	public String message;
-	
+    @JsonProperty("message")
+    public String message;
+
 }

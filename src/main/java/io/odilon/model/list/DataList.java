@@ -23,104 +23,107 @@ import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Used to store a page of Objects or Buckets</p> 
- *  
+ * <p>
+ * Used to store a page of Objects or Buckets
+ * </p>
+ * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  * 
  * @param <T> must be Serializable
  */
 public class DataList<T extends Serializable> implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 
-	@JsonProperty("serverAgentId")
-	private String serverAgentId;
-	
-	@JsonProperty("size")
-	private Long size;
-	
-	@JsonProperty("offset")
-	private long offset = 0;
-	
-	@JsonProperty("pagesize")
-	private long pageSize;
-	
-	@JsonProperty("list")
-	private List<T> list;
+    private static final long serialVersionUID = 1L;
 
-	@JsonProperty("eod")
-	private boolean eod = false;
-	
-	public DataList() {
-	}
-	
-	public DataList(List<T> list, Optional<String> agentId) {
-		this.list=list;
-		agentId.ifPresent( x-> serverAgentId = x);
-	}
-	
-	public DataList(List<T> list) {
-		this.list=list;
-	}
+    @JsonProperty("serverAgentId")
+    private String serverAgentId;
 
-	public T get(int index) {
-		return list.get(index);
-	}
-	
-	public Optional<Long> getSize() {
-		return Optional.ofNullable(size);
-	}
+    @JsonProperty("size")
+    private Long size;
 
-	public void setSize(long size) {
-		this.size = size;
-	}
+    @JsonProperty("offset")
+    private long offset = 0;
 
-	public long getOffset() {
-		return offset;
-	}
+    @JsonProperty("pagesize")
+    private long pageSize;
 
-	public void setOffset(long offset) {
-		this.offset = offset;
-	}
+    @JsonProperty("list")
+    private List<T> list;
 
-	public long getPageSize() {
-		return pageSize;
-	}
+    @JsonProperty("eod")
+    private boolean eod = false;
 
-	public void setPageSize(long pageSize) {
-		this.pageSize = pageSize;
-	}
+    public DataList() {
+    }
 
-	public List<T> getList() {
-		return list;
-	}
+    public DataList(List<T> list, Optional<String> agentId) {
+        this.list = list;
+        agentId.ifPresent(x -> serverAgentId = x);
+    }
 
-	public void setList(List<T> list) {
-		this.list = list;
-	}
+    public DataList(List<T> list) {
+        this.list = list;
+    }
 
-	public String getAgentId() {
-		return serverAgentId;
-	}
+    public T get(int index) {
+        return list.get(index);
+    }
 
-	public void setAgentId(String serverAgentId) {
-		this.serverAgentId = serverAgentId;
-	}
-	
-	/**
-	 * <p>
-	 * flag that informs whether this list is the end of the data 
-	 * stream (End Of Data) on the side of the server. It is used
-	 * to prevent the last pull from the server to get an empty resultSet. 
-	 * </p>
-	 * @return true if there is no more data to fetch.
-	 */
-	public boolean isEOD() {
-		return eod;
-	}
-	
-	public void setEOD(boolean eod) {
-		this.eod = eod;
-	}
-	
+    public Optional<Long> getSize() {
+        return Optional.ofNullable(size);
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public long getOffset() {
+        return offset;
+    }
+
+    public void setOffset(long offset) {
+        this.offset = offset;
+    }
+
+    public long getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(long pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
+    public String getAgentId() {
+        return serverAgentId;
+    }
+
+    public void setAgentId(String serverAgentId) {
+        this.serverAgentId = serverAgentId;
+    }
+
+    /**
+     * <p>
+     * flag that informs whether this list is the end of the data stream (End Of
+     * Data) on the side of the server. It is used to prevent the last pull from the
+     * server to get an empty resultSet.
+     * </p>
+     * 
+     * @return true if there is no more data to fetch.
+     */
+    public boolean isEOD() {
+        return eod;
+    }
+
+    public void setEOD(boolean eod) {
+        this.eod = eod;
+    }
+
 }

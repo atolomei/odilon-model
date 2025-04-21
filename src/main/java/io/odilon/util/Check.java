@@ -16,12 +16,16 @@
  */
 package io.odilon.util;
 
-
 /**
  * 
- * <p>Checks used for preconditions in methods</p>
- *	<p>Example:</p> 
- <pre> {@code 
+ * <p>
+ * Checks used for preconditions in methods
+ * </p>
+ * <p>
+ * Example:
+ * </p>
+ * 
+ * <pre> {@code 
  public void putObject(String bucketName, String objectName, InputStream is, String fileName, String contentType) {
 
 		Check.requireNonNullStringArgument(bucketName, "bucketName can not be null or empty");
@@ -36,35 +40,36 @@ package io.odilon.util;
  */
 public class Check {
 
-	public static <T> T requireNonNullArgument(T obj, String message) {
+    public static <T> T requireNonNullArgument(T obj, String message) {
         if (obj == null)
             throw new IllegalArgumentException(message);
         return obj;
     }
-	
-	public static String requireNonNullStringArgument(String obj, String message) {
 
-		if (obj == null)
+    public static String requireNonNullStringArgument(String obj, String message) {
+
+        if (obj == null)
             throw new IllegalArgumentException(message);
-        
-        if ("".equals((String) obj)) 
+
+        if ("".equals((String) obj))
             throw new IllegalArgumentException(message);
-        
+
         return obj;
     }
-						
-	public static void requireTrue(boolean expression, String message) {
-		if (!expression) {
-			throw new IllegalStateException(message);
-		}
-	}
-	
-	public static void checkTrue(boolean expression, String message) {
-		if (!expression) {
-			throw new IllegalStateException(message);
-		}
-	}
-	public static <T> T requireNonNull(T obj) {
+
+    public static void requireTrue(boolean expression, String message) {
+        if (!expression) {
+            throw new IllegalStateException(message);
+        }
+    }
+
+    public static void checkTrue(boolean expression, String message) {
+        if (!expression) {
+            throw new IllegalStateException(message);
+        }
+    }
+
+    public static <T> T requireNonNull(T obj) {
         if (obj == null)
             throw new NullPointerException();
         return obj;

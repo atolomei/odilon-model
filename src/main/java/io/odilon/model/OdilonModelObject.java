@@ -16,35 +16,29 @@
  */
 package io.odilon.model;
 
-
-
 import io.odilon.log.Logger;
 
 /**
- * <p>Abstract class for Odilon Information Model</p>
+ * <p>
+ * Abstract class for Odilon Information Model
+ * </p>
  * 
- * @author atolomei@novamens.com (Alejandro Tolomei) 
+ * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public abstract class OdilonModelObject extends BaseObject {
-										
-	@SuppressWarnings("unused")
-	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
-	public OdilonModelObject() {
-	}
-	
-	@Override
-	public String toString() {
-			StringBuilder str = new StringBuilder();
-			str.append(this.getClass().getSimpleName());
-			str.append(toJSON());
-			return str.toString();
-	}
-		
-	
-	
-	
+    @SuppressWarnings("unused")
+    static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
+    public OdilonModelObject() {
+    }
 
-	 
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(this.getClass().getSimpleName());
+        str.append(toJSON());
+        return str.toString();
+    }
+
 }

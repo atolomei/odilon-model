@@ -6,7 +6,7 @@
 
 	<groupId>io.odilon</groupId>
 	<artifactId>odilon-model</artifactId>
-	<version>1.13</version>
+	<version>1.14</version>
 	<name>odilon model</name>
 	<packaging>jar</packaging>
 
@@ -71,6 +71,9 @@
 		<developerConnection>scm:git:ssh://github.com:atolomei/odilon-model.git</developerConnection>
 		<url>https://github.com/atolomei/odilon-model/tree/v1.10</url>
 	</scm>
+
+
+   <!--  =====================================================================================  -->
 
 	<dependencies>
 		<dependency>
@@ -175,7 +178,9 @@
 
 	</dependencies>
 
-	<build>
+   <!--  =====================================================================================  -->
+   
+   <build>
 		<pluginManagement>
 
 			<plugins>

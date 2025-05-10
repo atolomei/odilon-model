@@ -96,6 +96,9 @@ public class SystemInfo extends BaseObject {
     public String serverMode;
     public String serverDataStorageMode;
 
+    
+    
+    
     public String isStandby;
     public String standbyUrl;
     public String standbyPort;

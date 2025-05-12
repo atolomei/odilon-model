@@ -79,6 +79,9 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
     @JsonProperty("raid")
     public String raid;
 
+    @JsonProperty("raidDrives")
+    public int raidDrives;
+
     @JsonProperty("sha256")
     public String sha256;
 
@@ -117,6 +120,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
         this.creationDate = OffsetDateTime.now();
         this.length = 0;
         this.version = 0;
+        this.raidDrives = 0;
         this.etag = "";
         this.contentType = "";
         this.bucketName = "";
@@ -264,7 +268,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
      * Returns bucket name.
      */
     public String bucketName() {
-        return "bucketName";
+        return bucketName;
     }
 
     /**
@@ -471,5 +475,13 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
     public void setIntegrityCheck(OffsetDateTime integrityCheck) {
         this.integrityCheck = integrityCheck;
+    }
+
+    public int getRaidDrives() {
+        return raidDrives;
+    }
+
+    public void setRaidDrives(int raidDrives) {
+        this.raidDrives = raidDrives;
     }
 }

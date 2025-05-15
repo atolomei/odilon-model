@@ -20,7 +20,9 @@ import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * <p>
@@ -30,6 +32,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
+
+@JsonInclude(Include.NON_NULL)
 public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,6 +1,8 @@
 package io.odilon.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,6 +12,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.odilon.log.Logger;
 import io.odilon.util.RandomIDGenerator;
 
+
+@JsonInclude(Include.NON_NULL)
 public abstract class BaseObject implements JSONObject {
 
     static private Logger logger = Logger.getLogger(BaseObject.class.getName());

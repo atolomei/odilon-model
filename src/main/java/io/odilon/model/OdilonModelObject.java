@@ -16,6 +16,9 @@
  */
 package io.odilon.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import io.odilon.log.Logger;
 
 /**
@@ -25,6 +28,7 @@ import io.odilon.log.Logger;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
+@JsonInclude(Include.NON_NULL)
 public abstract class OdilonModelObject extends BaseObject {
 
     @SuppressWarnings("unused")

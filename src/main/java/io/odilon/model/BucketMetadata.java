@@ -19,7 +19,9 @@ package io.odilon.model;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * <p>
@@ -33,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
+@JsonInclude(Include.NON_NULL)
 public class BucketMetadata extends OdilonModelObject implements Serializable {
 
     private static final long serialVersionUID = 1L;

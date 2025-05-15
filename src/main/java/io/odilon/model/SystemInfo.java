@@ -26,6 +26,8 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import io.odilon.log.Logger;
 
@@ -40,6 +42,7 @@ import io.odilon.log.Logger;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
+@JsonInclude(Include.NON_NULL)
 public class SystemInfo extends BaseObject {
 
     @SuppressWarnings("unused")

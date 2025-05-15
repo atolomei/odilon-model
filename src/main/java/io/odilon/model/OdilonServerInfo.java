@@ -20,7 +20,9 @@ import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * <p>
@@ -34,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
+@JsonInclude(Include.NON_NULL)
 public class OdilonServerInfo extends BaseObject implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +47,9 @@ public class OdilonServerInfo extends BaseObject implements Serializable {
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("redundancyLevel")
+    private String redundancyLevel;
+    
     @JsonProperty("creationDate")
     private OffsetDateTime creationDate;
 
@@ -199,4 +205,13 @@ public class OdilonServerInfo extends BaseObject implements Serializable {
         versionControlDate = date;
     }
 
+    public void setRedundancyLevel(String rl) {
+                this.redundancyLevel=rl;
+    }
+
+    public String getRedundancyLevel() {
+        return this.redundancyLevel;
+}
+
+    
 }

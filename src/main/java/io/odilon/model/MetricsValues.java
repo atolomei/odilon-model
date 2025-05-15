@@ -24,7 +24,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
@@ -37,6 +39,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
  * @author atolomei@novamens.com (Alejandro Tolomei)
  *
  */
+@JsonInclude(Include.NON_NULL)
 public class MetricsValues extends OdilonModelObject implements Serializable {
 
     private static final long serialVersionUID = 1L;

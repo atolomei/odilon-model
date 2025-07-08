@@ -11,6 +11,7 @@
 	<packaging>jar</packaging>
 
 
+
 	<description>Classes used by Odilon Server and Odilon Client SDK. Data
 		requested by the client is sent in JSON format by the Server and
 		deserialized into a Java Object by the client.

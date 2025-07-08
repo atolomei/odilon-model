@@ -27,7 +27,7 @@ package io.odilon.model;
 public class SharedConstant {
 
     static final public int DEFAULT_PAGE_SIZE = 60;
-    static final public int DEFAULT_EXPIRY_TIME = 7 * 24 * 3600;
+    static final public int DEFAULT_EXPIRY_TIME = 14 * 24 * 3600; // 14 days
 
     static final public int BUFFER_SIZE = 8192;
 

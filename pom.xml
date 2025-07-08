@@ -30,16 +30,18 @@
 
 		<checksum-maven-plugin-version>1.11</checksum-maven-plugin-version>
 
-		<commons-io-version>2.18.0</commons-io-version> 				<!--   1 /2025  -->
+		<commons-io-version>2.19.0</commons-io-version> 				<!--   6 /2025  -->
 		<commons-lang3-version>3.17.0</commons-lang3-version> 			<!--   1 /2025  -->
-		<commons-validator.version>1.9.0</commons-validator.version> 	<!--  01
-		/2025  -->
-		<disruptor-version>3.4.4</disruptor-version> 					<!--  01 /2024  3.4.4  version
+		<commons-validator.version>1.9.0</commons-validator.version> 	<!--  01/2025   -->
+
+		<disruptor-version>3.4.4</disruptor-version>
+		<!--  01 /2024  3.4.4  version
 		4.0.0 no funciono. java.lang.ClassNotFoundException:
 		com.lmax.disruptor.SequenceReportingEventHandler  -->
+
 		<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024
 		31.1-jre -->
-		<jackson-version>2.18.2</jackson-version> 						<!--  01 /2025   -->
+		<jackson-version>2.18.3</jackson-version> 						<!--  01 /2025   -->
 		<java-version>11</java-version>
 		<junit-version>5.12.2</junit-version> 							<!--  5.10.1 -->
 		<log4j2-version>2.24.3</log4j2-version> 						<!--  01 /2024 Spring boot 3.4.1  -->
@@ -72,8 +74,8 @@
 		<url>https://github.com/atolomei/odilon-model/tree/v1.10</url>
 	</scm>
 
-
-   <!--  =====================================================================================  -->
+	<!--
+	=====================================================================================  -->
 
 	<dependencies>
 		<dependency>
@@ -94,13 +96,11 @@
 			<version>${log4j2-version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io-version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>com.lmax</groupId>
@@ -148,7 +148,6 @@
 			<version>${jackson-version}</version>
 		</dependency>
 
-
 		<!--  MAVEN
 		======================================================================================  -->
 
@@ -157,7 +156,6 @@
 			<artifactId>maven-source-plugin</artifactId>
 			<version>${maven-source-plugin-version}</version>
 		</dependency>
-
 
 		<!--  TEST
 		====================================================================================  -->
@@ -170,17 +168,23 @@
 		</dependency>
 
 
+		<!--  CHECKSUM
+		====================================================================================  -->
+
 		<dependency>
 			<groupId>net.nicoulaj.maven.plugins</groupId>
 			<artifactId>checksum-maven-plugin</artifactId>
 			<version>${checksum-maven-plugin-version}</version>
 		</dependency>
 
+
 	</dependencies>
 
-   <!--  =====================================================================================  -->
-   
-   <build>
+	<!--
+	=====================================================================================  -->
+
+
+	<build>
 		<pluginManagement>
 
 			<plugins>
@@ -217,7 +221,6 @@
 					</executions>
 				</plugin>
 
-
 				<plugin>
 					<groupId>net.nicoulaj.maven.plugins</groupId>
 					<artifactId>checksum-maven-plugin</artifactId>
@@ -240,6 +243,5 @@
 
 		</pluginManagement>
 	</build>
-
 
 </project>

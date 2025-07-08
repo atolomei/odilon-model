@@ -16,49 +16,53 @@
  */
 package io.odilon.errors;
 
-
 /**
- * <p>Main Odilon unchecked Exception</p>
+ * <p>
+ * Main Odilon unchecked Exception
+ * </p>
  * 
- * <p>Unchecked exceptions do not need to be declared in a method or constructor's throws clause.
- * They are thrown if something that has gone wrong with the program and is unrecoverable.</p>
+ * <p>
+ * Unchecked exceptions do not need to be declared in a method or constructor's
+ * throws clause. They are thrown if something that has gone wrong with the
+ * program and is unrecoverable.
+ * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public class InternalCriticalException extends RuntimeException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	Exception rootException;
-	
-	public InternalCriticalException(Exception rootException) {
-		super(rootException);
-		this.rootException=rootException;
-	}
-	
-	public InternalCriticalException(Exception rootException, String message) {
-		super(message, rootException);
-		this.rootException=rootException;
-	}
-	
-	public InternalCriticalException(String message) {
-		super(message);
-	}
-	
-	public Exception getRootException() {
-		return rootException;
-	}
-	
-	public String getMessage() {
-		String m=super.getMessage();
-		if (rootException!=null) {
-			return  "rootException -> " + rootException.getClass().getName() +
-					((rootException.getMessage()!=null) ? (" " +rootException.getMessage()) : "") + " | " + m;  
-		}
-		return m;
-	}
-	
+    Exception rootException;
+
+    public InternalCriticalException(Exception rootException) {
+        super(rootException);
+        this.rootException = rootException;
+    }
+
+    public InternalCriticalException(Exception rootException, String message) {
+        super(message, rootException);
+        this.rootException = rootException;
+    }
+
+    public InternalCriticalException(String message) {
+        super(message);
+    }
+
+    public Exception getRootException() {
+        return rootException;
+    }
+
+    public String getMessage() {
+        String m = super.getMessage();
+        if (rootException != null) {
+            return "rootException -> " + rootException.getClass().getName()
+                    + ((rootException.getMessage() != null) ? (" " + rootException.getMessage()) : "") + " | " + m;
+        }
+        return m;
+    }
+
 }

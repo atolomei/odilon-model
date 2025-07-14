@@ -47,7 +47,8 @@ import io.odilon.log.Logger;
  *				System.out.println(item.getErrorString());
  *            }
  *            } catch (ODClientException e) {
- *            System.out.println(String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
+ *            System.out.println(
+ *            String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
  *            }
  * }
  * </pre>
@@ -57,120 +58,120 @@ import io.odilon.log.Logger;
  */
 public class ResultSet<T extends Serializable> implements Iterator<T> {
 
-    @SuppressWarnings("unused")
-    static private Logger logger = Logger.getLogger(ResultSet.class.getName());
+	@SuppressWarnings("unused")
+	static private Logger logger = Logger.getLogger(ResultSet.class.getName());
 
-    private int relativeIndex = 0; // next item to return -> 0 to (list.size() - 1)
-    private int relativeSize = 0; // size of the list just fetched
-    private long cumulativeIndex = 0; // total items returned so far
+	private int relativeIndex = 0; // next item to return -> 0 to (list.size() - 1)
+	private int relativeSize = 0; // size of the list just fetched
+	private long cumulativeIndex = 0; // total items returned so far
 
-    private DataList<T> dataList;
-    private DataProvider<T> dataProvider;
+	private DataList<T> dataList;
+	private DataProvider<T> dataProvider;
 
-    /**
-     * @param pageRequest
-     */
-    public ResultSet(DataProvider<T> pageRequest) {
-        this.dataProvider = pageRequest;
-    }
+	/**
+	 * @param pageRequest
+	 */
+	public ResultSet(DataProvider<T> pageRequest) {
+		this.dataProvider = pageRequest;
+	}
 
-    @Override
-    public synchronized boolean hasNext() {
+	@Override
+	public synchronized boolean hasNext() {
 
-        if (dataList == null)
-            return fetch();
+		if (dataList == null)
+			return fetch();
 
-        /** if the buffer still has items */
-        if (relativeIndex < relativeSize)
-            return true;
+		/** if the buffer still has items */
+		if (relativeIndex < relativeSize)
+			return true;
 
-        /** buffer has no items */
-        return fetch();
+		/** buffer has no items */
+		return fetch();
 
-    }
+	}
 
-    /**
-     * 
-     * @return next element in the set. If there are no elements throws
-     *         {@link IndexOutOfBoundsException}
-     */
-    @Override
-    public synchronized T next() {
+	/**
+	 * 
+	 * @return next element in the set. If there are no elements throws
+	 *         {@link IndexOutOfBoundsException}
+	 */
+	@Override
+	public synchronized T next() {
 
-        /** if the buffer still has items to return */
-        if (this.relativeIndex < this.relativeSize) {
-            T object = this.dataList.get(relativeIndex);
-            this.relativeIndex++;
-            this.cumulativeIndex++;
-            return object;
-        }
+		/** if the buffer still has items to return */
+		if (this.relativeIndex < this.relativeSize) {
+			T object = this.dataList.get(relativeIndex);
+			this.relativeIndex++;
+			this.cumulativeIndex++;
+			return object;
+		}
 
-        /** fill in the buffer */
-        boolean hasItems = fetch();
+		/** fill in the buffer */
+		boolean hasItems = fetch();
 
-        if (!hasItems)
-            throw new IndexOutOfBoundsException(
-                    "No more items available. Normally the caller should check hasNext() before calling this method [returned so far -> "
-                            + String.valueOf(cumulativeIndex) + ")]");
+		if (!hasItems)
+			throw new IndexOutOfBoundsException(
+					"No more items available. Normally the caller should check hasNext() before calling this method [returned so far -> "
+							+ String.valueOf(cumulativeIndex) + ")]");
 
-        T object = this.dataList.get(relativeIndex);
+		T object = this.dataList.get(relativeIndex);
 
-        this.relativeIndex++;
-        this.cumulativeIndex++;
+		this.relativeIndex++;
+		this.cumulativeIndex++;
 
-        return object;
-    }
+		return object;
+	}
 
-    public synchronized long getPageSize() {
-        return (this.dataList != null ? this.dataList.getPageSize() : 0);
-    }
+	public synchronized long getPageSize() {
+		return (this.dataList != null ? this.dataList.getPageSize() : 0);
+	}
 
-    /**
-     * <p>
-     * The Optional is because in some use cases the total size of the
-     * {@link ResultSet} may not be known
-     * </p>
-     */
-    public synchronized Optional<Long> getSize() throws IOException {
+	/**
+	 * <p>
+	 * The Optional is because in some use cases the total size of the
+	 * {@link ResultSet} may not be known
+	 * </p>
+	 */
+	public synchronized Optional<Long> getSize() throws IOException {
 
-        if (this.dataList == null)
-            fetch();
+		if (this.dataList == null)
+			fetch();
 
-        if (this.dataList == null)
-            return Optional.ofNullable(null);
+		if (this.dataList == null)
+			return Optional.ofNullable(null);
 
-        return this.dataList.getSize();
-    }
+		return this.dataList.getSize();
+	}
 
-    /*
-     * cumulativeIndex is the total items returned so far -> 0 .. cumulativeIndex-1
-     * when we fetch from the server, the next item required is #cumulativeIndex
-     */
-    private boolean fetch() {
+	/*
+	 * cumulativeIndex is the total items returned so far -> 0 .. cumulativeIndex-1
+	 * when we fetch from the server, the next item required is #cumulativeIndex
+	 */
+	private boolean fetch() {
 
-        if (this.dataList != null && this.dataList.isEOD()) {
-            this.relativeIndex = 0;
-            this.relativeSize = 0;
-            this.dataList = null;
-            return false;
-        }
+		if (this.dataList != null && this.dataList.isEOD()) {
+			this.relativeIndex = 0;
+			this.relativeSize = 0;
+			this.dataList = null;
+			return false;
+		}
 
-        try {
-            this.dataList = this.dataProvider.fetch(cumulativeIndex);
-        } catch (IOException e) {
-            throw new InternalCriticalException(e, "error fechting data from dataProvider -> "
-                    + (Optional.ofNullable(this.dataProvider).isPresent() ? this.dataProvider.toString() : "null"));
-        }
+		try {
+			this.dataList = this.dataProvider.fetch(cumulativeIndex);
+		} catch (IOException e) {
+			throw new InternalCriticalException(e, "error fechting data from dataProvider -> "
+					+ (Optional.ofNullable(this.dataProvider).isPresent() ? this.dataProvider.toString() : "null"));
+		}
 
-        if (this.dataList == null)
-            return false;
+		if (this.dataList == null)
+			return false;
 
-        if (this.dataList.getList() == null)
-            return false;
+		if (this.dataList.getList() == null)
+			return false;
 
-        this.relativeIndex = 0;
-        this.relativeSize = this.dataList.getList().size();
-        return this.relativeSize > 0;
-    }
+		this.relativeIndex = 0;
+		this.relativeSize = this.dataList.getList().size();
+		return this.relativeSize > 0;
+	}
 
 }

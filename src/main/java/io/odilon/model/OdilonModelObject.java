@@ -31,18 +31,18 @@ import io.odilon.log.Logger;
 @JsonInclude(Include.NON_NULL)
 public abstract class OdilonModelObject extends BaseObject {
 
-    @SuppressWarnings("unused")
-    static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
+	@SuppressWarnings("unused")
+	static private Logger logger = Logger.getLogger(BucketMetadata.class.getName());
 
-    public OdilonModelObject() {
-    }
+	public OdilonModelObject() {
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getClass().getSimpleName());
-        str.append(toJSON());
-        return str.toString();
-    }
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append(this.getClass().getSimpleName());
+		str.append(toJSON());
+		return str.toString();
+	}
 
 }

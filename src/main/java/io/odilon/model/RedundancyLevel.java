@@ -69,101 +69,101 @@ import io.odilon.util.Check;
  */
 public enum RedundancyLevel {
 
-    RAID_0("RAID 0", 0), // (striping)
-    RAID_1("RAID 1", 1), // (mirroring)
-    RAID_6("RAID 6", 6); // (Erasure Codes Reed Solomon -> 2+1, 4+2, 8+4, 16+8)
+	RAID_0("RAID 0", 0), // (striping)
+	RAID_1("RAID 1", 1), // (mirroring)
+	RAID_6("RAID 6", 6); // (Erasure Codes Reed Solomon -> 2+1, 4+2, 8+4, 16+8)
 
-    private String name;
-    private int code;
+	private String name;
+	private int code;
 
-    static List<RedundancyLevel> list;
+	static List<RedundancyLevel> list;
 
-    public static List<RedundancyLevel> getValues() {
+	public static List<RedundancyLevel> getValues() {
 
-        if (list != null)
-            return list;
+		if (list != null)
+			return list;
 
-        list = new ArrayList<RedundancyLevel>();
+		list = new ArrayList<RedundancyLevel>();
 
-        list.add(RAID_0);
-        list.add(RAID_1);
-        list.add(RAID_6);
+		list.add(RAID_0);
+		list.add(RAID_1);
+		list.add(RAID_6);
 
-        return list;
-    }
+		return list;
+	}
 
-    /**
-     * 
-     * @param name
-     * @return
-     */
-    public static RedundancyLevel get(String name) {
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public static RedundancyLevel get(String name) {
 
-        Check.requireNonNullArgument(name, "name is null");
+		Check.requireNonNullArgument(name, "name is null");
 
-        String normalized = name.toUpperCase().trim();
+		String normalized = name.toUpperCase().trim();
 
-        if (normalized.equals(RAID_0.getName()))
-            return RAID_0;
-        if (normalized.equals(RAID_1.getName()))
-            return RAID_1;
-        if (normalized.equals(RAID_6.getName()))
-            return RAID_6;
+		if (normalized.equals(RAID_0.getName()))
+			return RAID_0;
+		if (normalized.equals(RAID_1.getName()))
+			return RAID_1;
+		if (normalized.equals(RAID_6.getName()))
+			return RAID_6;
 
-        return null;
-    }
+		return null;
+	}
 
-    public static RedundancyLevel get(int code) {
+	public static RedundancyLevel get(int code) {
 
-        if (code == RAID_0.code)
-            return RAID_0;
-        if (code == RAID_1.code)
-            return RAID_1;
-        if (code == RAID_6.code)
-            return RAID_6;
+		if (code == RAID_0.code)
+			return RAID_0;
+		if (code == RAID_1.code)
+			return RAID_1;
+		if (code == RAID_6.code)
+			return RAID_6;
 
-        throw new IllegalArgumentException("unsupported code -> " + String.valueOf(code));
+		throw new IllegalArgumentException("unsupported code -> " + String.valueOf(code));
 
-    }
+	}
 
-    private RedundancyLevel(String name, int code) {
-        this.name = name;
-        this.code = code;
-    }
+	private RedundancyLevel(String name, int code) {
+		this.name = name;
+		this.code = code;
+	}
 
-    public String getDescription() {
-        return getDescription(Locale.getDefault());
-    }
+	public String getDescription() {
+		return getDescription(Locale.getDefault());
+	}
 
-    public String getDescription(Locale locale) {
-        // ResourceBundle res =
-        // ResourceBundle.getBundle(RedundancyLevel.this.getClass().getName(), locale);
-        // return res.getString(this.getName());
-        return getName();
+	public String getDescription(Locale locale) {
+		// ResourceBundle res =
+		// ResourceBundle.getBundle(RedundancyLevel.this.getClass().getName(), locale);
+		// return res.getString(this.getName());
+		return getName();
 
-    }
+	}
 
-    public String toJSON() {
-        StringBuilder str = new StringBuilder();
-        str.append("\"name\":\"" + name + "\"");
-        str.append("\"description\":\"" + getDescription() + "\"");
-        return str.toString();
-    }
+	public String toJSON() {
+		StringBuilder str = new StringBuilder();
+		str.append("\"name\":\"" + name + "\"");
+		str.append("\"description\":\"" + getDescription() + "\"");
+		return str.toString();
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getClass().getSimpleName() + "{");
-        str.append(toJSON());
-        str.append("}");
-        return str.toString();
-    }
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append(this.getClass().getSimpleName() + "{");
+		str.append(toJSON());
+		str.append("}");
+		return str.toString();
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getCode() {
-        return code;
-    }
+	public int getCode() {
+		return code;
+	}
 }

@@ -31,49 +31,51 @@ import io.odilon.log.Logger;
 import io.odilon.model.SharedConstant;
 
 /**
- * <p>File utilities, mainly to calculate SHA1, MD5, SHA256</p>
+ * <p>
+ * File utilities, mainly to calculate SHA1, MD5, SHA256
+ * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public class OdilonFileUtils  {
-																						
+public class OdilonFileUtils {
+
 	private static Logger logger = Logger.getLogger(OdilonFileUtils.class.getName());
 
 	static final int BUFFER_SIZE = 16384;
-	
+
 	public static void forceMkdir(File directory) throws IOException {
-		 FileUtils.forceMkdir(directory);
+		FileUtils.forceMkdir(directory);
 	}
-	
+
 	public static long sizeOf(File file) {
 		return FileUtils.sizeOf(file);
 	}
-	
-	public static void moveDirectory(File srcDir, File destDir)  throws IOException {
+
+	public static void moveDirectory(File srcDir, File destDir) throws IOException {
 		FileUtils.moveDirectory(srcDir, destDir);
 	}
-	
+
 	public static boolean deleteQuietly(File file) {
 		return FileUtils.deleteQuietly(file);
 	}
-	
+
 	public static void forceDelete(final File file) throws IOException {
 		FileUtils.forceDelete(file);
 	}
 
-	public static String calculateMD5String(final byte [] data) throws IOException, NoSuchAlgorithmException {
+	public static String calculateMD5String(final byte[] data) throws IOException, NoSuchAlgorithmException {
 		byte[] md5Hash = MessageDigest.getInstance("MD5").digest(data);
-		return String.format("%32s", new BigInteger(1,  md5Hash).toString(16)).replace(' ', '0');
+		return String.format("%32s", new BigInteger(1, md5Hash).toString(16)).replace(' ', '0');
 	}
 
-	public static String calculateSHA1String(final byte [] data) throws IOException, NoSuchAlgorithmException {
+	public static String calculateSHA1String(final byte[] data) throws IOException, NoSuchAlgorithmException {
 		byte[] hash = MessageDigest.getInstance("SHA-1").digest(data);
-		return String.format("%40s", new BigInteger(1,  hash).toString(16)).replace(' ', '0');
+		return String.format("%40s", new BigInteger(1, hash).toString(16)).replace(' ', '0');
 	}
-	
-	public static String calculateSHA256String(final byte [] data) throws IOException, NoSuchAlgorithmException {
+
+	public static String calculateSHA256String(final byte[] data) throws IOException, NoSuchAlgorithmException {
 		byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
-		return String.format("%64s", new BigInteger(1,  hash).toString(16)).replace(' ', '0');
+		return String.format("%64s", new BigInteger(1, hash).toString(16)).replace(' ', '0');
 	}
 
 	/**
@@ -83,29 +85,28 @@ public class OdilonFileUtils  {
 	 * @throws NoSuchAlgorithmException
 	 */
 	public static String calculateSHA256String(final String string) throws IOException, NoSuchAlgorithmException {
-	
+
 		MessageDigest digest;
-		
+
 		try {
 			digest = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			logger.error(" calculateSHA256String -> " + (string!=null?string:"null"));
+			logger.error(" calculateSHA256String -> " + (string != null ? string : "null"));
 			throw e;
 		}
-		
+
 		try {
 			byte bytes[] = string.getBytes();
-		    digest.update(bytes, 0, bytes.length);
-		    
-		    return String.format("%64s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
-		    
+			digest.update(bytes, 0, bytes.length);
+
+			return String.format("%64s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
+
 		} catch (Exception e) {
-			logger.error(" calculateSHA256String -> " + (string!=null?string:"null"));
+			logger.error(" calculateSHA256String -> " + (string != null ? string : "null"));
 			throw e;
 		}
 	}
 
-	
 	/**
 	 * 
 	 * @param file
@@ -115,50 +116,46 @@ public class OdilonFileUtils  {
 	 */
 	public static String calculateSHA256String(final File file) throws IOException, NoSuchAlgorithmException {
 
-		byte[] buffer= new byte[BUFFER_SIZE];
+		byte[] buffer = new byte[BUFFER_SIZE];
 		int count = 0;
-	
+
 		MessageDigest digest;
-		
+
 		try {
 			digest = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			logger.error(" calculateSHA256String | File -> " + (file!=null?file.getName():"null"));
+			logger.error(" calculateSHA256String | File -> " + (file != null ? file.getName() : "null"));
 			throw e;
 		}
-		    
+
 		BufferedInputStream bis = null;
-			
+
 		try {
-			
+
 			bis = new BufferedInputStream(new FileInputStream(file));
-			
+
 			while ((count = bis.read(buffer)) > 0)
-		        digest.update(buffer, 0, count);
-			
+				digest.update(buffer, 0, count);
+
 			return String.format("%64s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
-			
-		    
+
 		} catch (FileNotFoundException e) {
-				logger.error(" calculateSHA256String | File -> " + (file!=null?file.getName():"null"));
-				throw e;
-				
+			logger.error(" calculateSHA256String | File -> " + (file != null ? file.getName() : "null"));
+			throw e;
+
 		} catch (Exception e) {
 			throw e;
-		}
-			finally {
-				if (bis!=null) {
-					try {
-						bis.close();
-					} catch (IOException e) {
-						logger.error(e, SharedConstant.NOT_THROWN);
-					}
+		} finally {
+			if (bis != null) {
+				try {
+					bis.close();
+				} catch (IOException e) {
+					logger.error(e, SharedConstant.NOT_THROWN);
 				}
+			}
 		}
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * 
@@ -167,46 +164,44 @@ public class OdilonFileUtils  {
 	 * @throws IOException
 	 * @throws NoSuchAlgorithmException
 	 */
-	
+
 	public static String calculateMD5String(final File file) throws IOException, NoSuchAlgorithmException {
 
-		byte[] buffer= new byte[BUFFER_SIZE];
+		byte[] buffer = new byte[BUFFER_SIZE];
 		int count = 0;
-	
+
 		MessageDigest digest;
-		
+
 		try {
 			digest = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
-			logger.error(" calculateMD5String | File -> " + (file!=null?file.getName():"null"));
+			logger.error(" calculateMD5String | File -> " + (file != null ? file.getName() : "null"));
 			throw e;
 		}
-		    
+
 		BufferedInputStream bis = null;
-			
+
 		try {
 			bis = new BufferedInputStream(new FileInputStream(file));
 			while ((count = bis.read(buffer)) > 0)
-		        digest.update(buffer, 0, count);
-			
+				digest.update(buffer, 0, count);
+
 			return String.format("%32s", new BigInteger(1, digest.digest()).toString(16)).replace(' ', '0');
-			
-		    
+
 		} catch (FileNotFoundException e) {
-				logger.error(" calculateMD5String | File -> " + (file!=null?file.getName():"null"));
-				throw e;
-				
+			logger.error(" calculateMD5String | File -> " + (file != null ? file.getName() : "null"));
+			throw e;
+
 		} catch (Exception e) {
 			throw e;
-		}
-			finally {
-				if (bis!=null) {
-					try {
-						bis.close();
-					} catch (IOException e) {
-						logger.error(e, SharedConstant.NOT_THROWN);
-					}
+		} finally {
+			if (bis != null) {
+				try {
+					bis.close();
+				} catch (IOException e) {
+					logger.error(e, SharedConstant.NOT_THROWN);
 				}
+			}
 		}
 	}
 }

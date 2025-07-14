@@ -39,179 +39,178 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class OdilonServerInfo extends BaseObject implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @JsonProperty("id")
-    private String id;
+	@JsonProperty("id")
+	private String id;
 
-    @JsonProperty("name")
-    private String name;
+	@JsonProperty("name")
+	private String name;
 
-    @JsonProperty("redundancyLevel")
-    private String redundancyLevel;
-    
-    @JsonProperty("creationDate")
-    private OffsetDateTime creationDate;
+	@JsonProperty("redundancyLevel")
+	private String redundancyLevel;
 
-    @JsonProperty("standByStartDate")
-    private OffsetDateTime standByStartDate;
+	@JsonProperty("creationDate")
+	private OffsetDateTime creationDate;
 
-    @JsonProperty("standBySyncedDate")
-    private OffsetDateTime standBySyncedDate;
+	@JsonProperty("standByStartDate")
+	private OffsetDateTime standByStartDate;
 
-    @JsonProperty("serverMode")
-    private String serverMode;
+	@JsonProperty("standBySyncedDate")
+	private OffsetDateTime standBySyncedDate;
 
-    @JsonProperty("standbyUrl")
-    private String standbyUrl;
+	@JsonProperty("serverMode")
+	private String serverMode;
 
-    @JsonProperty("standbyPort")
-    private int standbyPort;
+	@JsonProperty("standbyUrl")
+	private String standbyUrl;
 
-    @JsonProperty("isStandBy")
-    private boolean isStandBy;
+	@JsonProperty("standbyPort")
+	private int standbyPort;
 
-    @JsonProperty("isVersionControl")
-    private boolean isVersionControl;
+	@JsonProperty("isStandBy")
+	private boolean isStandBy;
 
-    @JsonProperty("versionControlDate")
-    private OffsetDateTime versionControlDate;
+	@JsonProperty("isVersionControl")
+	private boolean isVersionControl;
 
-    @JsonProperty("encryptionIntialized")
-    private boolean encryptionIntialized;
+	@JsonProperty("versionControlDate")
+	private OffsetDateTime versionControlDate;
 
-    @JsonProperty("encryptionInitializedDate")
-    private OffsetDateTime encryptionInitializedDate;
+	@JsonProperty("encryptionIntialized")
+	private boolean encryptionIntialized;
 
-    @JsonProperty("encryptionLastModifiedDate")
-    private OffsetDateTime encryptionLastModifiedDate;
+	@JsonProperty("encryptionInitializedDate")
+	private OffsetDateTime encryptionInitializedDate;
 
-    /**
-     * 
-     */
-    public OdilonServerInfo() {
-    }
+	@JsonProperty("encryptionLastModifiedDate")
+	private OffsetDateTime encryptionLastModifiedDate;
 
-    public void setEncryptionIntialized(boolean b) {
-        encryptionIntialized = b;
-    }
+	/**
+	 * 
+	 */
+	public OdilonServerInfo() {
+	}
 
-    public boolean isEncryptionIntialized() {
-        return encryptionIntialized;
-    }
+	public void setEncryptionIntialized(boolean b) {
+		encryptionIntialized = b;
+	}
 
-    public OffsetDateTime getEncryptionIntializedDate() {
-        return encryptionInitializedDate;
-    }
+	public boolean isEncryptionIntialized() {
+		return encryptionIntialized;
+	}
 
-    public void setEncryptionIntializedDate(OffsetDateTime date) {
-        encryptionInitializedDate = date;
-    }
+	public OffsetDateTime getEncryptionIntializedDate() {
+		return encryptionInitializedDate;
+	}
 
-    public OffsetDateTime getEncryptionLastModifiedDate() {
-        return (encryptionLastModifiedDate != null ? encryptionLastModifiedDate : encryptionInitializedDate);
-    }
+	public void setEncryptionIntializedDate(OffsetDateTime date) {
+		encryptionInitializedDate = date;
+	}
 
-    public void setEncryptionLastModifiedDate(OffsetDateTime date) {
-        encryptionLastModifiedDate = date;
-    }
+	public OffsetDateTime getEncryptionLastModifiedDate() {
+		return (encryptionLastModifiedDate != null ? encryptionLastModifiedDate : encryptionInitializedDate);
+	}
 
-    public String getId() {
-        return id;
-    }
+	public void setEncryptionLastModifiedDate(OffsetDateTime date) {
+		encryptionLastModifiedDate = date;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public OffsetDateTime getCreationDate() {
-        return creationDate;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setCreationDate(OffsetDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
+	public OffsetDateTime getCreationDate() {
+		return creationDate;
+	}
 
-    public OffsetDateTime getStandByStartDate() {
-        return standByStartDate;
-    }
+	public void setCreationDate(OffsetDateTime creationDate) {
+		this.creationDate = creationDate;
+	}
 
-    public void setStandByStartDate(OffsetDateTime standByStartDate) {
-        this.standByStartDate = standByStartDate;
-    }
+	public OffsetDateTime getStandByStartDate() {
+		return standByStartDate;
+	}
 
-    public OffsetDateTime getStandBySyncedDate() {
-        return standBySyncedDate;
-    }
+	public void setStandByStartDate(OffsetDateTime standByStartDate) {
+		this.standByStartDate = standByStartDate;
+	}
 
-    public void setStandBySyncedDate(OffsetDateTime standBySyncedDate) {
-        this.standBySyncedDate = standBySyncedDate;
-    }
+	public OffsetDateTime getStandBySyncedDate() {
+		return standBySyncedDate;
+	}
 
-    public String getServerMode() {
-        return serverMode;
-    }
+	public void setStandBySyncedDate(OffsetDateTime standBySyncedDate) {
+		this.standBySyncedDate = standBySyncedDate;
+	}
 
-    public void setServerMode(String serverMode) {
-        this.serverMode = serverMode;
-    }
+	public String getServerMode() {
+		return serverMode;
+	}
 
-    public String getStandbyUrl() {
-        return standbyUrl;
-    }
+	public void setServerMode(String serverMode) {
+		this.serverMode = serverMode;
+	}
 
-    public void setStandbyUrl(String standbyUrl) {
-        this.standbyUrl = standbyUrl;
-    }
+	public String getStandbyUrl() {
+		return standbyUrl;
+	}
 
-    public int getStandbyPort() {
-        return standbyPort;
-    }
+	public void setStandbyUrl(String standbyUrl) {
+		this.standbyUrl = standbyUrl;
+	}
 
-    public void setStandbyPort(int standbyPort) {
-        this.standbyPort = standbyPort;
-    }
+	public int getStandbyPort() {
+		return standbyPort;
+	}
 
-    @JsonIgnore
-    public boolean isStandByEnabled() {
-        return isStandBy;
-    }
+	public void setStandbyPort(int standbyPort) {
+		this.standbyPort = standbyPort;
+	}
 
-    public void setStandByEnabled(boolean isStandByEnabled) {
-        this.isStandBy = isStandByEnabled;
-    }
+	@JsonIgnore
+	public boolean isStandByEnabled() {
+		return isStandBy;
+	}
 
-    public boolean isVersionControl() {
-        return isVersionControl;
-    }
+	public void setStandByEnabled(boolean isStandByEnabled) {
+		this.isStandBy = isStandByEnabled;
+	}
 
-    public void setVersionControl(boolean isVersionControl) {
-        this.isVersionControl = isVersionControl;
-    }
+	public boolean isVersionControl() {
+		return isVersionControl;
+	}
 
-    public OffsetDateTime getVersionControlDate() {
-        return versionControlDate;
-    }
+	public void setVersionControl(boolean isVersionControl) {
+		this.isVersionControl = isVersionControl;
+	}
 
-    public void setVersionControlDate(OffsetDateTime date) {
-        versionControlDate = date;
-    }
+	public OffsetDateTime getVersionControlDate() {
+		return versionControlDate;
+	}
 
-    public void setRedundancyLevel(String rl) {
-                this.redundancyLevel=rl;
-    }
+	public void setVersionControlDate(OffsetDateTime date) {
+		versionControlDate = date;
+	}
 
-    public String getRedundancyLevel() {
-        return this.redundancyLevel;
-}
+	public void setRedundancyLevel(String rl) {
+		this.redundancyLevel = rl;
+	}
 
-    
+	public String getRedundancyLevel() {
+		return this.redundancyLevel;
+	}
+
 }

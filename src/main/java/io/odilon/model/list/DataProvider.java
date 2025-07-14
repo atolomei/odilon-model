@@ -29,7 +29,7 @@ import java.io.Serializable;
  */
 public interface DataProvider<T extends Serializable> extends Serializable {
 
-    public DataList<T> fetch() throws IOException;
+	public DataList<T> fetch() throws IOException;
 
-    public DataList<T> fetch(long offset) throws IOException;
+	public DataList<T> fetch(long offset) throws IOException;
 }

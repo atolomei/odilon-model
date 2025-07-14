@@ -38,140 +38,140 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class BucketMetadata extends OdilonModelObject implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @JsonProperty("bucketName")
-    public String bucketName;
+	@JsonProperty("bucketName")
+	public String bucketName;
 
-    @JsonProperty("id")
-    public Long id;
+	@JsonProperty("id")
+	public Long id;
 
-    @JsonProperty("creationDate")
-    public OffsetDateTime creationDate;
+	@JsonProperty("creationDate")
+	public OffsetDateTime creationDate;
 
-    @JsonProperty("status")
-    public BucketStatus status;
+	@JsonProperty("status")
+	public BucketStatus status;
 
-    @JsonProperty("appVersion")
-    public String appVersion;
+	@JsonProperty("appVersion")
+	public String appVersion;
 
-    @JsonProperty("lastModified")
-    public OffsetDateTime lastModified;
+	@JsonProperty("lastModified")
+	public OffsetDateTime lastModified;
 
-    public void setLastModified(OffsetDateTime now) {
-        this.lastModified = now;
-    }
+	public void setLastModified(OffsetDateTime now) {
+		this.lastModified = now;
+	}
 
-    public BucketMetadata() {
-    }
+	public BucketMetadata() {
+	}
 
-    public BucketMetadata(String bucketName) {
-        this.bucketName = bucketName;
-    }
+	public BucketMetadata(String bucketName) {
+		this.bucketName = bucketName;
+	}
 
-    public BucketMetadata clone() {
-        BucketMetadata clone = new BucketMetadata();
-        clone.bucketName = bucketName;
-        clone.creationDate = creationDate;
-        clone.status = status;
-        clone.appVersion = appVersion;
-        clone.lastModified = lastModified;
-        if (id != null)
-            clone.id = Long.valueOf(id.longValue());
-        return clone;
-    }
+	public BucketMetadata clone() {
+		BucketMetadata clone = new BucketMetadata();
+		clone.bucketName = bucketName;
+		clone.creationDate = creationDate;
+		clone.status = status;
+		clone.appVersion = appVersion;
+		clone.lastModified = lastModified;
+		if (id != null)
+			clone.id = Long.valueOf(id.longValue());
+		return clone;
+	}
 
-    public String getBucketName() {
-        return this.bucketName;
-    }
+	public String getBucketName() {
+		return this.bucketName;
+	}
 
-    /**
-     * Checks whether given object is same as this ObjectStat.
-     */
-    @Override
-    public boolean equals(Object o) {
+	/**
+	 * Checks whether given object is same as this ObjectStat.
+	 */
+	@Override
+	public boolean equals(Object o) {
 
-        if (this == o) {
-            return true;
-        }
+		if (this == o) {
+			return true;
+		}
 
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-        BucketMetadata that = (BucketMetadata) o;
+		BucketMetadata that = (BucketMetadata) o;
 
-        if (this.id != null) {
-            if (that.id != null)
-                return this.id.longValue() == that.id.longValue();
-            else
-                return false;
-        } else {
-            if (that.id != null)
-                return false;
-        }
+		if (this.id != null) {
+			if (that.id != null)
+				return this.id.longValue() == that.id.longValue();
+			else
+				return false;
+		} else {
+			if (that.id != null)
+				return false;
+		}
 
-        if (this.bucketName.equals(that.bucketName)) {
-            return true;
-        }
+		if (this.bucketName.equals(that.bucketName)) {
+			return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    /**
-     * Returns hash of this ObjectStat.
-     */
-    @Override
-    public int hashCode() {
-        int result = bucketName.hashCode();
-        result = 31 * result + creationDate.hashCode();
-        return result;
-    }
+	/**
+	 * Returns hash of this ObjectStat.
+	 */
+	@Override
+	public int hashCode() {
+		int result = bucketName.hashCode();
+		result = 31 * result + creationDate.hashCode();
+		return result;
+	}
 
-    /**
-     * <p>
-     * Returns bucket name
-     * </p>
-     */
-    public String bucketName() {
-        return this.bucketName;
-    }
+	/**
+	 * <p>
+	 * Returns bucket name
+	 * </p>
+	 */
+	public String bucketName() {
+		return this.bucketName;
+	}
 
-    /**
-     * <p>
-     * Returns created time
-     * </p>
-     */
-    public OffsetDateTime creationDate() {
-        return this.creationDate;
-    }
+	/**
+	 * <p>
+	 * Returns created time
+	 * </p>
+	 */
+	public OffsetDateTime creationDate() {
+		return this.creationDate;
+	}
 
-    public BucketStatus getStatus() {
-        return this.status;
-    }
+	public BucketStatus getStatus() {
+		return this.status;
+	}
 
-    public Long getId() {
-        return this.id;
-    }
+	public Long getId() {
+		return this.id;
+	}
 
-    public void setCreationDate(OffsetDateTime now) {
-        this.creationDate = now;
-    }
+	public void setCreationDate(OffsetDateTime now) {
+		this.creationDate = now;
+	}
 
-    public void setBucketName(String bucketName) {
-        this.bucketName = bucketName;
-    }
+	public void setBucketName(String bucketName) {
+		this.bucketName = bucketName;
+	}
 
-    public void setStatus(BucketStatus status) {
-        this.status = status;
-    }
+	public void setStatus(BucketStatus status) {
+		this.status = status;
+	}
 
-    public void setAppVersion(String version) {
-        this.appVersion = version;
-    }
+	public void setAppVersion(String version) {
+		this.appVersion = version;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }

@@ -33,97 +33,97 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DataList<T extends Serializable> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @JsonProperty("serverAgentId")
-    private String serverAgentId;
+	@JsonProperty("serverAgentId")
+	private String serverAgentId;
 
-    @JsonProperty("size")
-    private Long size;
+	@JsonProperty("size")
+	private Long size;
 
-    @JsonProperty("offset")
-    private long offset = 0;
+	@JsonProperty("offset")
+	private long offset = 0;
 
-    @JsonProperty("pagesize")
-    private long pageSize;
+	@JsonProperty("pagesize")
+	private long pageSize;
 
-    @JsonProperty("list")
-    private List<T> list;
+	@JsonProperty("list")
+	private List<T> list;
 
-    @JsonProperty("eod")
-    private boolean eod = false;
+	@JsonProperty("eod")
+	private boolean eod = false;
 
-    public DataList() {
-    }
+	public DataList() {
+	}
 
-    public DataList(List<T> list, Optional<String> agentId) {
-        this.list = list;
-        agentId.ifPresent(x -> serverAgentId = x);
-    }
+	public DataList(List<T> list, Optional<String> agentId) {
+		this.list = list;
+		agentId.ifPresent(x -> serverAgentId = x);
+	}
 
-    public DataList(List<T> list) {
-        this.list = list;
-    }
+	public DataList(List<T> list) {
+		this.list = list;
+	}
 
-    public T get(int index) {
-        return list.get(index);
-    }
+	public T get(int index) {
+		return list.get(index);
+	}
 
-    public Optional<Long> getSize() {
-        return Optional.ofNullable(size);
-    }
+	public Optional<Long> getSize() {
+		return Optional.ofNullable(size);
+	}
 
-    public void setSize(long size) {
-        this.size = size;
-    }
+	public void setSize(long size) {
+		this.size = size;
+	}
 
-    public long getOffset() {
-        return offset;
-    }
+	public long getOffset() {
+		return offset;
+	}
 
-    public void setOffset(long offset) {
-        this.offset = offset;
-    }
+	public void setOffset(long offset) {
+		this.offset = offset;
+	}
 
-    public long getPageSize() {
-        return pageSize;
-    }
+	public long getPageSize() {
+		return pageSize;
+	}
 
-    public void setPageSize(long pageSize) {
-        this.pageSize = pageSize;
-    }
+	public void setPageSize(long pageSize) {
+		this.pageSize = pageSize;
+	}
 
-    public List<T> getList() {
-        return list;
-    }
+	public List<T> getList() {
+		return list;
+	}
 
-    public void setList(List<T> list) {
-        this.list = list;
-    }
+	public void setList(List<T> list) {
+		this.list = list;
+	}
 
-    public String getAgentId() {
-        return serverAgentId;
-    }
+	public String getAgentId() {
+		return serverAgentId;
+	}
 
-    public void setAgentId(String serverAgentId) {
-        this.serverAgentId = serverAgentId;
-    }
+	public void setAgentId(String serverAgentId) {
+		this.serverAgentId = serverAgentId;
+	}
 
-    /**
-     * <p>
-     * flag that informs whether this list is the end of the data stream (End Of
-     * Data) on the side of the server. It is used to prevent the last pull from the
-     * server to get an empty resultSet.
-     * </p>
-     * 
-     * @return true if there is no more data to fetch.
-     */
-    public boolean isEOD() {
-        return eod;
-    }
+	/**
+	 * <p>
+	 * flag that informs whether this list is the end of the data stream (End Of
+	 * Data) on the side of the server. It is used to prevent the last pull from the
+	 * server to get an empty resultSet.
+	 * </p>
+	 * 
+	 * @return true if there is no more data to fetch.
+	 */
+	public boolean isEOD() {
+		return eod;
+	}
 
-    public void setEOD(boolean eod) {
-        this.eod = eod;
-    }
+	public void setEOD(boolean eod) {
+		this.eod = eod;
+	}
 
 }

@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ItemError {
 
-    @JsonProperty("message")
-    public String message;
+	@JsonProperty("message")
+	public String message;
 
 }

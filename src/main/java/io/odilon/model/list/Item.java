@@ -42,16 +42,18 @@ import io.odilon.model.OdilonModelObject;
  * <pre> {@code
  * 
  * try {
- *     ResultSet<Item<ObjectMetadata>> resultSet = client.listObjects(bucket.getName());
- *     while (resultSet.hasNext()) {
- *         Item item = resultSet.next();
- *         if (item.isOk())
- *             System.out.println("ObjectName:" + item.getObject().objectName + " | file: " + item.getObject().fileName);
- *         else
- *             System.out.println(item.getErrorString());
- *     }
+ * 	ResultSet<Item<ObjectMetadata>> resultSet = client.listObjects(bucket.getName());
+ * 	while (resultSet.hasNext()) {
+ * 		Item item = resultSet.next();
+ * 		if (item.isOk())
+ * 			System.out
+ * 					.println("ObjectName:" + item.getObject().objectName + " | file: " + item.getObject().fileName);
+ * 		else
+ * 			System.out.println(item.getErrorString());
+ * 	}
  * } catch (ODClientException e) {
- *     System.out.println(String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
+ * 	System.out.println(
+ * 			String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
  * }
  * }
  * </pre>
@@ -62,39 +64,39 @@ import io.odilon.model.OdilonModelObject;
  */
 public class Item<T extends Serializable> extends OdilonModelObject implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @JsonProperty("object")
-    private T object;
+	@JsonProperty("object")
+	private T object;
 
-    @JsonProperty("error")
-    private String error;
+	@JsonProperty("error")
+	private String error;
 
-    public Item() {
-    }
+	public Item() {
+	}
 
-    public T getObject() {
-        return object;
-    }
+	public T getObject() {
+		return object;
+	}
 
-    public Item(Exception e) {
-        this.error = e.getClass().getName() + " | " + e.getMessage();
-    }
+	public Item(Exception e) {
+		this.error = e.getClass().getName() + " | " + e.getMessage();
+	}
 
-    public Item(T object) {
-        this.object = object;
-    }
+	public Item(T object) {
+		this.object = object;
+	}
 
-    public void setError(String error) {
-        this.error = error;
-    }
+	public void setError(String error) {
+		this.error = error;
+	}
 
-    public boolean isOk() {
-        return object != null;
-    }
+	public boolean isOk() {
+		return object != null;
+	}
 
-    public String getErrorString() {
-        return error;
-    }
+	public String getErrorString() {
+		return error;
+	}
 
 }

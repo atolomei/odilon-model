@@ -43,43 +43,43 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class CachedDataProvider<T extends Serializable> implements DataProvider<T> {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cacheKey")
-    private String cacheKey;
+	@JsonProperty("cacheKey")
+	private String cacheKey;
 
-    @JsonIgnore
-    private boolean done = false;
+	@JsonIgnore
+	private boolean done = false;
 
-    public CachedDataProvider() {
-    }
+	public CachedDataProvider() {
+	}
 
-    public void setCacheKey(String key) {
-        this.cacheKey = key;
-    }
+	public void setCacheKey(String key) {
+		this.cacheKey = key;
+	}
 
-    public String getCacheKey() {
-        return this.cacheKey;
-    }
+	public String getCacheKey() {
+		return this.cacheKey;
+	}
 
-    public boolean isDone() {
-        return done;
-    }
+	public boolean isDone() {
+		return done;
+	}
 
-    public void setDone(boolean done) {
-        this.done = done;
-    }
+	public void setDone(boolean done) {
+		this.done = done;
+	}
 
-    @Override
-    public DataList<T> fetch() throws IOException {
-        return fetch(Optional.empty(), Optional.ofNullable(cacheKey));
-    }
+	@Override
+	public DataList<T> fetch() throws IOException {
+		return fetch(Optional.empty(), Optional.ofNullable(cacheKey));
+	}
 
-    @Override
-    public DataList<T> fetch(long offset) throws IOException {
-        return fetch(Optional.of(Long.valueOf(offset)), Optional.ofNullable(cacheKey));
-    }
+	@Override
+	public DataList<T> fetch(long offset) throws IOException {
+		return fetch(Optional.of(Long.valueOf(offset)), Optional.ofNullable(cacheKey));
+	}
 
-    protected abstract DataList<T> fetch(Optional<Long> offset, Optional<String> cacheKey) throws IOException;
+	protected abstract DataList<T> fetch(Optional<Long> offset, Optional<String> cacheKey) throws IOException;
 
 }

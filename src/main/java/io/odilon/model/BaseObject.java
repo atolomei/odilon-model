@@ -60,6 +60,7 @@ public abstract class BaseObject implements JSONObject {
 		}
 	}
 
+	
 	protected String randomString(final int size) {
 		return idGenerator.randomString(size);
 	}

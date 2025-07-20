@@ -98,9 +98,6 @@ public class SystemInfo extends BaseObject {
 
     public String serverMode;
     public String serverDataStorageMode;
-
-    
-    
     
     public String isStandby;
     public String standbyUrl;
@@ -206,6 +203,14 @@ public class SystemInfo extends BaseObject {
         return isVersionControl != null && isVersionControl.equals("true");
     }
 
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(this.getClass().getSimpleName());
+        str.append(toJSON());
+        return str.toString();
+    }
+    
     @JsonIgnore
     private String formatFileSize(long size) {
 

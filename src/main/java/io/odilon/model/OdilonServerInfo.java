@@ -212,5 +212,13 @@ public class OdilonServerInfo extends BaseObject implements Serializable {
 	public String getRedundancyLevel() {
 		return this.redundancyLevel;
 	}
+	
+	 @Override
+	    public String toString() {
+	        StringBuilder str = new StringBuilder();
+	        str.append(this.getClass().getSimpleName());
+	        str.append(toJSON());
+	        return str.toString();
+	    }
 
 }

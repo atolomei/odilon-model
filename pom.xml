@@ -41,9 +41,8 @@
 		4.0.0 no funciono. java.lang.ClassNotFoundException:
 		com.lmax.disruptor.SequenceReportingEventHandler  -->
 
-		<google.guava-version>33.0.0-jre</google.guava-version> 		<!--  01 /2024
-		31.1-jre -->
-		<jackson-version>2.18.3</jackson-version> 						<!--  01 /2025   -->
+		<google.guava-version>33.4.8-jre</google.guava-version> 		<!--  08 /2025  -->
+		<jackson-version>2.19.2</jackson-version> 						<!--  08 /2025   -->
 		<java-version>11</java-version>
 		<junit-version>5.12.2</junit-version> 							<!--  5.10.1 -->
 		<log4j2-version>2.24.3</log4j2-version> 						<!--  01 /2024 Spring boot 3.4.1  -->
@@ -80,6 +79,9 @@
 	=====================================================================================  -->
 
 	<dependencies>
+	
+		<!--  LOG4J2  -->
+		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -97,6 +99,9 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>${log4j2-version}</version>
 		</dependency>
+
+
+		<!--  commons-io -->
 
 		<dependency>
 			<groupId>commons-io</groupId>

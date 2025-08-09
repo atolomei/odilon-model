@@ -19,6 +19,7 @@ package io.odilon.model;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -105,6 +106,9 @@ public class SystemInfo extends BaseObject {
 
     public String isVersionControl;
 
+    public List<String> rootDirs;
+    
+    
     /**
      * total disk available to store data. This depends on the redundancy level used
      */
@@ -157,9 +161,17 @@ public class SystemInfo extends BaseObject {
 
         map.put("redundancyLevel", Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
 
-        if (redundancyLevelDetail != null)
+        
+        if (redundancyLevelDetail != null) {
             map.put("redundancyLevel.detail", redundancyLevelDetail);
-
+        }
+        
+        if (this.rootDirs!=null) {
+        	StringBuilder str = new StringBuilder();
+        	this.rootDirs.forEach( i -> str.append((str.length()>0 ? " | ":"") + i ));	
+        	map.put("rootDirs", str.toString());
+        }
+        
         map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "");
 
         map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "");

@@ -6,7 +6,7 @@
 
 	<groupId>io.odilon</groupId>
 	<artifactId>odilon-model</artifactId>
-	<version>1.14.1</version>
+	<version>1.15</version>
 	<name>odilon model</name>
 	<packaging>jar</packaging>
 
@@ -32,20 +32,31 @@
 
 		<checksum-maven-plugin-version>1.11</checksum-maven-plugin-version>
 
-		<commons-io-version>2.19.0</commons-io-version> 				<!--   6 /2025  -->
-		<commons-lang3-version>3.17.0</commons-lang3-version> 			<!--   1 /2025  -->
-		<commons-validator.version>1.9.0</commons-validator.version> 	<!--  01/2025   -->
+		<commons-io-version>2.20.0</commons-io-version> 				<!--   10 /2025  -->
+		<commons-lang3-version>3.19.0</commons-lang3-version> 			<!--   10 /2025  -->
+		<commons-validator.version>1.10.0</commons-validator.version> 	<!--  10/2025   -->
 
 		<disruptor-version>3.4.4</disruptor-version>
+		
 		<!--  01 /2024  3.4.4  version
 		4.0.0 no funciono. java.lang.ClassNotFoundException:
 		com.lmax.disruptor.SequenceReportingEventHandler  -->
 
-		<google.guava-version>33.4.8-jre</google.guava-version> 		<!--  08 /2025  -->
-		<jackson-version>2.19.2</jackson-version> 						<!--  08 /2025   -->
+		<google.guava-version>33.5.0-jre</google.guava-version> 		<!-- 33.5.0-jre  08 /2025  -->
+
+		<jackson-version>2.19.2</jackson-version> 						<!--  2.19.2 isthe same used by Spring boot 3.5.6 10 /2025   -->
+		<jackson-databind-version>2.19.2</jackson-databind-version>
+		<jackson-datatype-version>2.19.2</jackson-datatype-version> 	
+
 		<java-version>11</java-version>
 		<junit-version>5.12.2</junit-version> 							<!--  5.10.1 -->
-		<log4j2-version>2.24.3</log4j2-version> 						<!--  01 /2024 Spring boot 3.4.1  -->
+		<log4j2-version>2.24.3</log4j2-version> 						
+		
+		<!--  2.25.2 no anda por conflictos con Spring Boot 
+		 01 /2024 Spring boot 3.4.1  -->
+		
+		
+		
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven-javadoc-plugin-version>3.4.1</maven-javadoc-plugin-version>
@@ -80,7 +91,10 @@
 
 	<dependencies>
 	
-		<!--  LOG4J2  -->
+	 
+		
+		<!--    LOG4J2
+		=====================================================================================  -->
 		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -100,9 +114,11 @@
 			<version>${log4j2-version}</version>
 		</dependency>
 
+ 
 
-		<!--  commons-io -->
-
+		<!--    commons-io
+		=====================================================================================  -->
+		
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -136,24 +152,57 @@
 			<artifactId>jackson-core</artifactId>
 			<version>${jackson-version}</version>
 		</dependency>
+			
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson-version}</version>
+			<version>${jackson-databind-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
-			<version>${jackson-version}</version>
+			<version>${jackson-datatype-version}</version>			
 		</dependency>
-
+				
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jdk8</artifactId>
 			<version>${jackson-version}</version>
 		</dependency>
+
+
+			<!-- https://mvnrepository.com/artifact/tools.jackson.core/jackson-core -->
+			<!-- dependency>
+			    <groupId>tools.jackson.core</groupId>
+			    <artifactId>jackson-core</artifactId>
+			    <version>3.0.0</version>
+			</dependency -->
+			
+			<!-- https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+			
+			<!-- dependency>
+			    <groupId>tools.jackson.core</groupId>
+			    <artifactId>jackson-databind</artifactId>
+			    <version>3.0.0</version>
+			</dependency -->
+			
+		<!--dependency>
+		    <groupId>tools.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>3.0.0-rc2</version>
+		</dependency -->
+
+	
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jdk8 -->
+
+	<!--dependency>
+	    <groupId>com.fasterxml.jackson.datatype</groupId>
+	    <artifactId>jackson-datatype-jdk8</artifactId>
+	    <version>2.20.0</version>
+	<dependency-->
+
 
 		<!--  MAVEN
 		======================================================================================  -->
@@ -163,6 +212,7 @@
 			<artifactId>maven-source-plugin</artifactId>
 			<version>${maven-source-plugin-version}</version>
 		</dependency>
+		
 
 		<!--  TEST
 		====================================================================================  -->

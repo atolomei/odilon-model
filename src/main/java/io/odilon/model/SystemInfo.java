@@ -105,7 +105,9 @@ public class SystemInfo extends BaseObject {
     public String standbyPort;
 
     public String isVersionControl;
+    public String trafficTokens;
 
+    
     public List<String> rootDirs;
     
     
@@ -208,6 +210,10 @@ public class SystemInfo extends BaseObject {
                             .collect(Collectors.joining(", ")));
         }
 
+        map.put("trafficTokens", Optional.ofNullable(trafficTokens).isPresent() ? trafficTokens : "null");
+
+        
+        
         return map;
     }
 

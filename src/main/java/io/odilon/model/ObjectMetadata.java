@@ -150,6 +150,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 		return customTags;
 	}
 
+	@JsonProperty("accesible")
 	public boolean isAccesible() {
 		if (status == null)
 			return false;

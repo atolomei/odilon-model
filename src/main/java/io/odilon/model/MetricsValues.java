@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * <p>
@@ -174,7 +174,7 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
     public String toJSON() {
         try {
             return getObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(this);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             return "\"error\":\"" + e.getClass().getName() + " | " + e.getMessage() + "\"";
         }
     }

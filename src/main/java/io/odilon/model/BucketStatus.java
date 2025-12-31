@@ -22,6 +22,16 @@ import java.util.Locale;
 
 import io.odilon.util.Check;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+
 /**
  * <p>
  * Status of a Bucket
@@ -31,38 +41,59 @@ import io.odilon.util.Check;
  */
 public enum BucketStatus {
 
-    ENABLED("enabled", 1), ARCHIVED("archived", 2), DELETED("deleted", 3);
+    ENABLED("enabled", 1, "enabled"), ARCHIVED("archived", 2, "archived"), DELETED("deleted", 3, "deleted");
 
     private String name;
     private int code;
-
+    private String description;
+    
     static List<BucketStatus> ops;
 
+    // A static map to quickly look up enum constants by name
+    private static final Map<String, BucketStatus> FORMAT_MAP = 
+        Arrays.stream(BucketStatus.values())
+              .collect(Collectors.toMap(s -> s.name, Function.identity()));
+
+    /**
+     * Factory method for deserialization using the 'name' property from the JSON object.
+     * Jackson uses this method when it encounters a JSON object instead of a simple string.
+     */
+    @JsonCreator
+    public static BucketStatus fromJson(@JsonProperty("name") String name) {
+    	return Optional.ofNullable(FORMAT_MAP.get(name.toLowerCase()))
+                       .orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
+    }
+    
+    
+    
+    
     public boolean isAccesible() {
         return this == ENABLED || this == ARCHIVED;
     }
 
-    private BucketStatus(String name, int code) {
+    private BucketStatus(String name, int code, String description) {
         this.name = name;
         this.code = code;
+        this.description=description;
     }
 
     public String getDescription() {
-        return getDescription(Locale.getDefault());
+        //return getDescription(Locale.getDefault());
+    	return this.description;
     }
 
     public String getDescription(Locale locale) {
         // ResourceBundle res =
         // ResourceBundle.getBundle(BucketStatus.this.getClass().getName(), locale);
         // return res.getString(this.getName());
-        return this.getName();
+        return this.description;
     }
 
+    /**
     public String toJSON() {
         StringBuilder str = new StringBuilder();
         str.append("\"name\": \"" + name + "\"");
         str.append(", \"code\": " + String.valueOf(code));
-        str.append(", \"description\": \"" + getDescription() + "\"");
         return str.toString();
     }
 
@@ -74,7 +105,8 @@ public enum BucketStatus {
         str.append("}");
         return str.toString();
     }
-
+*/
+    
     public String getName() {
         return name;
     }

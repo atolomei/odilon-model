@@ -17,8 +17,16 @@
 package io.odilon.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -36,6 +44,24 @@ public enum ObjectStatus {
 
     static List<ObjectStatus> ops;
 
+
+    // A static map to quickly look up enum constants by name
+    private static final Map<String, ObjectStatus> FORMAT_MAP = 
+        Arrays.stream(ObjectStatus.values())
+              .collect(Collectors.toMap(s -> s.name, Function.identity()));
+
+    /**
+     * Factory method for deserialization using the 'name' property from the JSON object.
+     * Jackson uses this method when it encounters a JSON object instead of a simple string.
+     */
+    @JsonCreator
+    public static ObjectStatus fromJson(@JsonProperty("name") String name) {
+    	return Optional.ofNullable(FORMAT_MAP.get(name.toLowerCase()))
+                       .orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
+    }
+    
+    
+    
     private ObjectStatus(String name, int code) {
         this.name = name;
         this.code = code;
@@ -52,6 +78,7 @@ public enum ObjectStatus {
         return this.getName();
     }
 
+    /**
     public String toJSON() {
         StringBuilder str = new StringBuilder();
         str.append("\"name\": \"" + name + "\"");
@@ -68,7 +95,8 @@ public enum ObjectStatus {
         str.append("}");
         return str.toString();
     }
-
+**/
+    
     public String getName() {
         return name;
     }

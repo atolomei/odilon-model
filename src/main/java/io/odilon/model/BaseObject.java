@@ -26,27 +26,13 @@ import io.odilon.log.Logger;
 import io.odilon.util.RandomIDGenerator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-/**
-import tools.jackson.databind.DeserializationFeature;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.databind.json.JsonMapper;
-import tools.jackson.datatype.jsr310.JavaTimeModule;
- **/
-
+ 
 
 @JsonInclude(Include.NON_NULL)
 public abstract class BaseObject implements JSONObject {
 
 	static private Logger logger = Logger.getLogger(BaseObject.class.getName());
 
-	//@JsonIgnore
-	/**static final private ObjectMapper mapper =  
-			JsonMapper.builder()
-		    .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-		    .build();
-	**/
-	
 	static final private ObjectMapper mapper =  new OdilonObjectMapper();
 
 	@JsonIgnore

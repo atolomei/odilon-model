@@ -22,6 +22,13 @@ import java.text.Normalizer;
 import java.util.Locale;
 import java.util.Objects;
 
+
+/**
+ * <p>
+ *  this us used by the client to send file names that are valid in Linux and Windows and 
+ *  also in http header
+ * </p>
+ */
 public class FileNameNormalizer {
 
 	public static String normalize(String rawName) {

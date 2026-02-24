@@ -43,7 +43,9 @@ public enum ErrorCode {
 
 	DATA_STORAGE_MODE_OPERATION_NOT_ALLOWED(8800, "%1"),
 
-	INTERNAL_ERROR(9000, "%1"), INTERNAL_MULTIPART_ERROR(9002, "%1"), CLIENT_ERROR(9001, "%1");
+	INTERNAL_ERROR(9000, "%1"), 
+	INTERNAL_MULTIPART_ERROR(9002, "%1"),
+	CLIENT_ERROR(9001, "%1");
 
 	private int code;
 	private String message;

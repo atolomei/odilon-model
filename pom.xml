@@ -6,7 +6,7 @@
 
 	<groupId>io.odilon</groupId>
 	<artifactId>odilon-model</artifactId>
-	<version>1.15</version>
+	<version>1.16</version>
 	<name>odilon model</name>
 	<packaging>jar</packaging>
 

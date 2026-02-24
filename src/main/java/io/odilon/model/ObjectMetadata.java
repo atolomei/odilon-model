@@ -58,6 +58,9 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
 	@JsonProperty("version")
 	public int version;
+	
+	@JsonProperty("publicAccess")
+	public  boolean publicAccess;
 
 	
 	/**
@@ -276,6 +279,14 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
 	public void setSystemTags(String systemTags) {
 		this.systemTags = systemTags;
+	}
+
+	public boolean isPublicAccess() {
+		return publicAccess;
+	}
+
+	public void setPublicAccess(boolean publicAcccess) {
+		this.publicAccess = publicAcccess;
 	}
 
 	public String getSystemTags() {

@@ -42,10 +42,10 @@ public class DataList<T extends Serializable> implements Serializable {
 	private Long size;
 
 	@JsonProperty("offset")
-	private long offset = 0;
+	private Long offset = 0L;
 
 	@JsonProperty("pagesize")
-	private long pageSize;
+	private Long pageSize;
 
 	@JsonProperty("list")
 	private List<T> list;
@@ -73,23 +73,23 @@ public class DataList<T extends Serializable> implements Serializable {
 		return Optional.ofNullable(size);
 	}
 
-	public void setSize(long size) {
+	public void setSize(Long size) {
 		this.size = size;
 	}
 
 	public long getOffset() {
-		return offset;
+		return offset != null ? offset : 0L;
 	}
 
-	public void setOffset(long offset) {
-		this.offset = offset;
+	public void setOffset(Long offset) {
+		this.offset = offset != null ? offset : 0L;
 	}
 
 	public long getPageSize() {
-		return pageSize;
+		return pageSize != null ? pageSize : 0L;
 	}
 
-	public void setPageSize(long pageSize) {
+	public void setPageSize(Long pageSize) {
 		this.pageSize = pageSize;
 	}
 

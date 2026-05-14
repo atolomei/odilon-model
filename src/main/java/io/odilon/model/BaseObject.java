@@ -22,18 +22,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import io.odilon.json.OdilonObjectMapper;
-import io.odilon.log.Logger;
 import io.odilon.util.RandomIDGenerator;
+import tools.jackson.databind.ObjectMapper;
+import io.odilon.log.Logger;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
- 
 
 @JsonInclude(Include.NON_NULL)
 public abstract class BaseObject implements JSONObject {
 
 	static private Logger logger = Logger.getLogger(BaseObject.class.getName());
 
-	static final private ObjectMapper mapper =  new OdilonObjectMapper();
+	static final private OdilonObjectMapper mapper =  new OdilonObjectMapper();
 
 	@JsonIgnore
 	static final private RandomIDGenerator idGenerator = new RandomIDGenerator();

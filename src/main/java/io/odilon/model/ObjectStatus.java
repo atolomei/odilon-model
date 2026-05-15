@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
- * Odilon Object's Status
+ * Odilon Object Status
  * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
@@ -72,31 +72,9 @@ public enum ObjectStatus {
     }
 
     public String getDescription(Locale locale) {
-        // ResourceBundle res =
-        // ResourceBundle.getBundle(ObjectStatus.this.getClass().getName(), locale);
-        // return res.getString(this.getName());
         return this.getName();
     }
 
-    /**
-    public String toJSON() {
-        StringBuilder str = new StringBuilder();
-        str.append("\"name\": \"" + name + "\"");
-        str.append(", \"code\": " + String.valueOf(code));
-        str.append(", \"description\": \"" + getDescription() + "\"");
-        return str.toString();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getClass().getSimpleName() + "{");
-        str.append(toJSON());
-        str.append("}");
-        return str.toString();
-    }
-**/
-    
     public String getName() {
         return name;
     }

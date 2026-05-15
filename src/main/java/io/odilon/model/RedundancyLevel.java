@@ -118,11 +118,7 @@ public enum RedundancyLevel {
 		return list;
 	}
 
-	/**
-	 * 
-	 * @param name
-	 * @return
-	 */
+ 
 	public static RedundancyLevel get(String name) {
 
 		Check.requireNonNullArgument(name, "name is null");
@@ -164,30 +160,8 @@ public enum RedundancyLevel {
 	}
 
 	public String getDescription(Locale locale) {
-		// ResourceBundle res =
-		// ResourceBundle.getBundle(RedundancyLevel.this.getClass().getName(), locale);
-		// return res.getString(this.getName());
 		return getName();
-
 	}
-
-	/**
-	public String toJSON() {
-		StringBuilder str = new StringBuilder();
-		str.append("\"name\":\"" + name + "\"");
-		str.append("\"description\":\"" + getDescription() + "\"");
-		return str.toString();
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder str = new StringBuilder();
-		str.append(this.getClass().getSimpleName() + "{");
-		str.append(toJSON());
-		str.append("}");
-		return str.toString();
-	}
-**/
 	
 	public String getName() {
 		return name;

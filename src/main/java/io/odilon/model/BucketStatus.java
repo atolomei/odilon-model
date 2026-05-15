@@ -31,7 +31,6 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-
 /**
  * <p>
  * Status of a Bucket
@@ -41,121 +40,98 @@ import java.util.stream.Collectors;
  */
 public enum BucketStatus {
 
-    ENABLED("enabled", 1, "enabled"), ARCHIVED("archived", 2, "archived"), DELETED("deleted", 3, "deleted");
+	ENABLED("enabled", 1, "enabled"), ARCHIVED("archived", 2, "archived"), DELETED("deleted", 3, "deleted");
 
-    private String name;
-    private int code;
-    private String description;
-    
-    static List<BucketStatus> ops;
+	private String name;
+	private int code;
+	private String description;
 
-    // A static map to quickly look up enum constants by name
-    private static final Map<String, BucketStatus> FORMAT_MAP = 
-        Arrays.stream(BucketStatus.values())
-              .collect(Collectors.toMap(s -> s.name, Function.identity()));
+	static List<BucketStatus> ops;
 
-    /**
-     * Factory method for deserialization using the 'name' property from the JSON object.
-     * Jackson uses this method when it encounters a JSON object instead of a simple string.
-     */
-    @JsonCreator
-    public static BucketStatus fromJson(@JsonProperty("name") String name) {
-    	return Optional.ofNullable(FORMAT_MAP.get(name.toLowerCase()))
-                       .orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
-    }
-    
-    
-    
-    
-    public boolean isAccesible() {
-        return this == ENABLED || this == ARCHIVED;
-    }
+	// A static map to quickly look up enum constants by name
+	private static final Map<String, BucketStatus> FORMAT_MAP = Arrays.stream(BucketStatus.values()).collect(Collectors.toMap(s -> s.name, Function.identity()));
 
-    private BucketStatus(String name, int code, String description) {
-        this.name = name;
-        this.code = code;
-        this.description=description;
-    }
+	/**
+	 * Factory method for deserialization using the 'name' property from the JSON
+	 * object. Jackson uses this method when it encounters a JSON object instead of
+	 * a simple string.
+	 */
+	@JsonCreator
+	public static BucketStatus fromJson(@JsonProperty("name") String name) {
+		return Optional.ofNullable(FORMAT_MAP.get(name.toLowerCase())).orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
+	}
 
-    public String getDescription() {
-        //return getDescription(Locale.getDefault());
-    	return this.description;
-    }
+	public boolean isAccesible() {
+		return this == ENABLED || this == ARCHIVED;
+	}
 
-    public String getDescription(Locale locale) {
-        // ResourceBundle res =
-        // ResourceBundle.getBundle(BucketStatus.this.getClass().getName(), locale);
-        // return res.getString(this.getName());
-        return this.description;
-    }
+	private BucketStatus(String name, int code, String description) {
+		this.name = name;
+		this.code = code;
+		this.description = description;
+	}
 
-    /**
-    public String toJSON() {
-        StringBuilder str = new StringBuilder();
-        str.append("\"name\": \"" + name + "\"");
-        str.append(", \"code\": " + String.valueOf(code));
-        return str.toString();
-    }
+	public String getDescription() {
+		// return getDescription(Locale.getDefault());
+		return this.description;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getClass().getSimpleName() + "{");
-        str.append(toJSON());
-        str.append("}");
-        return str.toString();
-    }
-*/
-    
-    public String getName() {
-        return name;
-    }
+	public String getDescription(Locale locale) {
+		// ResourceBundle res =
+		// ResourceBundle.getBundle(BucketStatus.this.getClass().getName(), locale);
+		// return res.getString(this.getName());
+		return this.description;
+	}
 
-    public int getCode() {
-        return code;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public static BucketStatus fromId(String id) {
+	public int getCode() {
+		return code;
+	}
 
-        Check.requireNonNullStringArgument(id, "id is null or empty");
+	public static BucketStatus fromId(String id) {
 
-        try {
-            int value = Integer.valueOf(id).intValue();
-            return get(value);
+		Check.requireNonNullStringArgument(id, "id is null or empty");
 
-        } catch (IllegalArgumentException e) {
-            throw (e);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("id can not be converted int Integer -> " + id);
-        }
+		try {
+			int value = Integer.valueOf(id).intValue();
+			return get(value);
 
-    }
+		} catch (IllegalArgumentException e) {
+			throw (e);
+		} catch (Exception e) {
+			throw new IllegalArgumentException("id can not be converted int Integer -> " + id);
+		}
 
-    public static List<BucketStatus> getValues() {
+	}
 
-        if (ops != null)
-            return ops;
+	public static List<BucketStatus> getValues() {
 
-        ops = new ArrayList<BucketStatus>();
+		if (ops != null)
+			return ops;
 
-        ops.add(ENABLED);
-        ops.add(ARCHIVED);
-        ops.add(DELETED);
+		ops = new ArrayList<BucketStatus>();
 
-        return ops;
-    }
+		ops.add(ENABLED);
+		ops.add(ARCHIVED);
+		ops.add(DELETED);
 
-    public static BucketStatus get(int code) {
+		return ops;
+	}
 
-        if (code == ENABLED.getCode())
-            return ENABLED;
-        if (code == ARCHIVED.getCode())
-            return ARCHIVED;
-        if (code == DELETED.getCode())
-            return DELETED;
+	public static BucketStatus get(int code) {
 
-        throw new IllegalArgumentException("unsuported code -> " + String.valueOf(code));
+		if (code == ENABLED.getCode())
+			return ENABLED;
+		if (code == ARCHIVED.getCode())
+			return ARCHIVED;
+		if (code == DELETED.getCode())
+			return DELETED;
 
-    }
+		throw new IllegalArgumentException("unsuported code -> " + String.valueOf(code));
+
+	}
 
 }

@@ -32,54 +32,53 @@ import io.odilon.model.BaseObject;
  */
 public class OdilonErrorProxy extends BaseObject {
 
-    @JsonProperty("httpStatus")
-    private int httpStatus;
+	@JsonProperty("httpStatus")
+	private int httpStatus;
 
-    @JsonProperty("odilonErrorCode")
-    private int odilonErrorCode;
+	@JsonProperty("odilonErrorCode")
+	private int odilonErrorCode;
 
-    @JsonProperty("odilonErrorMessage")
-    private String odilonErrorMessage;
+	@JsonProperty("odilonErrorMessage")
+	private String odilonErrorMessage;
 
-    @JsonProperty("context")
-    private Map<String, String> context = new HashMap<String, String>();
+	@JsonProperty("context")
+	private Map<String, String> context = new HashMap<String, String>();
 
-    public OdilonErrorProxy() {
-    }
+	public OdilonErrorProxy() {
+	}
 
-    public OdilonErrorProxy(int httpStatus, int odilonErrorCode, String odilonErrorMessage) {
+	public OdilonErrorProxy(int httpStatus, int odilonErrorCode, String odilonErrorMessage) {
+		this.httpStatus = httpStatus;
+		this.odilonErrorCode = odilonErrorCode;
+		this.odilonErrorMessage = odilonErrorMessage;
+	}
 
-        this.httpStatus = httpStatus;
-        this.odilonErrorCode = odilonErrorCode;
-        this.odilonErrorMessage = odilonErrorMessage;
-    }
+	public int getHttpStatus() {
+		return httpStatus;
+	}
 
-    public int getHttpStatus() {
-        return httpStatus;
-    }
+	public void setHttpStatus(int httpStatus) {
+		this.httpStatus = httpStatus;
+	}
 
-    public void setHttpStatus(int httpStatus) {
-        this.httpStatus = httpStatus;
-    }
+	public int getErrorCode() {
+		return odilonErrorCode;
+	}
 
-    public int getErrorCode() {
-        return odilonErrorCode;
-    }
+	public void setErrorCode(int odilonErrorCode) {
+		this.odilonErrorCode = odilonErrorCode;
+	}
 
-    public void setErrorCode(int odilonErrorCode) {
-        this.odilonErrorCode = odilonErrorCode;
-    }
+	public String getMessage() {
+		return odilonErrorMessage;
+	}
 
-    public String getMessage() {
-        return odilonErrorMessage;
-    }
+	public void setErrorMessage(String odilonErrorMessage) {
+		this.odilonErrorMessage = odilonErrorMessage;
+	}
 
-    public void setErrorMessage(String odilonErrorMessage) {
-        this.odilonErrorMessage = odilonErrorMessage;
-    }
-
-    public Map<String, String> getContext() {
-        return context;
-    }
+	public Map<String, String> getContext() {
+		return context;
+	}
 
 }

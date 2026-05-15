@@ -30,125 +30,101 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
- * Odilon Object's Status
+ * Odilon Object Status
  * </p>
  * 
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
 public enum ObjectStatus {
 
-    DRAFT("draft", 0), ENABLED("enabled", 1), ARCHIVED("archived", 2), DELETED("deleted", 3);
+	DRAFT("draft", 0), ENABLED("enabled", 1), ARCHIVED("archived", 2), DELETED("deleted", 3);
 
-    private String name;
-    private int code;
+	private String name;
+	private int code;
 
-    static List<ObjectStatus> ops;
+	static List<ObjectStatus> ops;
 
+	 
+	private static final Map<String, ObjectStatus> FORMAT_MAP = Arrays.stream(ObjectStatus.values()).collect(Collectors.toMap(s -> s.name, Function.identity()));
 
-    // A static map to quickly look up enum constants by name
-    private static final Map<String, ObjectStatus> FORMAT_MAP = 
-        Arrays.stream(ObjectStatus.values())
-              .collect(Collectors.toMap(s -> s.name, Function.identity()));
+	/**
+	 * Factory method for deserialization using the 'name' property from the JSON
+	 * object. Jackson uses this method when it encounters a JSON object instead of
+	 * a simple string.
+	 */
+	@JsonCreator
+	public static ObjectStatus fromJson(@JsonProperty("name") String name) {
+		return Optional.ofNullable(FORMAT_MAP.get(name.toLowerCase())).orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
+	}
 
-    /**
-     * Factory method for deserialization using the 'name' property from the JSON object.
-     * Jackson uses this method when it encounters a JSON object instead of a simple string.
-     */
-    @JsonCreator
-    public static ObjectStatus fromJson(@JsonProperty("name") String name) {
-    	return Optional.ofNullable(FORMAT_MAP.get(name.toLowerCase()))
-                       .orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
-    }
-    
-    
-    
-    private ObjectStatus(String name, int code) {
-        this.name = name;
-        this.code = code;
-    }
+	private ObjectStatus(String name, int code) {
+		this.name = name;
+		this.code = code;
+	}
 
-    public String getDescription() {
-        return getDescription(Locale.getDefault());
-    }
+	public String getDescription() {
+		return getDescription(Locale.getDefault());
+	}
 
-    public String getDescription(Locale locale) {
-        // ResourceBundle res =
-        // ResourceBundle.getBundle(ObjectStatus.this.getClass().getName(), locale);
-        // return res.getString(this.getName());
-        return this.getName();
-    }
+	public String getDescription(Locale locale) {
+	 
+		return this.getName();
+	}
 
-    /**
-    public String toJSON() {
-        StringBuilder str = new StringBuilder();
-        str.append("\"name\": \"" + name + "\"");
-        str.append(", \"code\": " + String.valueOf(code));
-        str.append(", \"description\": \"" + getDescription() + "\"");
-        return str.toString();
-    }
+	 
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getClass().getSimpleName() + "{");
-        str.append(toJSON());
-        str.append("}");
-        return str.toString();
-    }
-**/
-    
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getCode() {
-        return code;
-    }
+	public int getCode() {
+		return code;
+	}
 
-    public static ObjectStatus fromId(String id) {
+	public static ObjectStatus fromId(String id) {
 
-        if (id == null)
-            throw new IllegalArgumentException("id is null");
+		if (id == null)
+			throw new IllegalArgumentException("id is null");
 
-        try {
-            int value = Integer.valueOf(id).intValue();
-            return get(value);
+		try {
+			int value = Integer.valueOf(id).intValue();
+			return get(value);
 
-        } catch (IllegalArgumentException e) {
-            throw (e);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("id not integer -> " + id);
-        }
+		} catch (IllegalArgumentException e) {
+			throw (e);
+		} catch (Exception e) {
+			throw new IllegalArgumentException("id not integer -> " + id);
+		}
 
-    }
+	}
 
-    public static List<ObjectStatus> getValues() {
+	public static List<ObjectStatus> getValues() {
 
-        if (ops != null)
-            return ops;
+		if (ops != null)
+			return ops;
 
-        ops = new ArrayList<ObjectStatus>();
+		ops = new ArrayList<ObjectStatus>();
 
-        ops.add(DRAFT);
-        ops.add(ENABLED);
-        ops.add(ARCHIVED);
-        ops.add(DELETED);
+		ops.add(DRAFT);
+		ops.add(ENABLED);
+		ops.add(ARCHIVED);
+		ops.add(DELETED);
 
-        return ops;
-    }
+		return ops;
+	}
 
-    public static ObjectStatus get(int code) {
+	public static ObjectStatus get(int code) {
 
-        if (code == DRAFT.getCode())
-            return DRAFT;
-        if (code == ENABLED.getCode())
-            return ENABLED;
-        if (code == ARCHIVED.getCode())
-            return ARCHIVED;
-        if (code == DELETED.getCode())
-            return DELETED;
+		if (code == DRAFT.getCode())
+			return DRAFT;
+		if (code == ENABLED.getCode())
+			return ENABLED;
+		if (code == ARCHIVED.getCode())
+			return ARCHIVED;
+		if (code == DELETED.getCode())
+			return DELETED;
 
-        throw new IllegalArgumentException("unsuported code -> " + String.valueOf(code));
+		throw new IllegalArgumentException("unsuported code -> " + String.valueOf(code));
 
-    }
+	}
 }

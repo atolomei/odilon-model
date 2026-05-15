@@ -37,10 +37,10 @@ public enum ODHttpStatus {
      */
     CONTINUE(100, Series.INFORMATIONAL, "Continue"),
     /**
-     * {@code 101 Switching Protocols}. See
-     * <a href="https://tools.ietf.org/html/rfc7231#section-6.2.2">HTTP/1.1:
-     * Semantics and Content, section 6.2.2</a>
-     */
+	 * {@code 101 Switching Protocols}. See
+	 * <a href="https://tools.ietf.org/html/rfc7231#section-6.2.2">HTTP/1.1:
+	 * Semantics and Content, section 6.2.2</a>
+	 */
     SWITCHING_PROTOCOLS(101, Series.INFORMATIONAL, "Switching Protocols"),
     /**
      * {@code 102 Processing}. See

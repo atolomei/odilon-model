@@ -47,8 +47,7 @@ import io.odilon.log.Logger;
  *				System.out.println(item.getErrorString());
  *            }
  *            } catch (ODClientException e) {
- *            System.out.println(
- *            String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
+ *            System.out.println(String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
  *            }
  * }
  * </pre>
@@ -110,9 +109,7 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 		boolean hasItems = fetch();
 
 		if (!hasItems)
-			throw new IndexOutOfBoundsException(
-					"No more items available. Normally the caller should check hasNext() before calling this method [returned so far -> "
-							+ String.valueOf(cumulativeIndex) + ")]");
+			throw new IndexOutOfBoundsException("No more items available. Normally the caller should check hasNext() before calling this method [returned so far -> " + String.valueOf(cumulativeIndex) + ")]");
 
 		T object = this.dataList.get(relativeIndex);
 
@@ -159,8 +156,7 @@ public class ResultSet<T extends Serializable> implements Iterator<T> {
 		try {
 			this.dataList = this.dataProvider.fetch(cumulativeIndex);
 		} catch (IOException e) {
-			throw new InternalCriticalException(e, "error fechting data from dataProvider -> "
-					+ (Optional.ofNullable(this.dataProvider).isPresent() ? this.dataProvider.toString() : "null"));
+			throw new InternalCriticalException(e, "error fechting data from dataProvider -> " + (Optional.ofNullable(this.dataProvider).isPresent() ? this.dataProvider.toString() : "null"));
 		}
 
 		if (this.dataList == null)

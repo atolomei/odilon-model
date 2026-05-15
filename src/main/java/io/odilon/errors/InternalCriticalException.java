@@ -31,38 +31,34 @@ package io.odilon.errors;
  */
 public class InternalCriticalException extends RuntimeException {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    Exception rootException;
+	Exception rootException;
 
-    public InternalCriticalException(Exception rootException) {
-        super(rootException);
-        this.rootException = rootException;
-    }
+	public InternalCriticalException(Exception rootException) {
+		super(rootException);
+		this.rootException = rootException;
+	}
 
-    public InternalCriticalException(Exception rootException, String message) {
-        super(message, rootException);
-        this.rootException = rootException;
-    }
+	public InternalCriticalException(Exception rootException, String message) {
+		super(message, rootException);
+		this.rootException = rootException;
+	}
 
-    public InternalCriticalException(String message) {
-        super(message);
-    }
+	public InternalCriticalException(String message) {
+		super(message);
+	}
 
-    public Exception getRootException() {
-        return rootException;
-    }
+	public Exception getRootException() {
+		return rootException;
+	}
 
-    public String getMessage() {
-        String m = super.getMessage();
-        if (rootException != null) {
-            return "rootException -> " + rootException.getClass().getName()
-                    + ((rootException.getMessage() != null) ? (" " + rootException.getMessage()) : "") + " | " + m;
-        }
-        return m;
-    }
+	public String getMessage() {
+		String m = super.getMessage();
+		if (rootException != null) {
+			return "rootException -> " + rootException.getClass().getName() + ((rootException.getMessage() != null) ? (" " + rootException.getMessage()) : "") + " | " + m;
+		}
+		return m;
+	}
 
 }

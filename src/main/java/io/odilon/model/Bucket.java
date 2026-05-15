@@ -47,48 +47,48 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class Bucket extends OdilonModelObject implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
-    private String bucketName;
+	@JsonProperty("name")
+	private String bucketName;
 
-    @JsonProperty("creationDate")
-    private OffsetDateTime creationDate;
+	@JsonProperty("creationDate")
+	private OffsetDateTime creationDate;
 
-    @JsonProperty("id")
-    private Long id;
+	@JsonProperty("id")
+	private Long id;
 
-    @JsonProperty("status")
-    private BucketStatus status;
+	@JsonProperty("status")
+	private BucketStatus status;
 
-    @JsonProperty("lastModified")
-    public OffsetDateTime lastModified;
+	@JsonProperty("lastModified")
+	public OffsetDateTime lastModified;
 
-    public Bucket() {
-    }
+	public Bucket() {
+	}
 
-    public Bucket(String name, Long id, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
-        this.bucketName = name;
-        this.id = id;
-        this.creationDate = creationDate;
-        this.lastModified = lastModified;
-        this.status = status;
-    }
+	public Bucket(String name, Long id, OffsetDateTime creationDate, OffsetDateTime lastModified, BucketStatus status) {
+		this.bucketName = name;
+		this.id = id;
+		this.creationDate = creationDate;
+		this.lastModified = lastModified;
+		this.status = status;
+	}
 
-    public BucketStatus getStatus() {
-        return status;
-    }
+	public BucketStatus getStatus() {
+		return status;
+	}
 
-    public String getName() {
-        return bucketName;
-    }
+	public String getName() {
+		return bucketName;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public OffsetDateTime getCreationDate() {
-        return creationDate;
-    }
+	public OffsetDateTime getCreationDate() {
+		return creationDate;
+	}
 
 }

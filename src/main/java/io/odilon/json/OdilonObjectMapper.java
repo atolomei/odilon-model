@@ -19,7 +19,7 @@ package io.odilon.json;
 import tools.jackson.databind.ObjectMapper;
 
 /**
- * Jackson 3 ObjectMapper wrapper.
+ * Jackson 3 ObjectMapper wrapper
  */
 public class OdilonObjectMapper extends ObjectMapper {
 

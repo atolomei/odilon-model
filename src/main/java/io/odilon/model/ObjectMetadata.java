@@ -58,22 +58,22 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
 	@JsonProperty("version")
 	public int version;
-	
-	@JsonProperty("publicAccess")
-	public  boolean publicAccess;
 
-	
+	@JsonProperty("publicAccess")
+	public boolean publicAccess;
+
 	/**
 	 * length in bytes of the source file
- 	 */
+	 */
 	@JsonProperty("sourceLength")
 	public long sourceLength;
-	
+
 	/**
-	 * length in bytes of the file stored on disk by the server.
-     *  If the file is stored not encrypted this value is the same as the source file length.
-     *  Otherwise, this value is slighthly higher than the source file length (sourceLength)
- 	 */
+	 * length in bytes of the file stored on disk by the server. If the file is
+	 * stored not encrypted this value is the same as the source file length.
+	 * Otherwise, this value is slighthly higher than the source file length
+	 * (sourceLength)
+	 */
 	@JsonProperty("length")
 	public long length;
 
@@ -138,7 +138,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 		this.objectName = objectName;
 		this.creationDate = OffsetDateTime.now();
 		this.length = 0;
-		this.sourceLength=0;
+		this.sourceLength = 0;
 		this.version = 0;
 		this.raidDrives = 0;
 		this.etag = "";

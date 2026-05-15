@@ -84,26 +84,23 @@ public enum RedundancyLevel {
 	private String name;
 	private int code;
 	private String nameCompatible;
-	
+
 	static List<RedundancyLevel> list;
 
-	// A static map to quickly look up enum constants by name
-    private static final Map<String, RedundancyLevel> FORMAT_MAP = 
-        Arrays.stream(RedundancyLevel.values())
-              .collect(Collectors.toMap(s -> s.nameCompatible.toLowerCase(), Function.identity()));
+	/** A static map to quickly look up enum constants by name **/
+	private static final Map<String, RedundancyLevel> FORMAT_MAP = Arrays.stream(RedundancyLevel.values()).collect(Collectors.toMap(s -> s.nameCompatible.toLowerCase(), Function.identity()));
 
-    /**
-     * Factory method for deserialization using the 'name' property from the JSON object.
-     * Jackson uses this method when it encounters a JSON object instead of a simple string.
-     */
-    @JsonCreator
-    public static RedundancyLevel fromJson(@JsonProperty("name") String name) {
-    	String nameCompatible=name.replace(" ", "_").toLowerCase();
-    	return Optional.ofNullable(FORMAT_MAP.get(nameCompatible.toLowerCase()))
-                       .orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
-    }
-    
-	
+	/**
+	 * Factory method for deserialization using the 'name' property from the JSON
+	 * object. Jackson uses this method when it encounters a JSON object instead of
+	 * a simple string.
+	 */
+	@JsonCreator
+	public static RedundancyLevel fromJson(@JsonProperty("name") String name) {
+		String nameCompatible = name.replace(" ", "_").toLowerCase();
+		return Optional.ofNullable(FORMAT_MAP.get(nameCompatible.toLowerCase())).orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
+	}
+
 	public static List<RedundancyLevel> getValues() {
 
 		if (list != null)
@@ -118,11 +115,7 @@ public enum RedundancyLevel {
 		return list;
 	}
 
-	/**
-	 * 
-	 * @param name
-	 * @return
-	 */
+	 
 	public static RedundancyLevel get(String name) {
 
 		Check.requireNonNullArgument(name, "name is null");
@@ -155,8 +148,8 @@ public enum RedundancyLevel {
 	private RedundancyLevel(String name, int code) {
 		this.name = name;
 		this.code = code;
-		this.nameCompatible=name.replace(" ", "_");
-	
+		this.nameCompatible = name.replace(" ", "_");
+
 	}
 
 	public String getDescription() {
@@ -164,31 +157,13 @@ public enum RedundancyLevel {
 	}
 
 	public String getDescription(Locale locale) {
-		// ResourceBundle res =
-		// ResourceBundle.getBundle(RedundancyLevel.this.getClass().getName(), locale);
-		// return res.getString(this.getName());
+		 
 		return getName();
 
 	}
 
-	/**
-	public String toJSON() {
-		StringBuilder str = new StringBuilder();
-		str.append("\"name\":\"" + name + "\"");
-		str.append("\"description\":\"" + getDescription() + "\"");
-		return str.toString();
-	}
+	 
 
-	@Override
-	public String toString() {
-		StringBuilder str = new StringBuilder();
-		str.append(this.getClass().getSimpleName() + "{");
-		str.append(toJSON());
-		str.append("}");
-		return str.toString();
-	}
-**/
-	
 	public String getName() {
 		return name;
 	}

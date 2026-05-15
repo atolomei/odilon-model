@@ -46,14 +46,12 @@ import io.odilon.model.OdilonModelObject;
  * 	while (resultSet.hasNext()) {
  * 		Item item = resultSet.next();
  * 		if (item.isOk())
- * 			System.out
- * 					.println("ObjectName:" + item.getObject().objectName + " | file: " + item.getObject().fileName);
+ * 			System.out.println("ObjectName:" + item.getObject().objectName + " | file: " + item.getObject().fileName);
  * 		else
  * 			System.out.println(item.getErrorString());
  * 	}
  * } catch (ODClientException e) {
- * 	System.out.println(
- * 			String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
+ * 	System.out.println(String.valueOf(e.getHttpStatus()) + " " + e.getMessage() + " " + String.valueOf(e.getErrorCode()));
  * }
  * }
  * </pre>

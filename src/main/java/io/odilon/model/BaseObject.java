@@ -26,17 +26,16 @@ import io.odilon.util.RandomIDGenerator;
 import tools.jackson.databind.ObjectMapper;
 import io.odilon.log.Logger;
 
-
 @JsonInclude(Include.NON_NULL)
 public abstract class BaseObject implements JSONObject {
 
 	static private Logger logger = Logger.getLogger(BaseObject.class.getName());
 
-	static final private OdilonObjectMapper mapper =  new OdilonObjectMapper();
+	static final private OdilonObjectMapper mapper = new OdilonObjectMapper();
 
 	@JsonIgnore
 	static final private RandomIDGenerator idGenerator = new RandomIDGenerator();
-	
+
 	@JsonIgnore
 	public ObjectMapper getObjectMapper() {
 		return mapper;
@@ -50,7 +49,7 @@ public abstract class BaseObject implements JSONObject {
 			return "\"error\":\"" + e.getClass().getName() + " | " + e.getMessage() + "\"";
 		}
 	}
-	
+
 	protected String randomString(final int size) {
 		return idGenerator.randomString(size);
 	}

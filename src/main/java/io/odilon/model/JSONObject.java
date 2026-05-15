@@ -26,6 +26,6 @@ package io.odilon.model;
  */
 public interface JSONObject {
 
-    public String toJSON();
+	public String toJSON();
 
 }

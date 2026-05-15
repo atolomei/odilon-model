@@ -46,213 +46,203 @@ import io.odilon.log.Logger;
 @JsonInclude(Include.NON_NULL)
 public class SystemInfo extends BaseObject {
 
-    @SuppressWarnings("unused")
-    static private Logger logger = Logger.getLogger(SystemInfo.class.getName());
+	@SuppressWarnings("unused")
+	static private Logger logger = Logger.getLogger(SystemInfo.class.getName());
 
-    static NumberFormat nf_dec = NumberFormat.getInstance(Locale.ENGLISH);
-    static {
-        nf_dec.setMinimumFractionDigits(2);
-        nf_dec.setMaximumFractionDigits(2);
-        nf_dec.setRoundingMode(RoundingMode.HALF_UP);
-    }
+	static NumberFormat nf_dec = NumberFormat.getInstance(Locale.ENGLISH);
+	static {
+		nf_dec.setMinimumFractionDigits(2);
+		nf_dec.setMaximumFractionDigits(2);
+		nf_dec.setRoundingMode(RoundingMode.HALF_UP);
+	}
 
-    static NumberFormat nf_int = NumberFormat.getInstance(Locale.ENGLISH);
-    static {
-        nf_int.setMinimumFractionDigits(0);
-        nf_int.setMaximumFractionDigits(0);
-        nf_int.setRoundingMode(RoundingMode.HALF_UP);
-    }
+	static NumberFormat nf_int = NumberFormat.getInstance(Locale.ENGLISH);
+	static {
+		nf_int.setMinimumFractionDigits(0);
+		nf_int.setMaximumFractionDigits(0);
+		nf_int.setRoundingMode(RoundingMode.HALF_UP);
+	}
 
-    public Integer availableProcessors;
+	public Integer availableProcessors;
 
-    public OffsetDateTime started;
+	public OffsetDateTime started;
 
-    public String isEncryptEnabled;
-    public String isEncryptionInitialized;
+	public String isEncryptEnabled;
+	public String isEncryptionInitialized;
 
-    public String isVaultEnabled;
-    public String vaultUrl;
+	public String isVaultEnabled;
+	public String vaultUrl;
 
-    public String isHttps;
+	public String isHttps;
 
-    public Long maxMemory;
-    public Long totalMemory;
+	public Long maxMemory;
+	public Long totalMemory;
 
-    public String osArch;
-    public String osName;
-    public String osVersion;
+	public String osArch;
+	public String osName;
+	public String osVersion;
 
-    public String userHome;
-    public String userName;
-    public String userProfile;
-    public String userDir;
+	public String userHome;
+	public String userName;
+	public String userProfile;
+	public String userDir;
 
-    public String javaHome;
-    public String javaVersion;
-    public String javaVendor;
-    public String appVersion;
+	public String javaHome;
+	public String javaVersion;
+	public String javaVendor;
+	public String appVersion;
 
-    public String serverHost;
+	public String serverHost;
 
-    public Long freeMemory;
-    public Double cpuLoadAverage;
+	public Long freeMemory;
+	public Double cpuLoadAverage;
 
-    public String serverMode;
-    public String serverDataStorageMode;
-    
-    public String isStandby;
-    public String standbyUrl;
-    public String standbyPort;
+	public String serverMode;
+	public String serverDataStorageMode;
 
-    public String isVersionControl;
-    public String trafficTokens;
+	public String isStandby;
+	public String standbyUrl;
+	public String standbyPort;
 
-    
-    public List<String> rootDirs;
-    
-    
-    /**
-     * total disk available to store data. This depends on the redundancy level used
-     */
-    public Long availableDisk;
+	public String isVersionControl;
+	public String trafficTokens;
 
-    public Map<String, Long> serverStorage;
+	public List<String> rootDirs;
 
-    public RedundancyLevel redundancyLevel;
-    public String redundancyLevelDetail;
+	/**
+	 * total disk available to store data. This depends on the redundancy level used
+	 */
+	public Long availableDisk;
 
-    @JsonIgnore
-    public Map<String, Long> totalStorage;
+	public Map<String, Long> serverStorage;
 
-    @JsonIgnore
-    public Map<String, Long> getTotalStorage() {
-        return totalStorage;
-    }
+	public RedundancyLevel redundancyLevel;
+	public String redundancyLevelDetail;
 
-    public void setTotalStorage(Map<String, Long> totalStorage) {
-        this.totalStorage = totalStorage;
-    }
+	@JsonIgnore
+	public Map<String, Long> totalStorage;
 
-    /** ----------------------------------------- */
+	@JsonIgnore
+	public Map<String, Long> getTotalStorage() {
+		return totalStorage;
+	}
 
-    @JsonIgnore
-    public Map<String, String> getColloquial() {
+	public void setTotalStorage(Map<String, Long> totalStorage) {
+		this.totalStorage = totalStorage;
+	}
 
-        Map<String, String> map = new TreeMap<String, String>();
+	/** ----------------------------------------- */
 
-        map.put("userDir", Optional.ofNullable(userDir).isPresent() ? userDir : "null");
-        map.put("userHome", Optional.ofNullable(userHome).isPresent() ? userHome : "null");
-        map.put("userName", Optional.ofNullable(userName).isPresent() ? userName : "null");
-        map.put("userProfile", Optional.ofNullable(userProfile).isPresent() ? userProfile : "null");
+	@JsonIgnore
+	public Map<String, String> getColloquial() {
 
-        map.put("started", Optional.ofNullable(started).isPresent() ? started.toString() : "null");
-        map.put("osName", Optional.ofNullable(osName).isPresent() ? osName : "");
-        map.put("osArch", Optional.ofNullable(osArch).isPresent() ? osArch : "");
-        map.put("osVersion", Optional.ofNullable(osVersion).isPresent() ? osVersion : "");
-        map.put("userName", Optional.ofNullable(userName).isPresent() ? userName : "");
-        map.put("userProfile", Optional.ofNullable(userProfile).isPresent() ? userProfile : "");
-        map.put("javaVersion", Optional.ofNullable(javaVersion).isPresent() ? javaVersion : "");
+		Map<String, String> map = new TreeMap<String, String>();
 
-        map.put("javaHome", Optional.ofNullable(javaHome).isPresent() ? javaHome : "");
-        map.put("javaVendor", Optional.ofNullable(javaVendor).isPresent() ? javaVendor : "");
+		map.put("userDir", Optional.ofNullable(userDir).isPresent() ? userDir : "null");
+		map.put("userHome", Optional.ofNullable(userHome).isPresent() ? userHome : "null");
+		map.put("userName", Optional.ofNullable(userName).isPresent() ? userName : "null");
+		map.put("userProfile", Optional.ofNullable(userProfile).isPresent() ? userProfile : "null");
 
-        map.put("appVersion", Optional.ofNullable(appVersion).isPresent() ? appVersion : "");
-        map.put("serverHost", Optional.ofNullable(serverHost).isPresent() ? serverHost : "");
-        map.put("serverMode", Optional.ofNullable(serverMode).isPresent() ? serverMode : "");
-        map.put("dataStorageMode", serverDataStorageMode);
+		map.put("started", Optional.ofNullable(started).isPresent() ? started.toString() : "null");
+		map.put("osName", Optional.ofNullable(osName).isPresent() ? osName : "");
+		map.put("osArch", Optional.ofNullable(osArch).isPresent() ? osArch : "");
+		map.put("osVersion", Optional.ofNullable(osVersion).isPresent() ? osVersion : "");
+		map.put("userName", Optional.ofNullable(userName).isPresent() ? userName : "");
+		map.put("userProfile", Optional.ofNullable(userProfile).isPresent() ? userProfile : "");
+		map.put("javaVersion", Optional.ofNullable(javaVersion).isPresent() ? javaVersion : "");
 
-        map.put("redundancyLevel", Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
+		map.put("javaHome", Optional.ofNullable(javaHome).isPresent() ? javaHome : "");
+		map.put("javaVendor", Optional.ofNullable(javaVendor).isPresent() ? javaVendor : "");
 
-        
-        if (redundancyLevelDetail != null) {
-            map.put("redundancyLevel.detail", redundancyLevelDetail);
-        }
-        
-        if (this.rootDirs!=null) {
-        	StringBuilder str = new StringBuilder();
-        	this.rootDirs.forEach( i -> str.append((str.length()>0 ? " | ":"") + i ));	
-        	map.put("rootDirs", str.toString());
-        }
-        
-        map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "");
+		map.put("appVersion", Optional.ofNullable(appVersion).isPresent() ? appVersion : "");
+		map.put("serverHost", Optional.ofNullable(serverHost).isPresent() ? serverHost : "");
+		map.put("serverMode", Optional.ofNullable(serverMode).isPresent() ? serverMode : "");
+		map.put("dataStorageMode", serverDataStorageMode);
 
-        map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "");
-        map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "");
-        map.put("versionControl.enabled", isVersionControl);
-        map.put("vault.enabled", isVaultEnabled);
+		map.put("redundancyLevel", Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
 
-        map.put("https", this.isHttps);
+		if (redundancyLevelDetail != null) {
+			map.put("redundancyLevel.detail", redundancyLevelDetail);
+		}
 
-        if ((vaultUrl != null) && vaultUrl.length() > 0)
-            map.put("vault.url", vaultUrl);
+		if (this.rootDirs != null) {
+			StringBuilder str = new StringBuilder();
+			this.rootDirs.forEach(i -> str.append((str.length() > 0 ? " | " : "") + i));
+			map.put("rootDirs", str.toString());
+		}
 
-        if ((isStandby != null) && isStandby.equals("true")) {
-            map.put("standby.url", Optional.ofNullable(standbyUrl).isPresent() ? standbyUrl : "");
-            map.put("standby.port", Optional.ofNullable(standbyPort).isPresent() ? standbyPort : "");
-        }
+		map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "");
 
-        map.put("availableProcessors",
-                Optional.ofNullable(availableProcessors).isPresent() ? availableProcessors.toString() : "null");
+		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "");
+		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "");
+		map.put("versionControl.enabled", isVersionControl);
+		map.put("vault.enabled", isVaultEnabled);
 
-        if (cpuLoadAverage != null)
-            map.put("cpuLoadAverage", Optional.ofNullable(cpuLoadAverage).isPresent() ? nf_dec.format(cpuLoadAverage) : "null");
+		map.put("https", this.isHttps);
 
-        map.put("maxMemory", Optional.ofNullable(maxMemory).isPresent() ? formatFileSize(maxMemory) : "");
-        map.put("totalMemory", Optional.ofNullable(maxMemory).isPresent() ? formatFileSize(totalMemory) : "");
-        map.put("freeMemory", Optional.ofNullable(freeMemory).isPresent() ? formatFileSize(freeMemory) : "");
-        map.put("availableDisk", Optional.ofNullable(availableDisk).isPresent() ? formatFileSize(availableDisk) : "");
+		if ((vaultUrl != null) && vaultUrl.length() > 0)
+			map.put("vault.url", vaultUrl);
 
-        if (!serverStorage.isEmpty()) {
-            map.put("serverStorage",
-                    serverStorage.entrySet().stream()
-                            .map(e -> e.getKey() + " = "
-                                    + (Optional.ofNullable(e.getValue()).isPresent() ? formatFileSize(e.getValue()) : "null"))
-                            .collect(Collectors.joining(", ")));
-        }
+		if ((isStandby != null) && isStandby.equals("true")) {
+			map.put("standby.url", Optional.ofNullable(standbyUrl).isPresent() ? standbyUrl : "");
+			map.put("standby.port", Optional.ofNullable(standbyPort).isPresent() ? standbyPort : "");
+		}
 
-        map.put("trafficTokens", Optional.ofNullable(trafficTokens).isPresent() ? trafficTokens : "null");
+		map.put("availableProcessors", Optional.ofNullable(availableProcessors).isPresent() ? availableProcessors.toString() : "null");
 
-        
-        
-        return map;
-    }
+		if (cpuLoadAverage != null)
+			map.put("cpuLoadAverage", Optional.ofNullable(cpuLoadAverage).isPresent() ? nf_dec.format(cpuLoadAverage) : "null");
 
-    public boolean isVersionControl() {
-        return isVersionControl != null && isVersionControl.equals("true");
-    }
+		map.put("maxMemory", Optional.ofNullable(maxMemory).isPresent() ? formatFileSize(maxMemory) : "");
+		map.put("totalMemory", Optional.ofNullable(maxMemory).isPresent() ? formatFileSize(totalMemory) : "");
+		map.put("freeMemory", Optional.ofNullable(freeMemory).isPresent() ? formatFileSize(freeMemory) : "");
+		map.put("availableDisk", Optional.ofNullable(availableDisk).isPresent() ? formatFileSize(availableDisk) : "");
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getClass().getSimpleName());
-        str.append(toJSON());
-        return str.toString();
-    }
-    
-    @JsonIgnore
-    private String formatFileSize(long size) {
+		if (!serverStorage.isEmpty()) {
+			map.put("serverStorage", serverStorage.entrySet().stream().map(e -> e.getKey() + " = " + (Optional.ofNullable(e.getValue()).isPresent() ? formatFileSize(e.getValue()) : "null")).collect(Collectors.joining(", ")));
+		}
 
-        try {
-            if (size == 0)
-                return nf_int.format(size).trim() + " KB";
+		map.put("trafficTokens", Optional.ofNullable(trafficTokens).isPresent() ? trafficTokens : "null");
 
-            if (size < SharedConstant.kilobyte)
-                return nf_int.format(size).trim() + " bytes";
+		return map;
+	}
 
-            if (size < SharedConstant.megabyte)
-                return nf_dec.format((double) size / SharedConstant.d_kilobyte).trim() + " KB";
+	public boolean isVersionControl() {
+		return isVersionControl != null && isVersionControl.equals("true");
+	}
 
-            if (size < SharedConstant.gigabyte)
-                return nf_dec.format((double) size / (double) SharedConstant.d_megabyte).trim() + " MB";
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append(this.getClass().getSimpleName());
+		str.append(toJSON());
+		return str.toString();
+	}
 
-            if (size < SharedConstant.terabyte)
-                return nf_dec.format((double) size / (double) SharedConstant.d_gigabyte).trim() + " GB";
+	@JsonIgnore
+	private String formatFileSize(long size) {
 
-            return nf_dec.format((double) size / (double) SharedConstant.d_terabyte).trim() + " TB";
+		try {
+			if (size == 0)
+				return nf_int.format(size).trim() + " KB";
 
-        } catch (Exception e) {
-            return e.getClass().getName() + e.getMessage();
-        }
-    }
+			if (size < SharedConstant.kilobyte)
+				return nf_int.format(size).trim() + " bytes";
+
+			if (size < SharedConstant.megabyte)
+				return nf_dec.format((double) size / SharedConstant.d_kilobyte).trim() + " KB";
+
+			if (size < SharedConstant.gigabyte)
+				return nf_dec.format((double) size / (double) SharedConstant.d_megabyte).trim() + " MB";
+
+			if (size < SharedConstant.terabyte)
+				return nf_dec.format((double) size / (double) SharedConstant.d_gigabyte).trim() + " GB";
+
+			return nf_dec.format((double) size / (double) SharedConstant.d_terabyte).trim() + " TB";
+
+		} catch (Exception e) {
+			return e.getClass().getName() + e.getMessage();
+		}
+	}
 
 }

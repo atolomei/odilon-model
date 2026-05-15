@@ -9,6 +9,11 @@
 <h2>Model</h2>
 <p><b>Odilon-model</b> contains classes (in particular the JSON Model) used by both <a href="https://github.com/atolomei/odilon-client" target="_blank">odilon-server</a> and  <a href="https://github.com/atolomei/odilon-client" target="_blank">odilon-client</a></p>
 <p>Data requested by the client is sent in JSON format by the Server and deserialized into a Java Object at the client.</p>
+
+<p>Odilon model and client version 1.x requires Java 11	
+</p>
+<p>Odilon model and client version 2.x requires Java 17	
+</p>
    
 <h2>Download</h2>
 <p>

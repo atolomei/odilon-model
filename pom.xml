@@ -148,7 +148,6 @@
 			<version>${jackson-version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>

@@ -74,6 +74,10 @@ public class OdilonServerInfo extends BaseObject implements Serializable {
 	@JsonProperty("isVersionControl")
 	private boolean isVersionControl;
 
+	@JsonProperty("versionControl")
+	private VersionControl versionControl;
+	
+	
 	@JsonProperty("versionControlDate")
 	private OffsetDateTime versionControlDate;
 
@@ -189,14 +193,31 @@ public class OdilonServerInfo extends BaseObject implements Serializable {
 		this.isStandBy = isStandByEnabled;
 	}
 
+	@Deprecated
+	@JsonIgnore
 	public boolean isVersionControl() {
 		return isVersionControl;
 	}
 
+	@Deprecated
+	@JsonIgnore
 	public void setVersionControl(boolean isVersionControl) {
 		this.isVersionControl = isVersionControl;
 	}
 
+	
+	public VersionControl getVersionControl() {
+		/** compatibility with old versions, if versionControl is null, then it is determined by the isVersionControl boolean */
+		if (this.versionControl==null)
+			return this.isVersionControl? VersionControl.STANDARD : VersionControl.DISABLED;
+		return versionControl;
+	}
+
+	public void setVersionControl(VersionControl versionControl) {
+		this.versionControl = versionControl;
+	}
+	
+	
 	public OffsetDateTime getVersionControlDate() {
 		return versionControlDate;
 	}

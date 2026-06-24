@@ -106,7 +106,9 @@ public class SystemInfo extends BaseObject {
 
 	public String isVersionControl;
 	public String trafficTokens;
-
+	
+	public VersionControl versionControl;
+	
 	public List<String> rootDirs;
 
 	/**
@@ -175,7 +177,15 @@ public class SystemInfo extends BaseObject {
 
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "");
 		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "");
-		map.put("versionControl.enabled", isVersionControl);
+		
+		
+		//map.put("versionControl.enabled", isVersionControl);
+		
+		map.put("versionControl", versionControl.getName());
+		
+		
+	 
+		
 		map.put("vault.enabled", isVaultEnabled);
 
 		map.put("https", this.isHttps);
@@ -243,6 +253,10 @@ public class SystemInfo extends BaseObject {
 		} catch (Exception e) {
 			return e.getClass().getName() + e.getMessage();
 		}
+	}
+
+	public VersionControl getVersionControl() {
+		return this.versionControl;
 	}
 
 }

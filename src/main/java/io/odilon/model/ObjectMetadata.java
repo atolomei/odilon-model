@@ -101,6 +101,19 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	@JsonProperty("raidDrives")
 	public int raidDrives;
 
+	/**
+	 * <p>
+	 * Volume identifier – 0-based index of the {@code RAIDSixVolume} whose drives
+	 * hold the Reed–Solomon shards for this object.
+	 * </p>
+	 * <p>
+	 * Defaults to {@code 0} for backward compatibility with objects created before
+	 * multi-volume support was introduced (they all live on volume 0).
+	 * </p>
+	 */
+	@JsonProperty("volumeId")
+	public int volumeId = 0;
+
 	@JsonProperty("sha256")
 	public String sha256;
 
@@ -524,5 +537,22 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
 	public void setSourceLength(long sourceLength) {
 		this.sourceLength = sourceLength;
+	}
+
+	/**
+	 * Returns the id of the {@code RAIDSixVolume} whose drives hold the shards for
+	 * this object.  Defaults to {@code 0} for objects written before multi-volume
+	 * support was introduced.
+	 */
+	public int getVolumeId() {
+		return volumeId;
+	}
+
+	/**
+	 * Sets the volume id.  Called by the RAID 6 create / update handlers when
+	 * writing a new object head version.
+	 */
+	public void setVolumeId(int volumeId) {
+		this.volumeId = volumeId;
 	}
 }

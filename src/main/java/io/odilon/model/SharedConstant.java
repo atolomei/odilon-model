@@ -58,5 +58,6 @@ public class SharedConstant {
 	static final public double d_zettabyte = (d_exabyte * 1024);
 	static final public double d_yottabyte = (d_zettabyte * 1024);
 
-	static final public String NOT_THROWN = "---- not thrown ----";
+	static final public String NOT_THROWN 		= "---- not thrown ----";
+	static final public String THROWN_WRAPPED 	= "---- thrown wrapped ----";
 }

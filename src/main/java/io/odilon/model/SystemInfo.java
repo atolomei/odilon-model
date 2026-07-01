@@ -110,9 +110,12 @@ public class SystemInfo extends BaseObject {
 	public VersionControl versionControl;
 	
 	public List<String> rootDirs;
+	public List<String> raidSixVolumes;
 
+	
 	/**
-	 * total disk available to store data. This depends on the redundancy level used
+	 *  total disk available to store data.
+	 *  This depends on the redundancy level used
 	 */
 	public Long availableDisk;
 
@@ -167,6 +170,14 @@ public class SystemInfo extends BaseObject {
 			map.put("redundancyLevel.detail", redundancyLevelDetail);
 		}
 
+		
+		if (this.raidSixVolumes != null) {
+			StringBuilder str = new StringBuilder();
+			this.raidSixVolumes.forEach(i -> str.append((str.length() > 0 ? " | " : "") + i));
+			map.put("raidSixVolumes", str.toString());
+		}
+		
+		
 		if (this.rootDirs != null) {
 			StringBuilder str = new StringBuilder();
 			this.rootDirs.forEach(i -> str.append((str.length() > 0 ? " | " : "") + i));
@@ -178,13 +189,7 @@ public class SystemInfo extends BaseObject {
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "");
 		map.put("encryption.initialized", Optional.ofNullable(isEncryptionInitialized).isPresent() ? isEncryptionInitialized : "");
 		
-		
-		//map.put("versionControl.enabled", isVersionControl);
-		
 		map.put("versionControl", versionControl.getName());
-		
-		
-	 
 		
 		map.put("vault.enabled", isVaultEnabled);
 

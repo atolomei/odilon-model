@@ -159,6 +159,43 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 		this.bucketName = "";
 	}
 
+	/**
+	 * Returns a shallow copy of this instance.
+	 * All scalar and immutable fields are copied by value.
+	 * {@code sha256Blocks} and {@code customTags} lists are shared —
+	 * callers never mutate them in place so sharing is safe.
+	 */
+	public ObjectMetadata copy() {
+		ObjectMetadata c         = new ObjectMetadata(this.bucketId, this.objectName);
+		c.bucketName             = this.bucketName;
+		c.drive                  = this.drive;
+		c.creationDate           = this.creationDate;
+		c.versioncreationDate    = this.versioncreationDate;
+		c.version                = this.version;
+		c.publicAccess           = this.publicAccess;
+		c.sourceLength           = this.sourceLength;
+		c.length                 = this.length;
+		c.encrypt                = this.encrypt;
+		c.vault                  = this.vault;
+		c.etag                   = this.etag;
+		c.contentType            = this.contentType;
+		c.fileName               = this.fileName;
+		c.status                 = this.status;
+		c.raid                   = this.raid;
+		c.raidDrives             = this.raidDrives;
+		c.volumeId               = this.volumeId;
+		c.sha256                 = this.sha256;
+		c.sha256Blocks           = this.sha256Blocks;
+		c.totalBlocks            = this.totalBlocks;
+		c.appVersion             = this.appVersion;
+		c.lastModified           = this.lastModified;
+		c.dateSynced             = this.dateSynced;
+		c.integrityCheck         = this.integrityCheck;
+		c.systemTags             = this.systemTags;
+		c.customTags             = this.customTags;
+		return c;
+	}
+
 	public Long getBucketId() {
 		return this.bucketId;
 	}

@@ -136,6 +136,26 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	@JsonProperty("integrityCheck")
 	public OffsetDateTime integrityCheck;
 
+	/**
+	 * Persistent integrity repair status, set by the data scrubber.
+	 * Defaults to {@link IntegrityStatus#OK} — ensures objects written before
+	 * this field was introduced are treated as healthy on first read.
+	 * Jackson deserializes from the integer code via {@link IntegrityStatus#fromCode};
+	 * a missing field leaves the initialized default untouched.
+	 */
+	@JsonProperty("integrityStatus")
+	public IntegrityStatus integrityStatus = IntegrityStatus.OK;
+
+	/**
+	 * SHA-256 of the serialized JSON of this record with this field set to
+	 * {@code null} before hashing. Computed and stamped by
+	 * {@code OdilonDrive.saveObjectMetadata()} on every write.
+	 * {@code null} on legacy objects written before this field was introduced —
+	 * treated as <em>unverified</em> (not corrupt) for backward compatibility.
+	 */
+	@JsonProperty("metaChecksum")
+	public String metaChecksum;
+
 	@JsonProperty("systemTags")
 	public String systemTags;
 
@@ -191,6 +211,10 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 		c.lastModified           = this.lastModified;
 		c.dateSynced             = this.dateSynced;
 		c.integrityCheck         = this.integrityCheck;
+		c.integrityStatus        = this.integrityStatus;
+		// metaChecksum intentionally not copied — it must be recomputed by
+		// OdilonDrive.saveObjectMetadata() on the next write for the copy to be valid.
+		c.metaChecksum           = null;
 		c.systemTags             = this.systemTags;
 		c.customTags             = this.customTags;
 		return c;
@@ -554,6 +578,22 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 
 	public void setIntegrityCheck(OffsetDateTime integrityCheck) {
 		this.integrityCheck = integrityCheck;
+	}
+
+	public IntegrityStatus getIntegrityStatus() {
+		return integrityStatus;
+	}
+
+	public void setIntegrityStatus(IntegrityStatus integrityStatus) {
+		this.integrityStatus = integrityStatus;
+	}
+
+	public String getMetaChecksum() {
+		return metaChecksum;
+	}
+
+	public void setMetaChecksum(String metaChecksum) {
+		this.metaChecksum = metaChecksum;
 	}
 
 	public int getRaidDrives() {

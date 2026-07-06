@@ -114,15 +114,34 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	@JsonProperty("volumeId")
 	public int volumeId = 0;
 
+	
+	/**
+	 * 
+	 * RAID 0, 1 -> SHA 256 of the unencrypted source file
+	 * EC        -> SHA-256 of the unencrypted source file, used to verify integrity of the reconstructed object
+	 * 
+	 * 
+	 */
 	@JsonProperty("sha256")
 	public String sha256;
 
+	
+	/**
+	 * SHA-256 of each Reed–Solomon shard for this object, in the same order as the
+	 * shards are stored on disk.  Used to verify integrity of each shard before
+	 * reconstructing the object.
+	 */
 	@JsonProperty("sha256Blocks")
 	public List<String> sha256Blocks;
 
+	/**
+	 * Total number of Reed–Solomon shards for this object, including both data and
+	 * parity shards.  Used to verify that the {@code sha256Blocks} list is complete.
+	 */
 	@JsonProperty("totalBlocks")
 	public int totalBlocks;
 
+	
 	@JsonProperty("appVersion")
 	public String appVersion;
 

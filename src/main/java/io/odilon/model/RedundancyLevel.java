@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.odilon.util.Check;
 
@@ -79,7 +80,12 @@ public enum RedundancyLevel {
 
 	RAID_0("RAID 0", 0), // (striping)
 	RAID_1("RAID 1", 1), // (mirroring)
-	RAID_6("RAID 6", 6); // (Erasure Codes Reed Solomon -> 2+1, 4+2, 8+4, 16+8)
+	/**
+	 * Erasure Coding via Reed-Solomon.
+	 * The canonical property-file value is now {@code ErasureCoding}.
+	 * The legacy value {@code RAID 6} is still accepted for backward compatibility.
+	 */
+	ERASURE_CODING("ErasureCoding", 6); // (Erasure Codes Reed Solomon -> 2+1, 4+2, 8+4, 16+8, 24+12, 32+16)
 
 	private String name;
 	private int code;
@@ -87,19 +93,42 @@ public enum RedundancyLevel {
 
 	static List<RedundancyLevel> list;
 
-	/** A static map to quickly look up enum constants by name **/
-	private static final Map<String, RedundancyLevel> FORMAT_MAP = Arrays.stream(RedundancyLevel.values()).collect(Collectors.toMap(s -> s.nameCompatible.toLowerCase(), Function.identity()));
+	/**
+	 * Resolution map: canonical names + all legacy aliases, all lower-cased.
+	 * "erasurecoding" → RAID_6  (canonical new value)
+	 * "raid 6"        → RAID_6  (legacy property value)
+	 * "raid_6"        → RAID_6  (legacy underscore form)
+	 * "raid 0"        → RAID_0
+	 * "raid_0"        → RAID_0
+	 * "raid 1"        → RAID_1
+	 * "raid_1"        → RAID_1
+	 */
+	private static final Map<String, RedundancyLevel> FORMAT_MAP;
+	static {
+		FORMAT_MAP = Arrays.stream(RedundancyLevel.values())
+				.collect(Collectors.toMap(s -> s.nameCompatible.toLowerCase(), Function.identity()));
+		// Legacy aliases kept so existing odilon.properties files keep working
+		FORMAT_MAP.put("raid 6",        ERASURE_CODING);
+		FORMAT_MAP.put("raid_6",        ERASURE_CODING);
+		FORMAT_MAP.put("erasure_coding", ERASURE_CODING); // backward compat: old Java enum name serialized by Jackson
+		FORMAT_MAP.put("raid 0",        RAID_0);
+		FORMAT_MAP.put("raid_0",        RAID_0);
+		FORMAT_MAP.put("raid 1",        RAID_1);
+		FORMAT_MAP.put("raid_1",        RAID_1);
+	}
 
 	/**
-	 * Factory method for deserialization using the 'name' property from the JSON
-	 * object. Jackson uses this method when it encounters a JSON object instead of
-	 * a simple string.
+	 * Factory method for deserialization.
+	 * Accepts both the canonical name ({@code ErasureCoding}) and all legacy aliases.
 	 */
 	@JsonCreator
 	public static RedundancyLevel fromJson(@JsonProperty("name") String name) {
-		String nameCompatible = name.replace(" ", "_").toLowerCase();
-		return Optional.ofNullable(FORMAT_MAP.get(nameCompatible.toLowerCase())).orElseThrow(() -> new IllegalArgumentException("Unknown name: " + name));
+		String key = name.trim().toLowerCase();
+		return Optional.ofNullable(FORMAT_MAP.get(key))
+				.orElseThrow(() -> new IllegalArgumentException("Unknown redundancyLevel: " + name));
 	}
+
+	// ...existing code...
 
 	public static List<RedundancyLevel> getValues() {
 
@@ -110,26 +139,25 @@ public enum RedundancyLevel {
 
 		list.add(RAID_0);
 		list.add(RAID_1);
-		list.add(RAID_6);
+		list.add(ERASURE_CODING);
 
 		return list;
 	}
 
-	 
+	/**
+	 * Resolves a property-file or JSON string to a {@link RedundancyLevel}.
+	 * Accepts both the canonical values and all legacy spellings:
+	 * <ul>
+	 *   <li>{@code ErasureCoding} → {@link #ERASURE_CODING}  (canonical)</li>
+	 *   <li>{@code RAID 6}        → {@link #ERASURE_CODING}  (legacy)</li>
+	 *   <li>{@code RAID 0}        → {@link #RAID_0}</li>
+	 *   <li>{@code RAID 1}        → {@link #RAID_1}</li>
+	 * </ul>
+	 * Returns {@code null} for unrecognized values.
+	 */
 	public static RedundancyLevel get(String name) {
-
 		Check.requireNonNullArgument(name, "name is null");
-
-		String normalized = name.toUpperCase().trim();
-
-		if (normalized.equals(RAID_0.getName()))
-			return RAID_0;
-		if (normalized.equals(RAID_1.getName()))
-			return RAID_1;
-		if (normalized.equals(RAID_6.getName()))
-			return RAID_6;
-
-		return null;
+		return FORMAT_MAP.get(name.trim().toLowerCase());
 	}
 
 	public static RedundancyLevel get(int code) {
@@ -138,8 +166,8 @@ public enum RedundancyLevel {
 			return RAID_0;
 		if (code == RAID_1.code)
 			return RAID_1;
-		if (code == RAID_6.code)
-			return RAID_6;
+		if (code == ERASURE_CODING.code)
+			return ERASURE_CODING;
 
 		throw new IllegalArgumentException("unsupported code -> " + String.valueOf(code));
 
@@ -164,6 +192,7 @@ public enum RedundancyLevel {
 
 	 
 
+	@JsonValue
 	public String getName() {
 		return name;
 	}

@@ -22,6 +22,36 @@ import java.time.temporal.Temporal;
 
 public class DateTimeUtil {
 
+	/**
+	 * <p>
+	 * Returns the current instant truncated to millisecond precision.
+	 * </p>
+	 *
+	 * <p>
+	 * <b>Why this exists</b>: {@code OffsetDateTime.now()} carries whatever
+	 * resolution the underlying JVM clock provides — on most modern JVMs this is
+	 * microsecond or even nanosecond precision. Every timestamp field stamped onto
+	 * a newly created {@code ObjectMetadata} ({@code creationDate},
+	 * {@code versioncreationDate}, {@code lastModified}, {@code integrityCheck},
+	 * {@code dateSynced}) is included in the {@code metaChecksum} hash computed by
+	 * {@code ObjectMetadataChecksum} in {@code odilon-server}. Truncating to
+	 * milliseconds here — <em>before</em> the value is ever stamped onto the
+	 * object and hashed — makes the stored value canonical and independent of
+	 * clock resolution or any particular Jackson date/time serializer
+	 * configuration, so the checksum stays stable across save/read cycles and
+	 * across drives with (theoretically) different JVM clock resolutions.
+	 * </p>
+	 *
+	 * <p>
+	 * Callers that create or update {@link io.odilon.model.ObjectMetadata}
+	 * timestamp fields should use this method instead of calling
+	 * {@code OffsetDateTime.now()} directly.
+	 * </p>
+	 */
+	public static OffsetDateTime now() {
+		return OffsetDateTime.now().truncatedTo(ChronoUnit.MILLIS);
+	}
+
 	public static String timeElapsed(OffsetDateTime from, OffsetDateTime to) {
 
 		Check.requireNonNullArgument(from, "from is null");

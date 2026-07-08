@@ -110,7 +110,7 @@ public class SystemInfo extends BaseObject {
 	public VersionControl versionControl;
 	
 	public List<String> rootDirs;
-	public List<String> raidSixVolumes;
+	public List<String> ecVolumes;
 
 	
 	/**
@@ -162,28 +162,29 @@ public class SystemInfo extends BaseObject {
 		map.put("appVersion", Optional.ofNullable(appVersion).isPresent() ? appVersion : "");
 		map.put("serverHost", Optional.ofNullable(serverHost).isPresent() ? serverHost : "");
 		map.put("serverMode", Optional.ofNullable(serverMode).isPresent() ? serverMode : "");
-		map.put("dataStorageMode", serverDataStorageMode);
+		map.put("dataStorage.mode", serverDataStorageMode);
 
-		map.put("redundancyLevel", Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
+		map.put("dataStorage.redundancyLevel", Optional.ofNullable(redundancyLevel).isPresent() ? redundancyLevel.getName() : "null");
 
 		if (redundancyLevelDetail != null) {
-			map.put("redundancyLevel.detail", redundancyLevelDetail);
+			map.put("dataStorage.redundancyLevel.detail", redundancyLevelDetail);
 		}
 
 		
-		if (this.raidSixVolumes != null) {
+		if (this.ecVolumes != null) {
 			StringBuilder str = new StringBuilder();
-			this.raidSixVolumes.forEach(i -> str.append((str.length() > 0 ? " | " : "") + i));
-			map.put("raidSixVolumes", str.toString());
+			this.ecVolumes.forEach(i -> str.append((str.length() > 0 ? " | " : "") + i));
+			map.put("dataStorage.ECVolumes", str.toString());
 		}
 		
 		
 		if (this.rootDirs != null) {
 			StringBuilder str = new StringBuilder();
 			this.rootDirs.forEach(i -> str.append((str.length() > 0 ? " | " : "") + i));
-			map.put("rootDirs", str.toString());
+			map.put("dataStorage.rootDirs", str.toString());
 		}
 
+		
 		map.put("standby.enabled", Optional.ofNullable(isStandby).isPresent() ? isStandby : "");
 
 		map.put("encryption.enabled", Optional.ofNullable(isEncryptEnabled).isPresent() ? isEncryptEnabled : "");

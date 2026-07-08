@@ -636,7 +636,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	}
 
 	/**
-	 * Returns the id of the {@code RAIDSixVolume} whose drives hold the shards for
+	 * Returns the id of the {@code ECVolume} whose drives hold the shards for
 	 * this object.  Defaults to {@code 0} for objects written before multi-volume
 	 * support was introduced.
 	 */

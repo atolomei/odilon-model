@@ -645,7 +645,7 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	}
 
 	/**
-	 * Sets the volume id.  Called by the RAID 6 create / update handlers when
+	 * Sets the volume id.  Called by the ErasureCoding create / update handlers when
 	 * writing a new object head version.
 	 */
 	public void setVolumeId(int volumeId) {

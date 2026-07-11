@@ -18,7 +18,7 @@ package io.odilon.model;
 
 /**
  * <p>
- * Fixed Reed–Solomon configurations supported by Odilon RAID 6.
+ * Fixed Reed–Solomon configurations supported by Odilon ErasureCoding.
  * The data/parity split is <strong>internal</strong> — it is derived
  * automatically from the number of drives per volume declared in
  * {@code odilon.properties}. Administrators never need to configure
@@ -37,7 +37,7 @@ package io.odilon.model;
  *
  * @author atolomei@novamens.com (Alejandro Tolomei)
  */
-public enum RAID6Config {
+public enum ECConfig {
 
     RS_3 ( 3,  2,  1),
     RS_6 ( 6,  4,  2),
@@ -54,7 +54,7 @@ public enum RAID6Config {
     /** Reed–Solomon parity shards. */
     public final int parityDrives;
 
-    RAID6Config(int totalDrives, int dataDrives, int parityDrives) {
+    ECConfig(int totalDrives, int dataDrives, int parityDrives) {
         this.totalDrives  = totalDrives;
         this.dataDrives   = dataDrives;
         this.parityDrives = parityDrives;
@@ -66,20 +66,20 @@ public enum RAID6Config {
      * @throws IllegalArgumentException if {@code drivesPerVolume} is not one of
      *         the supported values (3, 6, 12, 24, 48).
      */
-    public static RAID6Config fromDriveCount(int drivesPerVolume) {
-        for (RAID6Config cfg : values()) {
+    public static ECConfig fromDriveCount(int drivesPerVolume) {
+        for (ECConfig cfg : values()) {
             if (cfg.totalDrives == drivesPerVolume)
                 return cfg;
         }
         throw new IllegalArgumentException(
-                "Unsupported RAID 6 drive count per volume: " + drivesPerVolume
+                "Unsupported ErasureCoding drive count per volume: " + drivesPerVolume
                 + ". Supported values: 3, 6, 12, 24, 48.");
     }
 
     /** Comma-separated list of all supported drive counts, for error messages. */
     public static String supportedCounts() {
         StringBuilder sb = new StringBuilder();
-        for (RAID6Config cfg : values()) {
+        for (ECConfig cfg : values()) {
             if (sb.length() > 0) sb.append(", ");
             sb.append(cfg.totalDrives);
         }

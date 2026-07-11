@@ -57,7 +57,7 @@ import io.odilon.util.Check;
  * <br/>
  * <br/>
  * <br/>
- * <b>RAID 6 / Erasure Coding</b> <br/>
+ * <b>Erasure Coding</b> <br/>
  * It is a method of encoding data into blocks that can be distributed across
  * multiple disks or nodes and then reconstructed from a subset of those blocks.
  * It has great flexibility since you can adjust the number and size of the

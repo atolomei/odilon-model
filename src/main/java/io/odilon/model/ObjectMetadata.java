@@ -181,6 +181,25 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	@JsonProperty("customTags")
 	public List<String> customTags;
 
+	/**
+	 * <p>
+	 * Encryption format version used to encrypt this object's data at rest.
+	 * </p>
+	 * <ul>
+	 * <li>{@code null} &rarr; legacy format (JSON {@code StreamEncryptorInfo}
+	 * header + whole-object AES/GCM), or the object is not encrypted.</li>
+	 * <li>{@code 2} &rarr; record-based AES-GCM-SIV format
+	 * ({@code io.odilon.encryption.v2}).</li>
+	 * </ul>
+	 * <p>
+	 * Must default to {@code null}: {@code @JsonInclude(NON_NULL)} then excludes
+	 * it from the serialized form of legacy objects, which keeps their
+	 * {@code metaChecksum} stable (see {@code ObjectMetadataChecksum}).
+	 * </p>
+	 */
+	@JsonProperty("encryptionFormat")
+	public Integer encryptionFormat;
+
 	public ObjectMetadata() {
 	}
 
@@ -236,7 +255,16 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 		c.metaChecksum           = null;
 		c.systemTags             = this.systemTags;
 		c.customTags             = this.customTags;
+		c.encryptionFormat       = this.encryptionFormat;
 		return c;
+	}
+
+	public Integer getEncryptionFormat() {
+		return this.encryptionFormat;
+	}
+
+	public void setEncryptionFormat(Integer encryptionFormat) {
+		this.encryptionFormat = encryptionFormat;
 	}
 
 	public Long getBucketId() {

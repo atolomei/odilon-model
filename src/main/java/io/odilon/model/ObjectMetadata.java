@@ -20,6 +20,7 @@ import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -107,12 +108,29 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	 * hold the Reed–Solomon shards for this object.
 	 * </p>
 	 * <p>
-	 * Defaults to {@code 0} for backward compatibility with objects created before
-	 * multi-volume support was introduced (they all live on volume 0).
+	 * Defaults to {@code 0} (via {@link #getVolumeId()}) for backward compatibility
+	 * with objects created before multi-volume support was introduced (they all
+	 * live on volume 0).
+	 * </p>
+	 * <p>
+	 * <b>Intentionally boxed ({@code Integer}, not {@code int}) and left
+	 * uninitialized (defaults to {@code null}).</b> This field was added to the
+	 * schema after {@code metaChecksum} was introduced. Objects persisted before
+	 * this field existed have no {@code "volumeId"} key in their stored JSON, so
+	 * their {@code metaChecksum} was computed without it. Keeping the in-memory
+	 * default as {@code null} lets the class-level
+	 * {@code @JsonInclude(Include.NON_NULL)} exclude the field from the JSON used
+	 * to recompute the checksum for those legacy records — exactly reproducing
+	 * the bytes that were hashed when they were first written. Had this been a
+	 * primitive {@code int} defaulting to {@code 0}, it would always serialize
+	 * (primitives have no "absent" state), permanently breaking
+	 * {@code metaChecksum} verification for every object written before this
+	 * field was added. See the "Rule for future field additions" in
+	 * {@code ObjectMetadataChecksum}.
 	 * </p>
 	 */
 	@JsonProperty("volumeId")
-	public int volumeId = 0;
+	public Integer volumeId;
 
 	
 	/**
@@ -666,17 +684,36 @@ public class ObjectMetadata extends OdilonModelObject implements Serializable {
 	/**
 	 * Returns the id of the {@code ECVolume} whose drives hold the shards for
 	 * this object.  Defaults to {@code 0} for objects written before multi-volume
-	 * support was introduced.
+	 * support was introduced (stored with no {@code volumeId} key, i.e. the
+	 * backing field is {@code null} — see the field Javadoc).
+	 *
+	 * <p>
+	 * <b>{@code @JsonIgnore} is required here.</b> Without it, Jackson detects
+	 * this bean-style getter as an accessor for the same "volumeId" property as
+	 * the {@code public Integer volumeId} field, and — because a getter
+	 * returning primitive {@code int} can never report "absent" — prefers it
+	 * over the field for serialization. That would always emit
+	 * {@code "volumeId":0}, even when the field itself is {@code null},
+	 * silently defeating the {@code NON_NULL} exclusion the field relies on to
+	 * keep {@code metaChecksum} stable for legacy (pre-multi-volume) records.
+	 * {@code @JsonIgnore} forces Jackson to use the field directly, so its true
+	 * null-ness drives (de)serialization, while this method remains the normal
+	 * Java API other code calls.
+	 * </p>
 	 */
+	@JsonIgnore
 	public int getVolumeId() {
-		return volumeId;
+		return volumeId != null ? volumeId.intValue() : 0;
 	}
 
 	/**
 	 * Sets the volume id.  Called by the ErasureCoding create / update handlers when
 	 * writing a new object head version.
+	 *
+	 * <p>{@code @JsonIgnore} — see {@link #getVolumeId()}.</p>
 	 */
+	@JsonIgnore
 	public void setVolumeId(int volumeId) {
-		this.volumeId = volumeId;
+		this.volumeId = Integer.valueOf(volumeId);
 	}
 }

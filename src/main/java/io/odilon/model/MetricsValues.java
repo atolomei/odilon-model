@@ -33,8 +33,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * <p>
  * Values for Server monitoring
  * </p>
- * See <a href="https://metrics.dropwizard.io/4.2.0/index.html">Dropwizard
- * Metrics</a>
+ * Rates (per second / minute) are computed by Prometheus with rate(); the
+ * deprecated *Meter arrays are kept only for backward compatibility.
  *
  * @author atolomei@novamens.com (Alejandro Tolomei)
  *
@@ -69,15 +69,7 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 	public MetricsValues() {
 	}
 
-	// ----------------------------
-	// PUT/GET OBJECT
-
-	@JsonProperty("getObjectMeter")
-	public double getObjectMeter[] = new double[3];
-
-	@JsonProperty("putObjectMeter")
-	public double putObjectMeter[] = new double[3];
-
+	
 	// ----------------------------
 	// OBJECT CRUD
 
@@ -149,26 +141,67 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 	// ----------------------------
 	// ENCRYPTION
 
+	/*
+	 * Deprecated rate meters, kept only so the JSON stays backward compatible with
+	 * older clients. Rates are not computed in-process anymore (use Prometheus
+	 * rate()): index 0 holds the total count, indexes 1 and 2 are always 0. Use the
+	 * *Counter fields below instead.
+	 */
+	@Deprecated
 	@JsonProperty("encrpytFileMeter")
 	public double encrpytFileMeter[] = new double[3];
 
+	@Deprecated
 	@JsonProperty("decryptFileMeter")
 	public double decryptFileMeter[] = new double[3];
 
+	@Deprecated
 	@JsonProperty("encryptVaultMeter")
 	public double encryptVaultMeter[] = new double[3];
 
+	@Deprecated
 	@JsonProperty("decryptVaultMeter")
 	public double decryptVaultMeter[] = new double[3];
 
-	// ----------------------------
-	// API CALLS
-
+	@Deprecated
 	@JsonProperty("getAPIMeter")
 	public double getAPIMeter[] = new double[3];
 
+	@Deprecated
 	@JsonProperty("putAPIMeter")
 	public double putAPIMeter[] = new double[3];
+
+	@Deprecated
+	@JsonProperty("getObjectMeter")
+	public double getObjectMeter[] = new double[3];
+
+	@Deprecated
+	@JsonProperty("putObjectMeter")
+	public double putObjectMeter[] = new double[3];
+
+	// ----------------------------
+	// TOTALS (replace the deprecated meters)
+
+	@JsonProperty("getObjectCounter")
+	public long getObjectCounter = 0;
+
+	@JsonProperty("putObjectCounter")
+	public long putObjectCounter = 0;
+
+	@JsonProperty("apiCallCounter")
+	public long apiCallCounter = 0;
+
+	@JsonProperty("encryptFileCounter")
+	public long encryptFileCounter = 0;
+
+	@JsonProperty("decryptFileCounter")
+	public long decryptFileCounter = 0;
+
+	@JsonProperty("encryptVaultCounter")
+	public long encryptVaultCounter = 0;
+
+	@JsonProperty("decryptVaultCounter")
+	public long decryptVaultCounter = 0;
 
 	@Override
 	public String toJSON() {
@@ -179,10 +212,6 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		}
 	}
 
-	private String str(double[] arr) {
-		return String.valueOf(nf_dec.format(arr[0]) + " " + nf_dec.format(arr[1]) + " " + nf_dec.format(arr[2]));
-	}
-
 	@JsonIgnore
 	public Map<String, String> getColloquial() {
 
@@ -191,8 +220,8 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		// ----------------------------
 		// OBJECT CRUD
 		//
-		map.put("objectGetMeter", str(getObjectMeter));
-		map.put("objectPutMeter", str(putObjectMeter));
+		map.put("objectGetCounter", nf_int.format(getObjectCounter));
+		map.put("objectPutCounter", nf_int.format(putObjectCounter));
 
 		// ----------------------------
 
@@ -232,14 +261,14 @@ public class MetricsValues extends OdilonModelObject implements Serializable {
 		// ----------------------------
 		// ENCRYPTION
 		//
-		map.put("encrpytFileMeter", str(encrpytFileMeter));
-		map.put("decryptFileMeter", str(decryptFileMeter));
+		map.put("encryptFileCounter", nf_int.format(encryptFileCounter));
+		map.put("decryptFileCounter", nf_int.format(decryptFileCounter));
 
 		// ----------------------------
 		// VAULT
 		//
-		map.put("vaultEncryptMeter", str(encryptVaultMeter));
-		map.put("vaultDecryptMeter", str(decryptVaultMeter));
+		map.put("vaultEncryptCounter", nf_int.format(encryptVaultCounter));
+		map.put("vaultDecryptCounter", nf_int.format(decryptVaultCounter));
 
 		return map;
 	}
